@@ -2,15 +2,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, MapPin, Clock, DollarSign, Briefcase } from "lucide-react";
+import flagGerm from "@/assets/flags/Flag_of_Germany.png"
 
 const countries = [
   {
     name: "Germany",
-    flag: "🇩🇪",
+    flag: flagGerm,
     specialty: "Engineering & Technology",
     programs: ["Engineering", "Computer Science", "Business", "Medicine"],
     duration: "3-4 years",
-    fees: "€500-3000/year",
+    fees: "",
     opportunities: "Strong job market, work permits available",
     featured: true,
     color: "border-red-200 bg-red-50"
@@ -21,7 +22,7 @@ const countries = [
     specialty: "Business & IT",
     programs: ["Business Administration", "Information Technology", "Economics"],
     duration: "2-3 years",
-    fees: "€2000-5000/year",
+    fees: "r",
     opportunities: "EU work rights, growing IT sector",
     featured: false,
     color: "border-purple-200 bg-purple-50"
@@ -86,7 +87,7 @@ export default function Countries() {
             >
               <CardHeader className="text-center pb-4">
                 <div className="flex items-center justify-center space-x-3 mb-2">
-                  <span className="text-4xl">{country.flag}</span>
+                  <span className="text-4xl w-5 h-5"><img src={country.flag}/></span>
                   <div className="text-left">
                     <CardTitle className="text-xl text-primary group-hover:text-accent transition-colors">
                       {country.name}
@@ -123,7 +124,7 @@ export default function Countries() {
                 </div>
 
                 {/* Quick Info */}
-                <div className="space-y-2 text-sm">
+                {/*<div className="space-y-2 text-sm">
                   <div className="flex items-center justify-between">
                     <span className="flex items-center text-muted-foreground">
                       <Clock className="h-3 w-3 mr-1" />
@@ -138,7 +139,7 @@ export default function Countries() {
                     </span>
                     <span className="font-medium">{country.fees}</span>
                   </div>
-                </div>
+                </div>/*}
 
                 {/* Opportunities */}
                 <div>
