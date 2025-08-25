@@ -1,10 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
-
 export default function HeroModern() {
-  return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
+  return <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
       {/* Modern Geometric Background */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Large gradient shape */}
@@ -35,7 +33,7 @@ export default function HeroModern() {
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight">
                 <span className="text-foreground block">Education &</span>
                 <span className="text-foreground block">Immigration</span>
-                <span className="bg-gradient-primary bg-clip-text text-transparent font-normal">
+                <span className="bg-gradient-primary bg-clip-text text-transparent text-8xl font-semibold">
                   Pathways
                 </span>
               </h1>
@@ -48,11 +46,7 @@ export default function HeroModern() {
 
             {/* CTA Button */}
             <div className="pt-4">
-              <Button 
-                variant="default" 
-                size="lg" 
-                className="bg-black text-white hover:bg-gray-900 rounded-md px-8 py-3 font-medium text-base shadow-card"
-              >
+              <Button variant="default" size="lg" className="bg-black text-white hover:bg-gray-900 rounded-md px-8 py-3 font-medium text-base shadow-card">
                 <Phone className="mr-2 h-4 w-4" />
                 Get Callback
               </Button>
@@ -74,7 +68,9 @@ export default function HeroModern() {
                   <div className="text-xs">Settle</div>
                 </div>
                 
-                <div className="absolute -bottom-8 -right-8 bg-purple-600 text-white p-3 rounded-xl shadow-card transform rotate-12 animate-float" style={{animationDelay: '1s'}}>
+                <div className="absolute -bottom-8 -right-8 bg-purple-600 text-white p-3 rounded-xl shadow-card transform rotate-12 animate-float" style={{
+                animationDelay: '1s'
+              }}>
                   <div className="text-xs font-medium">Foreign Immigration</div>
                   <div className="text-xs">Lawyers</div>
                 </div>
@@ -82,16 +78,11 @@ export default function HeroModern() {
 
               {/* Woman with suitcase image */}
               <div className="relative z-10 flex items-center justify-center">
-                <img 
-                  src={heroImage} 
-                  alt="Professional woman with suitcase representing international education opportunities"
-                  className="w-72 h-72 object-cover object-center rounded-2xl shadow-modern"
-                />
+                <img src={heroImage} alt="Professional woman with suitcase representing international education opportunities" className="w-72 h-72 object-cover object-center rounded-2xl shadow-modern" />
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 }
