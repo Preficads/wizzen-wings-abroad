@@ -161,8 +161,8 @@ export default {
 				'gradient-warm': 'var(--gradient-warm)'
 			},
 			boxShadow: {
-				'warm': 'var(--shadow-warm)',
-				'accent': 'var(--shadow-accent)',
+				'modern': 'var(--shadow-modern)',
+				'card': 'var(--shadow-card)',
 				'soft': 'var(--shadow-soft)'
 			}
 		}
