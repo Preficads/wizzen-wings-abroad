@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
+import wizzenLogo from "@/assets/wizzen_logo.png";
 
 const navigation = [
   { name: "Home", href: "#home" },
@@ -22,12 +23,8 @@ export default function Navbar() {
         {/* Logo */}
         <div className="flex lg:flex-1">
           <a href="#" className="flex items-center space-x-3">
-            <div className="h-12 w-12 rounded-full bg-gradient-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">W</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-lg font-bold text-primary">Wizzen Overseas</span>
-              <span className="text-xs text-muted-foreground">Education & Immigration</span>
+            <div className="h-14 flex items-center justify-center">
+              <img className="h-14" src={wizzenLogo}/>
             </div>
           </a>
         </div>
@@ -48,10 +45,6 @@ export default function Navbar() {
 
         {/* Contact Info */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center space-x-4">
-          <div className="flex items-center space-x-2 text-sm">
-            <Phone className="h-4 w-4 text-accent" />
-            <span className="text-muted-foreground">+91 9876543210</span>
-          </div>
           <Button variant="accent" size="sm" className="animate-fade-in">
             Apply Now
           </Button>

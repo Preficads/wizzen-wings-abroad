@@ -2,21 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { MapPin, Phone, Mail, Instagram, Facebook, Linkedin, Globe, Clock, ArrowRight } from "lucide-react";
 const branches = [{
-  city: "Kozhikode",
-  address: "Wizzen Overseas, Near City Center, Kozhikode - 673001",
-  phone: "+91 9876543210",
-  email: "kozhikode@wizzenoverseas.com"
-}, {
-  city: "Malappuram",
-  address: "Wizzen Overseas, Main Road, Malappuram - 676101",
-  phone: "+91 9876543211",
-  email: "malappuram@wizzenoverseas.com"
-}, {
-  city: "Thrissur",
-  address: "Wizzen Overseas, City Center, Thrissur - 680001",
-  phone: "+91 9876543212",
-  email: "thrissur@wizzenoverseas.com"
-}, {
   city: "Germany",
   address: "Wizzen Europe Office, Berlin, Germany",
   phone: "+49 123 456789",
@@ -95,11 +80,11 @@ export default function Footer() {
               <div className="space-y-2 text-sm">
                 <div className="flex items-center space-x-2">
                   <Phone className="h-3 w-3 text-accent" />
-                  <span className="opacity-90">+91 9876543210</span>
+                  <span className="opacity-90">+91 82814 63148</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Mail className="h-3 w-3 text-accent" />
-                  <span className="opacity-90">info@wizzenoverseas.com</span>
+                  <span className="opacity-90">info@wizzenabroadstudies.com</span>
                 </div>
               </div>
             </div>
