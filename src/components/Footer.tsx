@@ -1,60 +1,31 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Instagram, 
-  Facebook, 
-  Linkedin,
-  Globe,
-  Clock,
-  ArrowRight
-} from "lucide-react";
-
-const branches = [
-  {
-    city: "Kozhikode",
-    address: "Wizzen Overseas, Near City Center, Kozhikode - 673001",
-    phone: "+91 9876543210",
-    email: "kozhikode@wizzenoverseas.com"
-  },
-  {
-    city: "Malappuram", 
-    address: "Wizzen Overseas, Main Road, Malappuram - 676101",
-    phone: "+91 9876543211",
-    email: "malappuram@wizzenoverseas.com"
-  },
-  {
-    city: "Thrissur",
-    address: "Wizzen Overseas, City Center, Thrissur - 680001", 
-    phone: "+91 9876543212",
-    email: "thrissur@wizzenoverseas.com"
-  },
-  {
-    city: "Germany",
-    address: "Wizzen Europe Office, Berlin, Germany",
-    phone: "+49 123 456789",
-    email: "germany@wizzenoverseas.com"
-  }
-];
-
-const services = [
-  "Study Abroad Programs",
-  "Immigration Services", 
-  "German Visa Processing",
-  "University Admissions",
-  "Work Permits",
-  "Documentation Support"
-];
-
-const countries = [
-  "Germany", "Latvia", "Austria", "Georgia", "Moldova", "Netherlands"
-];
-
+import { MapPin, Phone, Mail, Instagram, Facebook, Linkedin, Globe, Clock, ArrowRight } from "lucide-react";
+const branches = [{
+  city: "Kozhikode",
+  address: "Wizzen Overseas, Near City Center, Kozhikode - 673001",
+  phone: "+91 9876543210",
+  email: "kozhikode@wizzenoverseas.com"
+}, {
+  city: "Malappuram",
+  address: "Wizzen Overseas, Main Road, Malappuram - 676101",
+  phone: "+91 9876543211",
+  email: "malappuram@wizzenoverseas.com"
+}, {
+  city: "Thrissur",
+  address: "Wizzen Overseas, City Center, Thrissur - 680001",
+  phone: "+91 9876543212",
+  email: "thrissur@wizzenoverseas.com"
+}, {
+  city: "Germany",
+  address: "Wizzen Europe Office, Berlin, Germany",
+  phone: "+49 123 456789",
+  email: "germany@wizzenoverseas.com"
+}];
+const services = ["Study Abroad Programs", "Immigration Services", "German Visa Processing", "University Admissions", "Work Permits", "Documentation Support"];
+const countries = ["Germany", "Latvia", "Austria", "Georgia", "Moldova", "Netherlands"];
 export default function Footer() {
-  return (
-    <footer className="bg-primary text-primary-foreground">
+  return <footer className="text-primary-foreground bg-zinc-900">
       {/* Main Footer Content */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -78,30 +49,16 @@ export default function Footer() {
             
             {/* Social Links */}
             <div className="flex space-x-3">
-              <a 
-                href="https://instagram.com/wizzen_overseas_service" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors"
-              >
+              <a href="https://instagram.com/wizzen_overseas_service" target="_blank" rel="noopener noreferrer" className="p-2 bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors">
                 <Instagram className="h-4 w-4" />
               </a>
-              <a 
-                href="#" 
-                className="p-2 bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors"
-              >
+              <a href="#" className="p-2 bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors">
                 <Facebook className="h-4 w-4" />
               </a>
-              <a 
-                href="#" 
-                className="p-2 bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors"
-              >
+              <a href="#" className="p-2 bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors">
                 <Linkedin className="h-4 w-4" />
               </a>
-              <a 
-                href="#" 
-                className="p-2 bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors"
-              >
+              <a href="#" className="p-2 bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors">
                 <Globe className="h-4 w-4" />
               </a>
             </div>
@@ -111,17 +68,12 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-6">Services</h4>
             <ul className="space-y-3">
-              {services.map((service, index) => (
-                <li key={index}>
-                  <a 
-                    href="#services" 
-                    className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-colors flex items-center group"
-                  >
+              {services.map((service, index) => <li key={index}>
+                  <a href="#services" className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-colors flex items-center group">
                     <ArrowRight className="h-3 w-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {service}
                   </a>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
 
@@ -129,17 +81,12 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-6">Study Destinations</h4>
             <ul className="space-y-3">
-              {countries.map((country, index) => (
-                <li key={index}>
-                  <a 
-                    href="#countries" 
-                    className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-colors flex items-center group"
-                  >
+              {countries.map((country, index) => <li key={index}>
+                  <a href="#countries" className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-colors flex items-center group">
                     <ArrowRight className="h-3 w-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {country}
                   </a>
-                </li>
-              ))}
+                </li>)}
             </ul>
             
             {/* Quick Contact */}
@@ -162,8 +109,7 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-6">Our Branches</h4>
             <div className="space-y-4">
-              {branches.map((branch, index) => (
-                <div key={index} className="text-sm">
+              {branches.map((branch, index) => <div key={index} className="text-sm">
                   <h5 className="font-medium text-accent mb-1">{branch.city}</h5>
                   <div className="space-y-1 opacity-80">
                     <div className="flex items-start space-x-2">
@@ -175,8 +121,7 @@ export default function Footer() {
                       <span className="text-xs">{branch.phone}</span>
                     </div>
                   </div>
-                </div>
-              ))}
+                </div>)}
             </div>
 
             {/* Business Hours */}
@@ -202,11 +147,7 @@ export default function Footer() {
             Subscribe to get the latest updates on study abroad opportunities and immigration news
           </p>
           <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60 focus:outline-none focus:ring-2 focus:ring-accent"
-            />
+            <input type="email" placeholder="Enter your email" className="flex-1 px-4 py-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60 focus:outline-none focus:ring-2 focus:ring-accent" />
             <Button variant="accent" className="px-6">
               Subscribe
             </Button>
@@ -228,6 +169,5 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 }
