@@ -1,29 +1,12 @@
-import Navbar from "@/components/Navbar";
-import HeroModern from "@/components/HeroModern";
-import Memberships from "@/components/Memberships";
-import About from "@/components/About";
-import Services from "@/components/Services";
-import Countries from "@/components/Countries";
-import Team from "@/components/Team";
-import Reviews from "@/components/Reviews";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
+// Update this page (the content is just a fallback if you fail to update the page)
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
-      <Navbar />
-      <main>
-        <HeroModern />
-        <Memberships />
-        <About />
-        <Services />
-        <Countries />
-        <Team />
-        <Reviews />
-      </main>
-      <Footer />
-      <WhatsAppButton />
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
+        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+      </div>
     </div>
   );
 };
