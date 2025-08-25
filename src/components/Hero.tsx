@@ -4,8 +4,8 @@ import heroImage from "@/assets/hero-image.jpg";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-hero">
-      {/* Background Wave Shape */}
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-background">
+      {/* Background Wave Shape - Subtle for white background */}
       <div className="absolute inset-0 overflow-hidden">
         <svg
           viewBox="0 0 1200 800"
@@ -15,7 +15,7 @@ export default function Hero() {
           <path
             d="M0,400 C300,300 600,500 1200,400 L1200,800 L0,800 Z"
             fill="hsl(var(--secondary))"
-            opacity="0.5"
+            opacity="0.3"
           />
         </svg>
         <svg
@@ -26,7 +26,7 @@ export default function Hero() {
           <path
             d="M0,500 C400,350 800,600 1200,450 L1200,800 L0,800 Z"
             fill="hsl(var(--accent-soft))"
-            opacity="0.3"
+            opacity="0.2"
           />
         </svg>
       </div>

@@ -63,7 +63,7 @@ const countries = [
 
 export default function Countries() {
   return (
-    <section id="countries" className="py-20 bg-gradient-warm">
+    <section id="countries" className="py-20 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
