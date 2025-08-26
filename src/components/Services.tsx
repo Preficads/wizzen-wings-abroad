@@ -5,7 +5,6 @@ import {
   FileText, 
   Plane, 
   Building2, 
-  Users, 
   Globe,
   ArrowRight,
   CheckCircle 
@@ -64,52 +63,41 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 bg-background">
+    <section id="services" className="py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Our Services
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto mb-8">
             We provide comprehensive services for your European education and immigration journey
           </p>
-          
-          {/* Service Categories */}
-          <div className="inline-flex items-center bg-secondary rounded-full p-2 space-x-2">
-            <span className="px-4 py-2 bg-accent text-accent-foreground rounded-full text-sm font-medium">
-              Immigration
-            </span>
-            <span className="px-4 py-2 text-muted-foreground rounded-full text-sm">
-              Work/Visa
-            </span>
-            <span className="px-4 py-2 text-muted-foreground rounded-full text-sm">
-              Study Abroad
-            </span>
-            <span className="px-4 py-2 text-muted-foreground rounded-full text-sm">
-              Documentation
-            </span>
-          </div>
         </div>
 
         {/* Main Service Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
               <Card 
                 key={index} 
-                className="group hover:shadow-accent transition-all duration-300 cursor-pointer border-border hover:border-accent/20 animate-fade-in"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="group cursor-pointer transition-all duration-500 ease-out
+                           bg-gradient-to-br from-blue-200/40 to-blue-400/40 
+                           backdrop-blur-xl border border-blue-300/30 
+                           rounded-2xl 
+                           hover:scale-105 hover:border-accent/40"
+                style={{ animationDelay: `${index * 150}ms` }}
               >
                 <CardHeader className="text-center pb-4">
-                  <div className="mx-auto mb-4 p-3 rounded-full bg-accent-soft">
-                    <IconComponent className={`h-8 w-8 text-accent`} />
+                  <div className="mx-auto mb-4 p-3 rounded-full bg-blue-300/40 backdrop-blur-md transition-all duration-500 group-hover:bg-accent/40">
+                    <IconComponent className={`h-8 w-8 ${service.color}`} />
                   </div>
-                  <CardTitle className="text-lg text-primary group-hover:text-accent transition-colors">
+                  <CardTitle className="text-lg font-semibold text-gray-900 group-hover:text-accent transition-colors">
                     {service.title}
                   </CardTitle>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-gray-800">
                     {service.description}
                   </p>
                 </CardHeader>
@@ -118,14 +106,15 @@ export default function Services() {
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center text-sm">
                         <CheckCircle className="h-3 w-3 text-accent mr-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{feature}</span>
+                        <span className="text-gray-800">{feature}</span>
                       </li>
                     ))}
                   </ul>
                   <Button 
                     variant="outline" 
                     size="sm" 
-                    className="w-full group-hover:bg-accent group-hover:text-accent-foreground group-hover:border-accent"
+                    className="w-full border-gray-400 text-gray-900 transition-all duration-500
+                               hover:bg-accent hover:text-accent-foreground hover:border-accent"
                   >
                     Learn More
                     <ArrowRight className="ml-2 h-3 w-3" />
@@ -136,10 +125,12 @@ export default function Services() {
           })}
         </div>
 
-        {/* Featured Service Highlight */}
-        <Card className="bg-gradient-accent text-accent-foreground p-8 shadow-accent animate-fade-in">
+        {/* ✅ Updated Featured Service Highlight */}
+        <Card className="bg-gradient-accent text-accent-foreground p-8 rounded-2xl animate-fade-in">
           <CardContent className="p-0">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              
+              {/* Left Content */}
               <div>
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="p-2 bg-accent-foreground/10 rounded-full">
@@ -147,37 +138,41 @@ export default function Services() {
                   </div>
                   <span className="text-sm font-medium opacity-90">I'm Looking for</span>
                 </div>
-                <h3 className="text-2xl font-bold mb-2">Study Abroad</h3>
+                <h3 className="text-5xl font-bold mb-2 text-white">Study Abroad</h3>
                 <p className="text-lg opacity-90 mb-6">
                   Embrace a world of opportunities through immigration.
                 </p>
                 <div className="flex flex-wrap gap-3">
-                  <span className="px-3 py-1 bg-accent-foreground/10 rounded-full text-sm">
+                  <span className="px-3 py-1 bg-accent-foreground/10 rounded-full text-sm text-white">
                     ✈️ Visa Processing
                   </span>
-                  <span className="px-3 py-1 bg-accent-foreground/10 rounded-full text-sm">
+                  <span className="px-3 py-1 bg-accent-foreground/10 rounded-full text-sm text-white">
                     🎓 University Admissions
                   </span>
-                  <span className="px-3 py-1 bg-accent-foreground/10 rounded-full text-sm">
+                  <span className="px-3 py-1 bg-accent-foreground/10 rounded-full text-sm text-white">
                     📄 Documentation
                   </span>
                 </div>
               </div>
+
+              {/* Right Content */}
               <div className="text-center">
                 <Button 
                   variant="outline" 
                   size="lg" 
-                  className="bg-accent-foreground text-accent border-accent-foreground hover:bg-accent-foreground/90"
+                  className="bg-white text-blue-900 border-white hover:bg-gray-200"
                 >
                   Apply Online
                 </Button>
-                <p className="text-sm opacity-75 mt-3">
+                <p className="text-sm opacity-75 mt-3 text-white">
                   Start your European education journey today
                 </p>
               </div>
+
             </div>
           </CardContent>
         </Card>
+
       </div>
     </section>
   );

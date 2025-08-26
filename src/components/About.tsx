@@ -1,29 +1,39 @@
+"use client";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle, Globe, Users, Award, Target, Heart } from "lucide-react";
+import { CheckCircle } from "lucide-react";
+import CountUp from "react-countup";
 
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-background">
+    <section id="about" className="py-20 bg-gradient-to-b from-gray-900 to-gray-800 text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+        {/* Heading */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             About <span className="text-accent">Wizzen Overseas</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            We are a premier consulting firm specializing in abroad education, focused on helping students find the right universities in Europe based on their qualifications.
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+            We are a premier consulting firm specializing in abroad education,
+            focused on helping students find the right universities in Europe
+            based on their qualifications.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Content */}
-          <div className="space-y-8 animate-slide-in">
+          {/* Left Content */}
+          <div className="space-y-8">
             <div className="space-y-6">
-              <p className="text-foreground leading-relaxed">
-                Wizzen Abroad Studies is a premier consulting firm specializing in abroad education, focused on helping students find the right universities in Europe based on their qualifications. Our services range from initial counseling and documentation to visa processing and post-enrollment support.
+              <p className="leading-relaxed">
+                Wizzen Abroad Studies is a premier consulting firm specializing
+                in abroad education, focused on helping students find the right
+                universities in Europe based on their qualifications. Our
+                services range from initial counseling and documentation to visa
+                processing and post-enrollment support.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
-                With a commitment to quality, transparency, and integrity, we ensure a smooth transition for students aiming to study in Europe.
+              <p className="text-gray-300 leading-relaxed">
+                With a commitment to quality, transparency, and integrity, we
+                ensure a smooth transition for students aiming to study in
+                Europe.
               </p>
             </div>
 
@@ -34,82 +44,60 @@ export default function About() {
                 "Complete visa processing support",
                 "Post-enrollment assistance",
                 "5+ years of proven success",
-                "Transparent and quality service"
+                "Transparent and quality service",
               ].map((item, index) => (
                 <div key={index} className="flex items-center space-x-3">
                   <CheckCircle className="h-5 w-5 text-accent flex-shrink-0" />
-                  <span className="text-foreground">{item}</span>
+                  <span>{item}</span>
                 </div>
               ))}
             </div>
 
-            <Button variant="primary" size="lg" className="group">
+            <Button variant="secondary" size="lg" className="group">
               Learn More About Our Services
             </Button>
           </div>
 
-          {/* Right Column - Stats & Features */}
-          <div className="space-y-6 animate-fade-in">
-            {/* Stats Cards */}
-            <div className="grid grid-cols-2 gap-4">
-              <Card className="text-center p-6 shadow-soft hover:shadow-warm transition-all duration-300">
-                <CardContent className="p-0">
-                  <Globe className="h-8 w-8 text-accent mx-auto mb-3" />
-                  <div className="text-2xl font-bold text-primary">5+</div>
-                  <div className="text-sm text-muted-foreground">Countries Served</div>
-                </CardContent>
-              </Card>
-              <Card className="text-center p-6 shadow-soft hover:shadow-warm transition-all duration-300">
-                <CardContent className="p-0">
-                  <Users className="h-8 w-8 text-accent mx-auto mb-3" />
-                  <div className="text-2xl font-bold text-primary">1000+</div>
-                  <div className="text-sm text-muted-foreground">Happy Students</div>
-                </CardContent>
-              </Card>
-              <Card className="text-center p-6 shadow-soft hover:shadow-warm transition-all duration-300">
-                <CardContent className="p-0">
-                  <Award className="h-8 w-8 text-accent mx-auto mb-3" />
-                  <div className="text-2xl font-bold text-primary">95%</div>
-                  <div className="text-sm text-muted-foreground">Success Rate</div>
-                </CardContent>
-              </Card>
-              <Card className="text-center p-6 shadow-soft hover:shadow-warm transition-all duration-300">
-                <CardContent className="p-0">
-                  <Heart className="h-8 w-8 text-accent mx-auto mb-3" />
-                  <div className="text-2xl font-bold text-primary">900+</div>
-                  <div className="text-sm text-muted-foreground">Positive Reviews</div>
-                </CardContent>
-              </Card>
+          {/* Right Stats Section */}
+          <div className="grid grid-cols-2 gap-6">
+            {/* Countries Served */}
+            <div className="p-8 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 text-center">
+              <div className="text-6xl md:text-7xl font-extrabold text-accent">
+                <CountUp start={0} end={5} duration={3} enableScrollSpy scrollSpyOnce />+
+              </div>
+              <div className="text-base text-gray-300 mt-2">
+                Countries Served
+              </div>
             </div>
 
-            {/* Mission & Vision */}
-            <div className="space-y-4">
-              <Card className="p-6 shadow-soft">
-                <CardContent className="p-0">
-                  <div className="flex items-start space-x-4">
-                    <Target className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
-                    <div>
-                      <h4 className="font-semibold text-primary mb-2">Our Mission</h4>
-                      <p className="text-sm text-muted-foreground">
-                        To provide comprehensive and personalized guidance that makes international education accessible and achievable for every student.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="p-6 shadow-soft">
-                <CardContent className="p-0">
-                  <div className="flex items-start space-x-4">
-                    <Globe className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
-                    <div>
-                      <h4 className="font-semibold text-primary mb-2">Our Vision</h4>
-                      <p className="text-sm text-muted-foreground">
-                        To be the leading immigration consultant in Kerala, helping thousands achieve their European education dreams.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+            {/* Happy Students */}
+            <div className="p-8 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 text-center">
+              <div className="text-6xl md:text-7xl font-extrabold text-green-400">
+                <CountUp start={0} end={1000} duration={3} enableScrollSpy scrollSpyOnce />+
+              </div>
+              <div className="text-base text-gray-300 mt-2">
+                Happy Students
+              </div>
+            </div>
+
+            {/* Success Rate */}
+            <div className="p-8 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 text-center">
+              <div className="text-6xl md:text-7xl font-extrabold text-purple-400">
+                <CountUp start={0} end={95} duration={3} enableScrollSpy scrollSpyOnce />%
+              </div>
+              <div className="text-base text-gray-300 mt-2">
+                Success Rate
+              </div>
+            </div>
+
+            {/* Positive Reviews */}
+            <div className="p-8 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 text-center">
+              <div className="text-6xl md:text-7xl font-extrabold text-pink-400">
+                <CountUp start={0} end={900} duration={3} enableScrollSpy scrollSpyOnce />+
+              </div>
+              <div className="text-base text-gray-300 mt-2">
+                Positive Reviews
+              </div>
             </div>
           </div>
         </div>
