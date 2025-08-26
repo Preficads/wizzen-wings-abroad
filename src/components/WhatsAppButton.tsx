@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export default function WhatsAppButton() {
   const handleWhatsAppClick = () => {
-    const phoneNumber = "+919876543210"; // Replace with actual WhatsApp number
+    const phoneNumber = "918281463148"; // ✅ Updated WhatsApp number
     const message = "Hi Wizzen Overseas! I'm interested in your immigration services.";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');

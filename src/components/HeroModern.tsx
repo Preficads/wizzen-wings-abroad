@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
-import heroImage from "@/assets/hero-image.jpg";
+import heroImage from "@/assets/hero-image.png";
 export default function HeroModern() {
   return <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
       {/* Modern Geometric Background */}
@@ -63,22 +63,22 @@ export default function HeroModern() {
                 <div className="w-80 h-80 bg-gradient-hero opacity-80 rounded-3xl transform rotate-12"></div>
                 
                 {/* Floating cards */}
-                <div className="absolute -top-8 -left-8 bg-orange-500 text-white p-3 rounded-xl shadow-card transform -rotate-12 animate-float">
+                <div className="absolute top-[450px] left-[50px] bg-orange-600 text-white p-3 rounded-xl shadow-lg transform rotate-6 animate-float">
                   <div className="text-xs font-medium">Immigrate &</div>
-                  <div className="text-xs">Settle</div>
+                  <div className="text-l">Settle</div>
                 </div>
                 
-                <div className="absolute -bottom-8 -right-8 bg-purple-600 text-white p-3 rounded-xl shadow-card transform rotate-12 animate-float" style={{
+                <div   className="absolute top-80 right-4 bg-purple-800 text-white p-3 rounded-xl shadow-lg transform rotate-6 animate-float" style={{
                 animationDelay: '1s'
               }}>
                   <div className="text-xs font-medium">Foreign Immigration</div>
-                  <div className="text-xs">Lawyers</div>
+                  <div className="text-l">Lawyers</div>
                 </div>
               </div>
 
               {/* Woman with suitcase image */}
               <div className="relative z-10 flex items-center justify-center">
-                <img src={heroImage} alt="Professional woman with suitcase representing international education opportunities" className="w-72 h-72 object-cover object-center rounded-2xl shadow-modern" />
+                <img src={heroImage} alt="Professional woman with suitcase representing international education opportunities" className="w-82 h-82 object-cover object-center" />
               </div>
             </div>
           </div>
