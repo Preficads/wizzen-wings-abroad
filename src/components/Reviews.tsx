@@ -1,166 +1,101 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Star, Quote, MapPin, Calendar } from "lucide-react";
+"use client";
+import { Star } from "lucide-react";
+import { useEffect, useRef } from "react";
 
-const reviews = [
+const testimonials = [
   {
     name: "John Samual",
-    location: "Germany",
-    program: "Computer Science",
-    university: "Technical University of Munich",
+    review: "Wizzen made the process smooth. I'm now in Germany studying CS!",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
     rating: 5,
-    date: "2024",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
-    review: "With 5 years of dedicated experience, Wizzen Abroad Studies has established itself as a leading immigration consultancy in Kerala, Kozhikode. Specializing in European destinations, we provide comprehensive services for students, professionals, and travelers seeking opportunities abroad.",
-    flag: "🇩🇪"
   },
   {
     name: "Priya Nair",
-    location: "Latvia",
-    program: "Business Administration",
-    university: "University of Latvia",
+    review: "Exceptional support! Thanks to Wizzen, I study in Latvia now.",
+    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
     rating: 5,
-    date: "2024",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&h=200&fit=crop&crop=face",
-    review: "Exceptional service from Wizzen Overseas! They guided me through every step of my application to Latvia. The team was professional, knowledgeable, and always available to answer my questions. Highly recommend their services!",
-    flag: "🇱🇻"
   },
   {
     name: "Arjun Kumar",
-    location: "Austria",
-    program: "Mechanical Engineering",
-    university: "Vienna University of Technology",
+    review: "Wizzen guided me perfectly through my Austria university journey.",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
     rating: 5,
-    date: "2023",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face",
-    review: "Amazing support throughout my admission process to Austria. The counselors at Wizzen helped me secure admission in my dream university and also assisted with visa processing. Forever grateful!",
-    flag: "🇦🇹"
   },
   {
     name: "Sneha Menon",
-    location: "Germany",
-    program: "Medicine",
-    university: "Charité Berlin",
+    review: "Studying medicine in Germany was a dream come true with Wizzen!",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
     rating: 5,
-    date: "2023",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face",
-    review: "Professional and reliable service. Wizzen Overseas made my dream of studying medicine in Germany come true. Their expertise in German visa processes is unmatched. Thank you for everything!",
-    flag: "🇩🇪"
-  }
+  },
+  {
+    name: "Aarav Patel",
+    review: "Couldn't be happier with the support for my European studies.",
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face",
+    rating: 5,
+  },
+  {
+    name: "Divya Suresh",
+    review: "They genuinely care. Amazing service and smooth transition abroad!",
+    image: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=100&h=100&fit=crop&crop=face",
+    rating: 5,
+  },
 ];
 
-export default function Reviews() {
+export default function Testimonials() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    let scrollAmount = 0;
+    const scrollStep = 1;
+
+    const scroll = () => {
+      if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
+        scrollContainer.scrollLeft = 0;
+      } else {
+        scrollContainer.scrollLeft += scrollStep;
+      }
+      requestAnimationFrame(scroll);
+    };
+
+    scroll();
+  }, []);
+
   return (
-    <section id="reviews" className="py-20 bg-background">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            Student <span className="text-accent">Success Stories</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-            Hear from our successful students who are now pursuing their dreams across Europe
-          </p>
-          
-          {/* Overall Rating */}
-          <div className="inline-flex items-center bg-background border border-border rounded-full px-6 py-3 shadow-soft">
-            <div className="flex items-center space-x-1 mr-4">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-5 w-5 fill-accent text-accent" />
-              ))}
+    <section className="w-full bg-black py-10 overflow-hidden">
+      <h2 className="text-center text-white text-3xl font-bold mb-8">
+        What Our Students Say
+      </h2>
+
+      <div
+        className="flex space-x-6 animate-scroll px-6 overflow-x-hidden"
+        ref={scrollRef}
+      >
+        {[...testimonials, ...testimonials].map((t, idx) => (
+          <div
+            key={idx}
+            className="min-w-[300px] max-w-[300px] bg-[rgba(0,0,0,0.5)] backdrop-blur-md rounded-lg p-6 text-white shadow-lg"
+          >
+            <div className="flex items-center space-x-4 mb-4">
+              <img
+                src={t.image}
+                alt={t.name}
+                className="w-12 h-12 rounded-full object-cover"
+              />
+              <div>
+                <h4 className="font-semibold">{t.name}</h4>
+                <div className="flex space-x-1">
+                  {[...Array(t.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className="text-left">
-              <div className="text-lg font-bold text-primary">4.9/5</div>
-              <div className="text-sm text-muted-foreground">900+ Reviews</div>
-            </div>
+            <p className="text-sm italic text-gray-200">"{t.review}"</p>
           </div>
-        </div>
-
-        {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {reviews.map((review, index) => (
-            <Card 
-              key={index}
-              className="group hover:shadow-accent transition-all duration-300 animate-fade-in"
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              <CardContent className="p-6 space-y-4">
-                {/* Header */}
-                <div className="flex items-start space-x-4">
-                  <img
-                    src={review.image}
-                    alt={review.name}
-                    className="w-16 h-16 rounded-full object-cover border-2 border-accent-soft"
-                  />
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-1">
-                      <h3 className="font-semibold text-primary">{review.name}</h3>
-                      <span className="text-2xl">{review.flag}</span>
-                    </div>
-                    <div className="flex items-center space-x-2 text-sm text-muted-foreground mb-2">
-                      <MapPin className="h-3 w-3" />
-                      <span>{review.location}</span>
-                      <Calendar className="h-3 w-3 ml-2" />
-                      <span>{review.date}</span>
-                    </div>
-                    <div className="flex items-center space-x-1 mb-2">
-                      {[...Array(review.rating)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-accent text-accent" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Program Info */}
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline" className="text-xs">
-                    {review.program}
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs">
-                    {review.university}
-                  </Badge>
-                </div>
-
-                {/* Review Text */}
-                <div className="relative">
-                  <Quote className="absolute -top-1 -left-1 h-6 w-6 text-accent-soft" />
-                  <p className="text-muted-foreground leading-relaxed pl-6 italic">
-                    "{review.review}"
-                  </p>
-                </div>
-
-                {/* Verification Badge */}
-                <div className="flex items-center justify-between pt-2 border-t border-border">
-                  <Badge variant="outline" className="text-xs text-accent border-accent">
-                    ✓ Verified Student
-                  </Badge>
-                  <span className="text-xs text-muted-foreground">
-                    via Google Reviews
-                  </span>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Call to Action */}
-        <Card className="bg-gradient-accent text-accent-foreground p-8 text-center animate-fade-in">
-          <CardContent className="p-0">
-            <h3 className="text-2xl font-bold mb-4">
-              Ready to Start Your Success Story?
-            </h3>
-            <p className="text-lg opacity-90 mb-6 max-w-2xl mx-auto">
-              Join hundreds of successful students who trusted Wizzen Overseas with their European education dreams
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-3 bg-accent-foreground text-accent rounded-lg font-semibold hover:bg-accent-foreground/90 transition-colors">
-                Share Your Story
-              </button>
-              <button className="px-8 py-3 border-2 border-accent-foreground/20 text-accent-foreground rounded-lg font-semibold hover:bg-accent-foreground/10 transition-colors">
-                Read More Reviews
-              </button>
-            </div>
-          </CardContent>
-        </Card>
+        ))}
       </div>
     </section>
   );

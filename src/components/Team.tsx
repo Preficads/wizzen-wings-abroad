@@ -3,42 +3,42 @@ import { Badge } from "@/components/ui/badge";
 import { Linkedin, Mail, Award, Users } from "lucide-react";
 
 const teamMembers = [
-  {
-    name: "Dr. Akshay Malayil",
-    role: "CEO & Founder",
-    specialization: "German Immigration Expert",
-    experience: "8+ years",
-    education: "MBA, University of Kerala",
-    achievements: ["500+ Successful Cases", "German Visa Specialist", "Immigration Law Expert"],
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-    linkedin: "#",
-    email: "akshay@wizzenoverseas.com"
-  },
-  {
-    name: "Dr. Fawz Mohammed",
-    role: "Senior Consultant", 
-    specialization: "European Education Specialist",
-    experience: "6+ years",
-    education: "PhD, European Studies",
-    achievements: ["300+ University Admissions", "Scholarship Expert", "Student Counselor"],
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-    linkedin: "#",
-    email: "fawz@wizzenoverseas.com"
-  }
+  // {
+  //   name: "Dr. Akshay Malayil",
+  //   role: "CEO & Founder",
+  //   specialization: "German Immigration Expert",
+  //   experience: "8+ years",
+  //   education: "MBA, University of Kerala",
+  //   achievements: ["500+ Successful Cases", "German Visa Specialist", "Immigration Law Expert"],
+  //   image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+  //   linkedin: "#",
+  //   email: "akshay@wizzenoverseas.com"
+  // },
+  // {
+  //   name: "Dr. Fawz Mohammed",
+  //   role: "Senior Consultant", 
+  //   specialization: "European Education Specialist",
+  //   experience: "6+ years",
+  //   education: "PhD, European Studies",
+  //   achievements: ["300+ University Admissions", "Scholarship Expert", "Student Counselor"],
+  //   image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+  //   linkedin: "#",
+  //   email: "fawz@wizzenoverseas.com"
+  // }
 ];
 
 export default function Team() {
   return (
     <section id="team" className="py-20 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in">
+        {/* <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
             Meet Our <span className="text-accent">Expert Team</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Our experienced professionals are dedicated to making your European education dreams a reality
           </p>
-        </div>
+        </div> */}
 
         {/* Team Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
