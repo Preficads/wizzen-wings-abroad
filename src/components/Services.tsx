@@ -9,6 +9,7 @@ import {
   ArrowRight,
   CheckCircle 
 } from "lucide-react";
+import { motion } from "framer-motion"; // 👈 import motion
 
 const services = [
   {
@@ -76,56 +77,66 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Main Service Grid */}
+        {/* Main Service Grid with continuous sliding */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
-              <Card 
-                key={index} 
-                className="group cursor-pointer transition-all duration-500 ease-out
-                           bg-gradient-to-br from-blue-200/40 to-blue-400/40 
-                           backdrop-blur-xl border border-blue-300/30 
-                           rounded-2xl 
-                           hover:scale-105 hover:border-accent/40"
-                style={{ animationDelay: `${index * 150}ms` }}
+              <motion.div
+                key={index}
+                animate={{ y: [0, -15, 0] }}   // 👈 goes up and back
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  delay: index * 0.4, // stagger each card
+                  ease: "easeInOut"
+                }}
               >
-                <CardHeader className="text-center pb-4">
-                  <div className="mx-auto mb-4 p-3 rounded-full bg-blue-300/40 backdrop-blur-md transition-all duration-500 group-hover:bg-accent/40">
-                    <IconComponent className={`h-8 w-8 ${service.color}`} />
-                  </div>
-                  <CardTitle className="text-lg font-semibold text-gray-900 group-hover:text-accent transition-colors">
-                    {service.title}
-                  </CardTitle>
-                  <p className="text-sm text-gray-800">
-                    {service.description}
-                  </p>
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <ul className="space-y-2 mb-4">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-sm">
-                        <CheckCircle className="h-3 w-3 text-accent mr-2 flex-shrink-0" />
-                        <span className="text-gray-800">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="w-full border-gray-400 text-gray-900 transition-all duration-500
-                               hover:bg-accent hover:text-accent-foreground hover:border-accent"
-                  >
-                    Learn More
-                    <ArrowRight className="ml-2 h-3 w-3" />
-                  </Button>
-                </CardContent>
-              </Card>
+                <Card 
+                  className="group cursor-pointer transition-all duration-500 ease-out
+                             bg-gradient-to-br from-blue-200/40 to-blue-400/40 
+                             backdrop-blur-xl border border-blue-300/30 
+                             rounded-2xl 
+                             hover:scale-105 hover:border-accent/40"
+                >
+                  <CardHeader className="text-center pb-4">
+                    <div className="mx-auto mb-4 p-3 rounded-full bg-blue-300/40 backdrop-blur-md transition-all duration-500 group-hover:bg-accent/40">
+                      <IconComponent className={`h-8 w-8 ${service.color}`} />
+                    </div>
+                    <CardTitle className="text-lg font-semibold text-gray-900 group-hover:text-accent transition-colors">
+                      {service.title}
+                    </CardTitle>
+                    <p className="text-sm text-gray-800">
+                      {service.description}
+                    </p>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <ul className="space-y-2 mb-4">
+                      {service.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-center text-sm">
+                          <CheckCircle className="h-3 w-3 text-accent mr-2 flex-shrink-0" />
+                          <span className="text-gray-800">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="w-full border-gray-400 text-gray-900 transition-all duration-500
+                                 hover:bg-accent hover:text-accent-foreground hover:border-accent"
+                    >
+                      Learn More
+                      <ArrowRight className="ml-2 h-3 w-3" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
             );
           })}
         </div>
 
-        {/* ✅ Updated Featured Service Highlight */}
+        {/* The big featured card stays static */}
         <Card className="bg-gradient-accent text-accent-foreground p-8 rounded-2xl animate-fade-in">
           <CardContent className="p-0">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">

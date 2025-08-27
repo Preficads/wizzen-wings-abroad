@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Phone } from "lucide-react";
+import { Phone, MessageCircle } from "lucide-react";
 import heroImage from "@/assets/hero-image.png";
+import { Typewriter } from "react-simple-typewriter";
 
 export default function HeroModern() {
   return (
@@ -35,7 +36,14 @@ export default function HeroModern() {
                 <span className="text-foreground block">Education &</span>
                 <span className="text-foreground block">Immigration</span>
                 <span className="bg-gradient-primary bg-clip-text text-transparent text-8xl font-semibold">
-                  Pathways
+                  <Typewriter
+                    words={["Pathways"]}
+                    loop={false}
+                    typeSpeed={120}
+                    deleteSpeed={60}
+                    cursor
+                    cursorStyle="|"
+                  />
                 </span>
               </h1>
             </div>
@@ -45,15 +53,33 @@ export default function HeroModern() {
               Expert guidance for your European education and immigration journey
             </p>
 
-            {/* CTA Button */}
-            <div className="pt-4">
-              <Button
-                variant="default"
-                size="lg"
-                className="bg-black text-white hover:bg-gray-900 rounded-md px-8 py-3 font-medium text-base shadow-card"
+            {/* CTA Buttons */}
+            <div className="pt-4 flex flex-col sm:flex-row gap-4">
+              {/* Call Button */}
+              <a href="tel:+918281463148">
+                <Button
+                  variant="default"
+                  size="lg"
+                  className="bg-black text-white hover:bg-gray-900 rounded-md px-8 py-3 font-medium text-base shadow-card"
+                >
+                  <Phone className="mr-2 h-4 w-4" /> Call Now
+                </Button>
+              </a>
+
+              {/* WhatsApp Button */}
+              <a
+                href="https://wa.me/4915731340455"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <Phone className="mr-2 h-4 w-4" /> Get Callback
-              </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-green-500 text-green-600 hover:bg-green-50 rounded-md px-8 py-3 font-medium text-base shadow-card"
+                >
+                  <MessageCircle className="mr-2 h-4 w-4" /> WhatsApp Germany
+                </Button>
+              </a>
             </div>
           </div>
 
@@ -62,7 +88,6 @@ export default function HeroModern() {
             <div className="relative">
               {/* Background geometric shapes */}
               <div className="absolute inset-0 flex items-center justify-center">
-                {/* Large background shape */}
                 <div className="w-80 h-80 bg-gradient-hero opacity-80 rounded-3xl transform rotate-12"></div>
 
                 {/* Floating cards */}
