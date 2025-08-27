@@ -8,7 +8,7 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden bg-background"
     >
-      {/* Background Wave Shape */}
+      {/* Background Shape */}
       <div className="absolute inset-0 overflow-hidden">
         <svg
           viewBox="0 0 1200 800"
@@ -35,8 +35,8 @@ export default function Hero() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-12 gap-y-16 items-center">
-          {/* Left Column - Text Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-16 lg:gap-12 items-center">
+          {/* Left Column */}
           <div className="space-y-8 animate-fade-in text-center lg:text-left">
             {/* Badge */}
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-accent-soft border border-accent/20">
@@ -46,8 +46,8 @@ export default function Hero() {
               </span>
             </div>
 
-            {/* Main Heading */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-snug">
+            {/* Heading */}
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-snug">
               <span className="text-foreground">Give wings to your</span>
               <br />
               <span className="bg-gradient-accent bg-clip-text text-transparent">
@@ -66,7 +66,7 @@ export default function Hero() {
               you every step of the way.
             </p>
 
-            {/* CTA Buttons */}
+            {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button variant="primary" size="lg" className="group">
                 Apply Now
@@ -80,7 +80,7 @@ export default function Hero() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border">
               <div className="text-center">
-                <div className="text-xl sm:text-2xl font-bold text-primary">
+                <div className="text-lg sm:text-2xl font-bold text-primary">
                   5+
                 </div>
                 <div className="text-xs sm:text-sm text-muted-foreground">
@@ -88,7 +88,7 @@ export default function Hero() {
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-xl sm:text-2xl font-bold text-primary">
+                <div className="text-lg sm:text-2xl font-bold text-primary">
                   1000+
                 </div>
                 <div className="text-xs sm:text-sm text-muted-foreground">
@@ -96,7 +96,7 @@ export default function Hero() {
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-xl sm:text-2xl font-bold text-primary">
+                <div className="text-lg sm:text-2xl font-bold text-primary">
                   900+
                 </div>
                 <div className="text-xs sm:text-sm text-muted-foreground">
@@ -106,10 +106,9 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column - Visual Content */}
+          {/* Right Column */}
           <div className="relative animate-slide-in flex justify-center lg:justify-end">
             <div className="relative max-w-xs sm:max-w-sm md:max-w-md lg:max-w-none w-full">
-              {/* Main Hero Image */}
               <div className="aspect-square rounded-3xl overflow-hidden shadow-accent relative">
                 <img
                   src={heroImage}
@@ -119,7 +118,7 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent"></div>
               </div>
 
-              {/* Floating Elements */}
+              {/* Floating Labels */}
               <div className="absolute -top-6 left-2 sm:-top-4 sm:-left-4 bg-accent text-accent-foreground px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium shadow-soft animate-float">
                 🇩🇪 German Visa Expert
               </div>

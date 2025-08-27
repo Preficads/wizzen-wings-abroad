@@ -1,101 +1,75 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { CheckCircle } from "lucide-react";
+
 import CountUp from "react-countup";
 
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-gray-900 to-gray-800 text-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Heading */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            About <span className="text-accent">Wizzen Overseas</span>
-          </h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            We are a premier consulting firm specializing in abroad education,
-            focused on helping students find the right universities in Europe
-            based on their qualifications.
-          </p>
-        </div>
+    <section className="relative py-16 sm:py-20 bg-gradient-to-br from-gray-900 via-black to-gray-900 overflow-hidden">
+      {/* Soft background blobs (pure CSS/Tailwind, no external lib) */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <div className="absolute -top-24 -left-24 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl" />
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {/* Left Content */}
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <p className="leading-relaxed">
-                Wizzen Abroad Studies is a premier consulting firm specializing
-                in abroad education, focused on helping students find the right
-                universities in Europe based on their qualifications. Our
-                services range from initial counseling and documentation to visa
-                processing and post-enrollment support.
-              </p>
-              <p className="text-gray-300 leading-relaxed">
-                With a commitment to quality, transparency, and integrity, we
-                ensure a smooth transition for students aiming to study in
-                Europe.
-              </p>
-            </div>
+          <div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+              About <span className="text-purple-400">Wizzen Abroad Studies</span>
+            </h2>
 
-            {/* Key Points */}
-            <div className="space-y-4">
-              {[
-                "Expert guidance for European universities",
-                "Complete visa processing support",
-                "Post-enrollment assistance",
-                "5+ years of proven success",
-                "Transparent and quality service",
-              ].map((item, index) => (
-                <div key={index} className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 text-accent flex-shrink-0" />
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
+            <p className="mt-4 text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+              At <span className="text-purple-300 font-semibold">Wizzen Abroad Studies</span>, we
+              specialize in guiding students toward their global education dreams.
+              With expertise in career counseling, university admissions, visa
+              assistance, and language training, we ensure every step of your
+              study-abroad journey is smooth and successful.
+            </p>
 
-            <Button variant="secondary" size="lg" className="group">
-              Learn More About Our Services
-            </Button>
+            <p className="mt-3 text-gray-400 text-sm sm:text-base max-w-2xl">
+              We partner with top universities and institutions, helping you pick
+              the right program for your career goals. With years of experience
+              and an industry-leading success rate, we are proud to be trusted
+              by students worldwide.
+            </p>
           </div>
 
           {/* Right Stats Section */}
-          <div className="grid grid-cols-2 gap-6">
-            {/* Countries Served */}
-            <div className="p-8 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 text-center">
-              <div className="text-6xl md:text-7xl font-extrabold text-accent">
-                <CountUp start={0} end={5} duration={3} enableScrollSpy scrollSpyOnce />+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            {/* Card helper: responsive padding and no overflow */}
+            <div className="p-4 sm:p-6 md:p-8 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 text-center min-w-0">
+              <div className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-blue-400 break-words">
+                <CountUp start={0} end={5} duration={2.5} />+
               </div>
-              <div className="text-base text-gray-300 mt-2">
+              <div className="text-xs sm:text-sm md:text-base text-gray-300 mt-2">
                 Countries Served
               </div>
             </div>
 
-            {/* Happy Students */}
-            <div className="p-8 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 text-center">
-              <div className="text-6xl md:text-7xl font-extrabold text-green-400">
-                <CountUp start={0} end={1000} duration={3} enableScrollSpy scrollSpyOnce />+
+            <div className="p-4 sm:p-6 md:p-8 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 text-center min-w-0">
+              <div className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-green-400 break-words">
+                <CountUp start={0} end={1000} duration={2.5} />+
               </div>
-              <div className="text-base text-gray-300 mt-2">
+              <div className="text-xs sm:text-sm md:text-base text-gray-300 mt-2">
                 Happy Students
               </div>
             </div>
 
-            {/* Success Rate */}
-            <div className="p-8 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 text-center">
-              <div className="text-6xl md:text-7xl font-extrabold text-purple-400">
-                <CountUp start={0} end={95} duration={3} enableScrollSpy scrollSpyOnce />%
+            <div className="p-4 sm:p-6 md:p-8 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 text-center min-w-0">
+              <div className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-purple-400 break-words">
+                <CountUp start={0} end={95} duration={2.5} />%
               </div>
-              <div className="text-base text-gray-300 mt-2">
+              <div className="text-xs sm:text-sm md:text-base text-gray-300 mt-2">
                 Success Rate
               </div>
             </div>
 
-            {/* Positive Reviews */}
-            <div className="p-8 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 text-center">
-              <div className="text-6xl md:text-7xl font-extrabold text-pink-400">
-                <CountUp start={0} end={900} duration={3} enableScrollSpy scrollSpyOnce />+
+            <div className="p-4 sm:p-6 md:p-8 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 text-center min-w-0">
+              <div className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-pink-400 break-words">
+                <CountUp start={0} end={900} duration={2.5} />+
               </div>
-              <div className="text-base text-gray-300 mt-2">
+              <div className="text-xs sm:text-sm md:text-base text-gray-300 mt-2">
                 Positive Reviews
               </div>
             </div>
