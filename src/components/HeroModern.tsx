@@ -1,24 +1,25 @@
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
 import heroImage from "@/assets/hero-image.png";
+
 export default function HeroModern() {
-  return <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
+  return (
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
       {/* Modern Geometric Background */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Large gradient shape */}
         <div className="absolute top-20 right-0 w-96 h-96 bg-gradient-hero opacity-20 rounded-full blur-3xl"></div>
-        
+
         {/* Geometric shapes */}
         <div className="absolute top-32 right-32 w-24 h-24 bg-gradient-accent opacity-30 rounded-2xl transform rotate-12"></div>
         <div className="absolute top-48 right-16 w-16 h-16 bg-primary opacity-20 rounded-xl transform -rotate-12"></div>
-        
+
         {/* Floating elements */}
         <div className="absolute top-40 right-20 w-32 h-32 bg-gradient-primary opacity-15 rounded-3xl"></div>
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
           {/* Left Column - Content */}
           <div className="space-y-8 animate-fade-in">
             {/* Small badge */}
@@ -46,31 +47,34 @@ export default function HeroModern() {
 
             {/* CTA Button */}
             <div className="pt-4">
-              <Button variant="default" size="lg" className="bg-black text-white hover:bg-gray-900 rounded-md px-8 py-3 font-medium text-base shadow-card">
-                <Phone className="mr-2 h-4 w-4" />
-                Get Callback
+              <Button
+                variant="default"
+                size="lg"
+                className="bg-black text-white hover:bg-gray-900 rounded-md px-8 py-3 font-medium text-base shadow-card"
+              >
+                <Phone className="mr-2 h-4 w-4" /> Get Callback
               </Button>
             </div>
           </div>
 
           {/* Right Column - Visual */}
           <div className="relative animate-slide-in">
-            {/* Main container with geometric background */}
             <div className="relative">
               {/* Background geometric shapes */}
               <div className="absolute inset-0 flex items-center justify-center">
                 {/* Large background shape */}
                 <div className="w-80 h-80 bg-gradient-hero opacity-80 rounded-3xl transform rotate-12"></div>
-                
+
                 {/* Floating cards */}
                 <div className="absolute top-[450px] left-[50px] bg-orange-600 text-white p-3 rounded-xl shadow-lg transform rotate-6 animate-float">
                   <div className="text-xs font-medium">Immigrate &</div>
                   <div className="text-l">Settle</div>
                 </div>
-                
-                <div   className="absolute top-80 right-4 bg-purple-800 text-white p-3 rounded-xl shadow-lg transform rotate-6 animate-float" style={{
-                animationDelay: '1s'
-              }}>
+
+                <div
+                  className="absolute top-80 right-4 bg-purple-800 text-white p-3 rounded-xl shadow-lg transform rotate-6 animate-float"
+                  style={{ animationDelay: "1s" }}
+                >
                   <div className="text-xs font-medium">Foreign Immigration</div>
                   <div className="text-l">Lawyers</div>
                 </div>
@@ -78,11 +82,16 @@ export default function HeroModern() {
 
               {/* Woman with suitcase image */}
               <div className="relative z-10 flex items-center justify-center">
-                <img src={heroImage} alt="Professional woman with suitcase representing international education opportunities" className="w-82 h-82 object-cover object-center" />
+                <img
+                  src={heroImage}
+                  alt="Professional woman with suitcase representing international education opportunities"
+                  className="w-82 h-82 object-cover object-center"
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 }
