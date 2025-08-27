@@ -15,15 +15,17 @@ export default function HeroModern() {
         <div className="absolute top-32 right-32 w-24 h-24 bg-gradient-accent opacity-30 rounded-2xl transform rotate-12"></div>
         <div className="absolute top-48 right-16 w-16 h-16 bg-primary opacity-20 rounded-xl transform -rotate-12"></div>
 
-        {/* Floating elements */}
+        {/* Floating element */}
         <div className="absolute top-40 right-20 w-32 h-32 bg-gradient-primary opacity-15 rounded-3xl"></div>
       </div>
 
+      {/* Content Section */}
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          
           {/* Left Column - Content */}
           <div className="space-y-8 animate-fade-in">
-            {/* Small badge - Clickable Redirect to Instagram */}
+            {/* Instagram Badge */}
             <a
               href="https://www.instagram.com/wizzen_overseas_service?igsh=MXI3eTF5dzZkNnE4dg%3D%3D&utm_source=qr"
               target="_blank"
@@ -35,7 +37,7 @@ export default function HeroModern() {
               </span>
             </a>
 
-            {/* Main Heading - ImmiLaw Style */}
+            {/* Main Heading */}
             <div className="space-y-4">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight">
                 <span className="text-foreground block">Education &</span>
@@ -91,9 +93,10 @@ export default function HeroModern() {
           {/* Right Column - Visual */}
           <div className="relative animate-slide-in">
             <div className="relative">
-              {/* Background geometric shapes */}
+              {/* Background geometric rotating box */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-80 h-80 bg-gradient-hero opacity-80 rounded-3xl transform rotate-12"></div>
+                {/* ⬇️ Slower rotation applied here */}
+                <div className="w-80 h-80 bg-gradient-hero opacity-80 rounded-3xl animate-rotate-extreme"></div>
 
                 {/* Floating cards */}
                 <div className="absolute top-[450px] left-[50px] bg-orange-600 text-white p-3 rounded-xl shadow-lg transform rotate-6 animate-float">

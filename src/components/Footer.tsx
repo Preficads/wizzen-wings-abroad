@@ -1,8 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { MapPin, Phone, Mail, Instagram, Facebook, Clock, ArrowRight } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Instagram,
+  Facebook,
+  Clock,
+  ArrowRight,
+  Check,
+} from "lucide-react";
+import { useState } from "react";
+import emailjs from "@emailjs/browser"; // ✅ Import EmailJS
 
-// ✅ Import your logo correctly
+// ✅ Import your logo
 import LogoWhite from "@/assets/Logo/Logo_White.png";
 
 // Example branches / services / countries
@@ -14,6 +25,7 @@ const branches = [
     email: "germany@wizzenoverseas.com",
   },
 ];
+
 const services = [
   "Study Abroad Programs",
   "Immigration Services",
@@ -22,9 +34,55 @@ const services = [
   "Work Permits",
   "Documentation Support",
 ];
-const countries = ["Germany", "Latvia", "Austria", "Georgia", "Moldova", "Netherlands"];
+
+const countries = [
+  "Germany",
+  "Latvia",
+  "Austria",
+  "Georgia",
+  "Moldova",
+  "Netherlands",
+];
 
 export default function Footer() {
+  const [subscribed, setSubscribed] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+
+  const handleSubscribe = () => {
+    if (!email) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    setLoading(true);
+
+    emailjs
+      .send(
+        "service_b7ngqz8", // Service ID
+        "template_bbeq4gi", // Template ID
+        {
+          name: name || email, // Use entered name or fallback to email
+          title: "Newsletter Subscription",
+        },
+        "cALXYktT1aWjU-Pqm" // Public Key
+      )
+      .then(
+        () => {
+          setSubscribed(true);
+          setLoading(false);
+          setEmail("");
+          setName("");
+        },
+        (error) => {
+          console.error("EmailJS Error:", error);
+          setLoading(false);
+          alert("Something went wrong. Please try again.");
+        }
+      );
+  };
+
   return (
     <footer className="text-primary-foreground bg-zinc-900">
       {/* Main Footer Content */}
@@ -42,15 +100,16 @@ export default function Footer() {
                 />
               </div>
               <p className="text-sm opacity-90 leading-relaxed">
-                Your trusted partner for European education and immigration dreams. 
-                With 5+ years of expertise, we guide you every step of the way.
+                Your trusted partner for European education and immigration
+                dreams. With 5+ years of expertise, we guide you every step of
+                the way.
               </p>
             </div>
 
             {/* ✅ Social Links */}
             <div className="flex space-x-3">
               <a
-                href="https://www.instagram.com/wizzen_overseas_service?igsh=MXI3eTF5dzZkNnE4dg%3D%3D&utm_source=qr"
+                href="https://www.instagram.com/wizzen_overseas_service"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors"
@@ -119,7 +178,9 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <Mail className="h-3 w-3 text-accent" />
-                  <span className="opacity-90">wizzenabroadstudies26@gmail.com</span>
+                  <span className="opacity-90">
+                    wizzenabroadstudies26@gmail.com
+                  </span>
                 </div>
               </div>
             </div>
@@ -131,11 +192,15 @@ export default function Footer() {
             <div className="space-y-4">
               {branches.map((branch, index) => (
                 <div key={index} className="text-sm">
-                  <h5 className="font-medium text-accent mb-1">{branch.city}</h5>
+                  <h5 className="font-medium text-accent mb-1">
+                    {branch.city}
+                  </h5>
                   <div className="space-y-1 opacity-80">
                     <div className="flex items-start space-x-2">
                       <MapPin className="h-3 w-3 mt-0.5 flex-shrink-0" />
-                      <span className="text-xs leading-relaxed">{branch.address}</span>
+                      <span className="text-xs leading-relaxed">
+                        {branch.address}
+                      </span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Phone className="h-3 w-3" />
@@ -166,16 +231,42 @@ export default function Footer() {
         <div className="text-center py-8">
           <h3 className="text-xl font-semibold mb-4">Stay Updated</h3>
           <p className="text-sm opacity-80 mb-6 max-w-md mx-auto">
-            Subscribe to get the latest updates on study abroad opportunities and immigration news
+            Subscribe to get the latest updates on study abroad opportunities
+            and immigration news
           </p>
           <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
             <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter your name"
+              className="flex-1 px-4 py-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60 focus:outline-none focus:ring-2 focus:ring-accent"
+            />
+            <input
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               className="flex-1 px-4 py-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60 focus:outline-none focus:ring-2 focus:ring-accent"
             />
-            <Button variant="accent" className="px-6">
-              Subscribe
+            <Button
+              onClick={handleSubscribe}
+              disabled={loading || subscribed}
+              className={`px-6 transition-all duration-300 ${
+                subscribed
+                  ? "bg-green-600 hover:bg-green-700"
+                  : "bg-accent hover:bg-accent/80"
+              }`}
+            >
+              {subscribed ? (
+                <span className="flex items-center">
+                  <Check className="h-4 w-4 mr-1" /> Subscribed
+                </span>
+              ) : loading ? (
+                "Sending..."
+              ) : (
+                "Subscribe"
+              )}
             </Button>
           </div>
         </div>
@@ -188,10 +279,18 @@ export default function Footer() {
             <p>&copy; 2024 Wizzen Overseas. All rights reserved.</p>
           </div>
           <div className="flex flex-wrap gap-6">
-            <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-accent transition-colors">Terms & Conditions</a>
-            <a href="#" className="hover:text-accent transition-colors">Refund Policy</a>
-            <a href="#contact" className="hover:text-accent transition-colors">Contact Us</a>
+            <a href="#" className="hover:text-accent transition-colors">
+              Privacy Policy
+            </a>
+            <a href="#" className="hover:text-accent transition-colors">
+              Terms & Conditions
+            </a>
+            <a href="#" className="hover:text-accent transition-colors">
+              Refund Policy
+            </a>
+            <a href="#contact" className="hover:text-accent transition-colors">
+              Contact Us
+            </a>
           </div>
         </div>
       </div>
