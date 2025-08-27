@@ -1,201 +1,155 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { ExternalLink, MapPin, Clock, DollarSign, Briefcase } from "lucide-react";
-import flagGerm from "@/assets/flags/Flag_of_Germany.png"
+import { ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 
+// Countries Data
 const countries = [
   {
     name: "Germany",
-    flag: flagGerm,
-    specialty: "Engineering & Technology",
-    programs: ["Engineering", "Computer Science", "Business", "Medicine"],
-    duration: "3-4 years",
-    fees: "",
-    opportunities: "Strong job market, work permits available",
-    featured: true,
-    color: "border-red-200 bg-red-50"
+    description:
+      "Known for its world-class universities, research opportunities, and strong economy.",
+    flag: "https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg",
   },
   {
-    name: "Latvia",
-    flag: "🇱🇻",
-    specialty: "Business & IT",
-    programs: ["Business Administration", "Information Technology", "Economics"],
-    duration: "2-3 years",
-    fees: "r",
-    opportunities: "EU work rights, growing IT sector",
-    featured: false,
-    color: "border-purple-200 bg-purple-50"
+    name: "France",
+    description: "A top destination for art, fashion, and higher education.",
+    flag: "https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg",
   },
   {
-    name: "Austria",
-    flag: "🇦🇹",
-    specialty: "Arts & Sciences",
-    programs: ["Arts", "Sciences", "Engineering", "Music"],
-    duration: "3-4 years",
-    fees: "€1500-4000/year",
-    opportunities: "High quality of life, EU access",
-    featured: false,
-    color: "border-orange-200 bg-orange-50"
+    name: "Hungary",
+    description: "Popular for affordable education and vibrant student life.",
+    flag: "https://upload.wikimedia.org/wikipedia/commons/c/c1/Flag_of_Hungary.svg",
+  },
+  {
+    name: "Croatia",
+    description: "Beautiful landscapes and growing educational institutions.",
+    flag: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Flag_of_Croatia.svg",
+  },
+  {
+    name: "Armenia",
+    description: "Rich culture and affordable education opportunities.",
+    flag: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Flag_of_Armenia.svg",
+  },
+  {
+    name: "Singapore",
+    description: "Global hub for technology, business, and innovation.",
+    flag: "https://upload.wikimedia.org/wikipedia/commons/4/48/Flag_of_Singapore.svg",
+  },
+  {
+    name: "Canada",
+    description: "High-quality education and multicultural environment.",
+    flag: "https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Canada.svg",
+  },
+  {
+    name: "Japan",
+    description: "Technological advancement and rich cultural heritage.",
+    flag: "https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg",
+  },
+  {
+    name: "South Korea",
+    description: "Known for innovation, technology, and strong academics.",
+    flag: "https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg",
   },
   {
     name: "Georgia",
-    flag: "🇬🇪",
-    specialty: "Medical Studies",
-    programs: ["Medicine", "Dentistry", "Pharmacy", "Nursing"],
-    duration: "4-6 years",
-    fees: "$3000-8000/year",
-    opportunities: "Affordable education, European recognition",
-    featured: false,
-    color: "border-blue-200 bg-blue-50"
+    description: "Emerging educational hub with affordable costs.",
+    flag: "https://upload.wikimedia.org/wikipedia/commons/0/0f/Flag_of_Georgia.svg",
   },
   {
-    name: "Moldova",
-    flag: "🇲🇩",
-    specialty: "Agriculture & Sciences",
-    programs: ["Agriculture", "Veterinary", "Sciences", "Engineering"],
-    duration: "3-4 years",
-    fees: "€1000-3000/year",
-    opportunities: "Low cost of living, EU pathway",
-    featured: false,
-    color: "border-green-200 bg-green-50"
-  }
+    name: "Ukraine",
+    description: "Affordable European education with cultural diversity.",
+    flag: "https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg",
+  },
+  {
+    name: "Poland",
+    description: "Popular for international students and research programs.",
+    flag: "https://upload.wikimedia.org/wikipedia/en/1/12/Flag_of_Poland.svg",
+  },
+  {
+    name: "Turkey",
+    description: "Blend of European and Asian culture with quality universities.",
+    flag: "https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg",
+  },
+  {
+    name: "Switzerland",
+    description: "Home to leading universities and financial institutions.",
+    flag: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg",
+  },
+  {
+    name: "United States",
+    description: "Top-ranked universities and diverse opportunities.",
+    flag: "https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg",
+  },
 ];
+
+// Marquee effect (infinite sliding rows)
+const MarqueeRow = ({ countries, direction = "left" }) => (
+  <motion.div
+    className="flex space-x-6"
+    animate={{ x: direction === "left" ? ["0%", "-100%"] : ["-100%", "0%"] }}
+    transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+  >
+    {[...countries, ...countries].map((country, idx) => (
+      <Card
+        key={idx}
+        className="min-w-[220px] max-w-[220px] flex-shrink-0
+          bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200
+          backdrop-blur-md border border-blue-200 
+          rounded-2xl shadow-lg shadow-blue-300/40"
+      >
+        <CardHeader className="p-0">
+          <img
+            src={country.flag}
+            alt={country.name}
+            className="w-full h-28 object-cover rounded-t-2xl"
+          />
+        </CardHeader>
+        <CardContent className="p-4 text-center">
+          <CardTitle className="text-lg font-semibold mb-2 text-gray-900">
+            {country.name}
+          </CardTitle>
+          <p className="text-sm text-gray-700 mb-3">{country.description}</p>
+          <Button
+            variant="outline"
+            size="sm"
+            className="w-full bg-white hover:bg-blue-50 text-blue-900 border-blue-200"
+          >
+            View Details
+            <ExternalLink className="ml-2 h-3 w-3" />
+          </Button>
+        </CardContent>
+      </Card>
+    ))}
+  </motion.div>
+);
 
 export default function Countries() {
   return (
-    <section id="countries" className="py-20 bg-background">
+    <section
+      id="countries"
+      className="py-20 bg-gray-100/70 overflow-hidden"  // Light gray with low opacity
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
             Key Countries We Serve
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Discover your perfect study destination across Europe with our comprehensive country-specific guidance
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+            Explore top study destinations around the world
           </p>
         </div>
 
-        {/* Countries Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {countries.map((country, index) => (
-            <Card 
-              key={country.name}
-              className={`group hover:shadow-accent transition-all duration-300 cursor-pointer animate-fade-in ${
-                country.featured ? 'ring-2 ring-accent ring-offset-2 scale-105' : ''
-              }`}
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <CardHeader className="text-center pb-4">
-                <div className="flex items-center justify-center space-x-3 mb-2">
-                  <span className="text-4xl w-5 h-5"><img src={country.flag}/></span>
-                  <div className="text-left">
-                    <CardTitle className="text-xl text-primary group-hover:text-accent transition-colors">
-                      {country.name}
-                    </CardTitle>
-                    {country.featured && (
-                      <Badge variant="outline" className="text-accent border-accent">
-                        German Visa Expert
-                      </Badge>
-                    )}
-                  </div>
-                </div>
-                <p className="text-sm font-medium text-accent">{country.specialty}</p>
-              </CardHeader>
-              
-              <CardContent className="space-y-4">
-                {/* Programs */}
-                <div>
-                  <h4 className="text-sm font-medium text-primary mb-2 flex items-center">
-                    <MapPin className="h-3 w-3 mr-1" />
-                    Popular Programs
-                  </h4>
-                  <div className="flex flex-wrap gap-1">
-                    {country.programs.slice(0, 3).map((program, idx) => (
-                      <Badge key={idx} variant="secondary" className="text-xs">
-                        {program}
-                      </Badge>
-                    ))}
-                    {country.programs.length > 3 && (
-                      <Badge variant="secondary" className="text-xs">
-                        +{country.programs.length - 3} more
-                      </Badge>
-                    )}
-                  </div>
-                </div>
-
-                {/* Quick Info */}
-                {/*<div className="space-y-2 text-sm">
-                  <div className="flex items-center justify-between">
-                    <span className="flex items-center text-muted-foreground">
-                      <Clock className="h-3 w-3 mr-1" />
-                      Duration
-                    </span>
-                    <span className="font-medium">{country.duration}</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="flex items-center text-muted-foreground">
-                      <DollarSign className="h-3 w-3 mr-1" />
-                      Fees
-                    </span>
-                    <span className="font-medium">{country.fees}</span>
-                  </div>
-                </div>/*}
-
-                {/* Opportunities */}
-                <div>
-                  <div className="flex items-center text-muted-foreground mb-1">
-                    <Briefcase className="h-3 w-3 mr-1" />
-                    <span className="text-xs font-medium">Opportunities</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground">{country.opportunities}</p>
-                </div>
-
-                {/* Action Button */}
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className="w-full group-hover:bg-accent group-hover:text-accent-foreground group-hover:border-accent"
-                >
-                  View Details
-                  <ExternalLink className="ml-2 h-3 w-3" />
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-
-          {/* Add More Countries Card */}
-          <Card className="group hover:shadow-soft transition-all duration-300 cursor-pointer border-dashed border-2 border-muted animate-fade-in">
-            <CardContent className="flex flex-col items-center justify-center h-full py-12 text-center">
-              <div className="p-4 rounded-full bg-muted mb-4 group-hover:bg-accent-soft transition-colors">
-                <MapPin className="h-8 w-8 text-muted-foreground group-hover:text-accent" />
-              </div>
-              <h3 className="font-semibold text-primary mb-2">More Countries</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Explore opportunities in other European countries
-              </p>
-              <Button variant="outline" size="sm">
-                View All Countries
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center animate-fade-in">
-          <h3 className="text-2xl font-bold text-primary mb-4">
-            Not sure which country is right for you?
-          </h3>
-          <p className="text-muted-foreground mb-6">
-            Our expert counselors will help you choose the perfect destination based on your goals and qualifications
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="primary" size="lg">
-              Get Free Consultation
-            </Button>
-            <Button variant="outline" size="lg">
-              Compare Countries
-            </Button>
-          </div>
+        {/* Two Sliding Rows */}
+        <div className="space-y-8">
+          <MarqueeRow
+            countries={countries.slice(0, Math.ceil(countries.length / 2))}
+            direction="left"
+          />
+          <MarqueeRow
+            countries={countries.slice(Math.ceil(countries.length / 2))}
+            direction="right"
+          />
         </div>
       </div>
     </section>
