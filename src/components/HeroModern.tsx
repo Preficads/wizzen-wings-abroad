@@ -23,12 +23,17 @@ export default function HeroModern() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Column - Content */}
           <div className="space-y-8 animate-fade-in">
-            {/* Small badge */}
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-red-50 border border-red-200">
+            {/* Small badge - Clickable Redirect to Instagram */}
+            <a
+              href="https://www.instagram.com/wizzen_overseas_service?igsh=MXI3eTF5dzZkNnE4dg%3D%3D&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-3 py-1 rounded-full bg-red-50 border border-red-200 hover:bg-red-100 transition cursor-pointer"
+            >
               <span className="text-xs font-medium text-red-600 uppercase tracking-wide">
                 Latest Updates
               </span>
-            </div>
+            </a>
 
             {/* Main Heading - ImmiLaw Style */}
             <div className="space-y-4">

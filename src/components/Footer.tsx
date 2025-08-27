@@ -1,50 +1,75 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { MapPin, Phone, Mail, Instagram, Facebook, Linkedin, Globe, Clock, ArrowRight } from "lucide-react";
-const branches = [{
-  city: "Germany",
-  address: "Wizzen Europe Office, Berlin, Germany",
-  phone: "+49 123 456789",
-  email: "germany@wizzenoverseas.com"
-}];
-const services = ["Study Abroad Programs", "Immigration Services", "German Visa Processing", "University Admissions", "Work Permits", "Documentation Support"];
+import { MapPin, Phone, Mail, Instagram, Facebook, Clock, ArrowRight } from "lucide-react";
+
+// ✅ Import your logo correctly
+import LogoWhite from "@/assets/Logo/Logo_White.png";
+
+// Example branches / services / countries
+const branches = [
+  {
+    city: "Germany",
+    address: "Wizzen Europe Office, Berlin, Germany",
+    phone: "+49 123 456789",
+    email: "germany@wizzenoverseas.com",
+  },
+];
+const services = [
+  "Study Abroad Programs",
+  "Immigration Services",
+  "German Visa Processing",
+  "University Admissions",
+  "Work Permits",
+  "Documentation Support",
+];
 const countries = ["Germany", "Latvia", "Austria", "Georgia", "Moldova", "Netherlands"];
+
 export default function Footer() {
-  return <footer className="text-primary-foreground bg-zinc-900">
+  return (
+    <footer className="text-primary-foreground bg-zinc-900">
       {/* Main Footer Content */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-6">
             <div>
+              {/* ✅ Company Logo */}
               <div className="flex items-center space-x-3 mb-4">
-                <div className="h-12 w-12 rounded-full bg-accent flex items-center justify-center">
-                  <span className="text-accent-foreground font-bold text-xl">W</span>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold">Wizzen Overseas</h3>
-                  <p className="text-sm opacity-80">Education & Immigration</p>
-                </div>
+                <img
+                  src={LogoWhite}
+                  alt="Wizzen Overseas Logo"
+                  className="h-12 w-auto object-contain"
+                />
               </div>
               <p className="text-sm opacity-90 leading-relaxed">
                 Your trusted partner for European education and immigration dreams. 
                 With 5+ years of expertise, we guide you every step of the way.
               </p>
             </div>
-            
-            {/* Social Links */}
+
+            {/* ✅ Social Links */}
             <div className="flex space-x-3">
-              <a href="https://instagram.com/wizzen_overseas_service" target="_blank" rel="noopener noreferrer" className="p-2 bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors">
+              <a
+                href="https://www.instagram.com/wizzen_overseas_service?igsh=MXI3eTF5dzZkNnE4dg%3D%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors"
+              >
                 <Instagram className="h-4 w-4" />
               </a>
-              <a href="#" className="p-2 bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors">
+              <a
+                href="https://www.facebook.com/profile.php?id=61578108222089"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors"
+              >
                 <Facebook className="h-4 w-4" />
               </a>
-              <a href="#" className="p-2 bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors">
-                <Linkedin className="h-4 w-4" />
-              </a>
-              <a href="#" className="p-2 bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors">
-                <Globe className="h-4 w-4" />
+              <a
+                href="mailto:wizzenabroadstudies26@gmail.com"
+                className="p-2 bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors"
+              >
+                <Mail className="h-4 w-4" />
               </a>
             </div>
           </div>
@@ -53,12 +78,17 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-6">Services</h4>
             <ul className="space-y-3">
-              {services.map((service, index) => <li key={index}>
-                  <a href="#services" className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-colors flex items-center group">
+              {services.map((service, index) => (
+                <li key={index}>
+                  <a
+                    href="#services"
+                    className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-colors flex items-center group"
+                  >
                     <ArrowRight className="h-3 w-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {service}
                   </a>
-                </li>)}
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -66,14 +96,19 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-6">Study Destinations</h4>
             <ul className="space-y-3">
-              {countries.map((country, index) => <li key={index}>
-                  <a href="#countries" className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-colors flex items-center group">
+              {countries.map((country, index) => (
+                <li key={index}>
+                  <a
+                    href="#countries"
+                    className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-colors flex items-center group"
+                  >
                     <ArrowRight className="h-3 w-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {country}
                   </a>
-                </li>)}
+                </li>
+              ))}
             </ul>
-            
+
             {/* Quick Contact */}
             <div className="mt-8 p-4 bg-primary-foreground/5 rounded-lg">
               <h5 className="font-medium mb-2 text-accent">Quick Contact</h5>
@@ -84,7 +119,7 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <Mail className="h-3 w-3 text-accent" />
-                  <span className="opacity-90">info@wizzenabroadstudies.com</span>
+                  <span className="opacity-90">wizzenabroadstudies26@gmail.com</span>
                 </div>
               </div>
             </div>
@@ -94,7 +129,8 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-6">Our Branches</h4>
             <div className="space-y-4">
-              {branches.map((branch, index) => <div key={index} className="text-sm">
+              {branches.map((branch, index) => (
+                <div key={index} className="text-sm">
                   <h5 className="font-medium text-accent mb-1">{branch.city}</h5>
                   <div className="space-y-1 opacity-80">
                     <div className="flex items-start space-x-2">
@@ -106,7 +142,8 @@ export default function Footer() {
                       <span className="text-xs">{branch.phone}</span>
                     </div>
                   </div>
-                </div>)}
+                </div>
+              ))}
             </div>
 
             {/* Business Hours */}
@@ -132,7 +169,11 @@ export default function Footer() {
             Subscribe to get the latest updates on study abroad opportunities and immigration news
           </p>
           <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input type="email" placeholder="Enter your email" className="flex-1 px-4 py-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60 focus:outline-none focus:ring-2 focus:ring-accent" />
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="flex-1 px-4 py-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60 focus:outline-none focus:ring-2 focus:ring-accent"
+            />
             <Button variant="accent" className="px-6">
               Subscribe
             </Button>
@@ -154,5 +195,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 }
