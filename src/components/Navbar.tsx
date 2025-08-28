@@ -1,6 +1,7 @@
 // src/components/Navbar.tsx
 
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom"; // ✅ Use Link instead of <a>
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
 import wizzenLogo from "@/assets/wizzen_logo.png";
@@ -10,8 +11,8 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Services", href: "/services" },
-  { name: "Study MBBS", href: "/mbbs" }, // ✅ Added new menu item for Study MBBS
-  { name: "Countries", href: "#", dropdown: true }, // Dropdown item
+  { name: "Study MBBS", href: "/mbbs" }, // ✅ Now links correctly
+  { name: "Countries", href: "#", dropdown: true },
   { name: "Learn German", href: "/reviews" },
   { name: "Contact", href: "/contact" },
 ];
@@ -59,7 +60,7 @@ export default function Navbar() {
         <nav className="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8 lg:py-4">
           {/* Logo */}
           <div className="flex lg:flex-1">
-            <a href="/" className="flex items-center space-x-3">
+            <Link to="/" className="flex items-center space-x-3">
               <div className="h-10 lg:h-14 flex items-center justify-center">
                 <img
                   className="h-10 lg:h-14 w-auto"
@@ -67,7 +68,7 @@ export default function Navbar() {
                   alt="Wizzen Logo"
                 />
               </div>
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -91,13 +92,13 @@ export default function Navbar() {
                         <ul className="space-y-1">
                           {studyAbroadCountries.map((country) => (
                             <li key={country.name}>
-                              <a
-                                href={country.href}
+                              <Link
+                                to={country.href}
                                 className="block px-2 py-1 text-sm rounded hover:bg-white/40 transition"
                                 onClick={() => setDropdownOpen(false)}
                               >
                                 {country.name}
-                              </a>
+                              </Link>
                             </li>
                           ))}
                         </ul>
@@ -110,13 +111,13 @@ export default function Navbar() {
                         <ul className="space-y-1">
                           {immigrationCountries.map((country) => (
                             <li key={country.name}>
-                              <a
-                                href={country.href}
+                              <Link
+                                to={country.href}
                                 className="block px-2 py-1 text-sm rounded hover:bg-white/40 transition"
                                 onClick={() => setDropdownOpen(false)}
                               >
                                 {country.name}
-                              </a>
+                              </Link>
                             </li>
                           ))}
                         </ul>
@@ -125,14 +126,14 @@ export default function Navbar() {
                   )}
                 </div>
               ) : (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
+                  to={item.href}
                   className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 relative group"
                 >
                   {item.name}
                   <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-primary to-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                </a>
+                </Link>
               )
             )}
           </div>
@@ -214,39 +215,39 @@ export default function Navbar() {
                           Study Abroad
                         </p>
                         {studyAbroadCountries.map((c) => (
-                          <a
+                          <Link
                             key={c.name}
-                            href={c.href}
+                            to={c.href}
                             className="block px-3 py-1 text-sm hover:bg-white/20 rounded transition"
                             onClick={() => setMobileMenuOpen(false)}
                           >
                             {c.name}
-                          </a>
+                          </Link>
                         ))}
                         <p className="text-xs text-muted-foreground mt-2">
                           Immigration / PR
                         </p>
                         {immigrationCountries.map((c) => (
-                          <a
+                          <Link
                             key={c.name}
-                            href={c.href}
+                            to={c.href}
                             className="block px-3 py-1 text-sm hover:bg-white/20 rounded transition"
                             onClick={() => setMobileMenuOpen(false)}
                           >
                             {c.name}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </div>
                   ) : (
-                    <a
+                    <Link
                       key={item.name}
-                      href={item.href}
+                      to={item.href}
                       className="block rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-white/20 transition"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   )
                 )}
               </div>
