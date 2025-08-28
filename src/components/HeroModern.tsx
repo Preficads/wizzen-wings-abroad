@@ -42,7 +42,7 @@ export default function HeroModern() {
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight">
                 <span className="text-foreground block">Education &</span>
                 <span className="text-foreground block">Immigration</span>
-                <span className="bg-gradient-primary bg-clip-text text-transparent text-8xl font-semibold">
+                <span className="bg-gradient-primary bg-clip-text text-transparent text-6xl sm:text-7xl md:text-8xl font-semibold">
                   <Typewriter
                     words={["Pathways"]}
                     loop={false}
