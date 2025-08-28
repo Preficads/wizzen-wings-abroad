@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
+// ✅ Import image (works in Vite/Next)
+import backgroundGermany from "@/assets/Background/background_germany.jpg";
 
 export default function About() {
   const [startCount, setStartCount] = useState(false);
@@ -10,14 +12,33 @@ export default function About() {
 
   useEffect(() => {
     setStartCount(true);
-
     if (window.innerWidth < 640) {
       setDuration(5); // slower on mobile
     }
   }, []);
 
+  // Animation Variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40, scale: 0.9 },
+    visible: { opacity: 1, y: 0, scale: 1 },
+  };
+
   return (
-    <section className="relative py-16 sm:py-20 bg-gradient-to-br from-gray-900 via-black to-gray-900 overflow-hidden">
+    <section
+      className="relative py-16 sm:py-20 overflow-hidden bg-cover bg-center"
+      style={{
+        backgroundImage: `linear-gradient(to bottom right, rgba(0,0,0,0.85), rgba(8,16,40,0.9)), url(${backgroundGermany})`,
+        backgroundBlendMode: "multiply",
+      }}
+    >
       {/* Soft background blobs */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <motion.div
@@ -46,12 +67,15 @@ export default function About() {
             viewport={{ once: true, amount: 0.3 }}
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
-              About <span className="text-purple-400">Wizzen Abroad Studies</span>
+              About <span className="text-purple-400">Wizzen <br />Overseas</span>
             </h2>
 
             <p className="mt-4 text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl">
-              At <span className="text-purple-300 font-semibold">Wizzen Abroad Studies</span>, we
-              specialize in guiding students toward their global education dreams.
+              At{" "}
+              <span className="text-purple-300 font-semibold">
+                Wizzen Overseas Education & Immigration
+              </span>
+              , we specialize in guiding students toward their global education dreams.
               With expertise in career counseling, university admissions, visa
               assistance, and language training, we ensure every step of your
               study-abroad journey is smooth and successful.
@@ -66,7 +90,13 @@ export default function About() {
           </motion.div>
 
           {/* Right Stats Section */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             {[
               { value: 5, suffix: "+", label: "Countries Served", color: "text-blue-400" },
               { value: 1000, suffix: "+", label: "Happy Students", color: "text-green-400" },
@@ -75,11 +105,11 @@ export default function About() {
             ].map((stat, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: i * 0.2, ease: "easeOut" }}
-                viewport={{ once: true, amount: 0.3 }}
-                className="p-4 sm:p-6 md:p-8 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 text-center min-w-0"
+                variants={cardVariants}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                whileHover={{ scale: 1.05, rotate: 1 }}
+                whileTap={{ scale: 0.98 }}
+                className="p-4 sm:p-6 md:p-8 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 text-center min-w-0 shadow-lg shadow-black/20"
               >
                 <div
                   className={`text-3xl sm:text-4xl md:text-6xl font-extrabold ${stat.color} break-words`}
@@ -92,7 +122,7 @@ export default function About() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

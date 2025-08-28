@@ -1,286 +1,246 @@
-import { useState, useEffect, useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
-import wizzenLogo from "@/assets/wizzen_logo.png";
-import Popup from "./Popup";
+// src/pages/StudyMBBS.tsx
+import React from "react";
+import Navbar from "@/components/Navbar";
+import Plane2BG from "@/assets/Background/Plane2BG.jpg";
+import Plane3BG from "@/assets/Background/Plane3.jpg";
 
-const navigation = [
-  { name: "Home", href: "/" },
-  { name: "About Us", href: "/about" },
-  { name: "Services", href: "/services" },
-  { name: "Study MBBS", href: "/mbbs" }, // ✅ Added new menu item
-  { name: "Countries", href: "#", dropdown: true }, // Dropdown item
-  { name: "Learn German", href: "/reviews" },
-  { name: "Contact", href: "/contact" },
+// Flag URLs from Wikipedia (replace with local files if needed)
+const flags: Record<string, string> = {
+  georgia: "https://upload.wikimedia.org/wikipedia/commons/0/0f/Flag_of_Georgia.svg",
+  armenia: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Flag_of_Armenia.svg",
+  moldova: "https://upload.wikimedia.org/wikipedia/commons/2/27/Flag_of_Moldova.svg",
+  bosnia: "https://upload.wikimedia.org/wikipedia/commons/b/bf/Flag_of_Bosnia_and_Herzegovina.svg",
+  azerbaijan: "https://upload.wikimedia.org/wikipedia/commons/d/dd/Flag_of_Azerbaijan.svg",
+  romania: "https://upload.wikimedia.org/wikipedia/commons/7/73/Flag_of_Romania.svg",
+  egypt: "https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg",
+  poland: "https://upload.wikimedia.org/wikipedia/en/1/12/Flag_of_Poland.svg",
+  bulgaria: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Bulgaria.svg",
+};
+
+const countries = [
+  "Georgia",
+  "Armenia",
+  "Moldova",
+  "Bosnia",
+  "Azerbaijan",
+  "Romania",
+  "Egypt",
+  "Poland",
+  "Bulgaria",
 ];
 
-const studyAbroadCountries = [
-  { name: "USA", href: "/countries/usa" },
-  { name: "UK", href: "/countries/uk" },
-  { name: "Canada", href: "/countries/canada" },
-  { name: "Australia", href: "/countries/australia" },
-  { name: "Germany", href: "/countries/germany" },
-];
+const StudyMBBS: React.FC = () => (
+  <div className="font-sans bg-gray-50 text-gray-900">
+    {/* Navbar */}
+    <Navbar />
 
-const immigrationCountries = [
-  { name: "Canada PR", href: "/immigration/canada" },
-  { name: "Australia PR", href: "/immigration/australia" },
-  { name: "New Zealand PR", href: "/immigration/new-zealand" },
-];
-
-export default function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [popupOpen, setPopupOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setDropdownOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  return (
-    <>
-      {/* Navbar */}
-      <header className="fixed top-0 w-full bg-background/80 backdrop-blur-md z-50">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8 lg:py-4">
-          {/* Logo */}
-          <div className="flex lg:flex-1">
-            <a href="/" className="flex items-center space-x-3">
-              <div className="h-10 lg:h-14 flex items-center justify-center">
-                <img
-                  className="h-10 lg:h-14 w-auto"
-                  src={wizzenLogo}
-                  alt="Wizzen Logo"
-                />
-              </div>
-            </a>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex lg:gap-x-8 relative">
-            {navigation.map((item) =>
-              item.dropdown ? (
-                <div key={item.name} className="relative" ref={dropdownRef}>
-                  <button
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors duration-200"
-                  >
-                    {item.name} <ChevronDown className="h-4 w-4" />
-                  </button>
-
-                  {dropdownOpen && (
-                    <div className="absolute left-0 top-full mt-2 w-72 rounded-xl bg-white/30 backdrop-blur-lg shadow-xl p-4 animate-fade-in">
-                      <div>
-                        <h4 className="text-xs font-semibold text-muted-foreground uppercase mb-2">
-                          Study Abroad Countries
-                        </h4>
-                        <ul className="space-y-1">
-                          {studyAbroadCountries.map((country) => (
-                            <li key={country.name}>
-                              <a
-                                href={country.href}
-                                className="block px-2 py-1 text-sm rounded hover:bg-white/40 transition"
-                                onClick={() => setDropdownOpen(false)}
-                              >
-                                {country.name}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div className="mt-4">
-                        <h4 className="text-xs font-semibold text-muted-foreground uppercase mb-2">
-                          Immigration / PR Destinations
-                        </h4>
-                        <ul className="space-y-1">
-                          {immigrationCountries.map((country) => (
-                            <li key={country.name}>
-                              <a
-                                href={country.href}
-                                className="block px-2 py-1 text-sm rounded hover:bg-white/40 transition"
-                                onClick={() => setDropdownOpen(false)}
-                              >
-                                {country.name}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 relative group"
-                >
-                  {item.name}
-                  <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-primary to-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                </a>
-              )
-            )}
-          </div>
-
-          {/* Apply Now (Desktop) */}
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center space-x-4">
-            <Button
-              variant="accent"
-              size="sm"
-              className="animate-fade-in"
-              onClick={() => setPopupOpen(true)}
-            >
-              Apply Now
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="flex lg:hidden">
-            <button
-              type="button"
-              className="inline-flex items-center justify-center rounded-md p-2 text-foreground"
-              onClick={() => setMobileMenuOpen(true)}
-            >
-              <Menu className="h-6 w-6" />
-            </button>
-          </div>
-        </nav>
-      </header>
-
-      {/* Mobile Navigation Drawer */}
-      <div
-        className={`fixed inset-0 z-40 lg:hidden transition-opacity duration-300 
-        ${mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
-      >
-        <div
-          className="fixed inset-0 bg-black/50"
-          onClick={() => setMobileMenuOpen(false)}
-        />
-
-        <div
-          className={`fixed inset-y-0 right-0 w-11/12 max-w-sm bg-background/95 backdrop-blur-md px-5 py-6 
-          transform transition-transform duration-300 ease-in-out 
-          ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
-        >
-          <div className="flex items-center justify-between">
-            {/* Mobile Logo */}
-            <div className="flex items-center space-x-2">
-              <img src={wizzenLogo} alt="Wizzen Logo" className="h-8 w-auto" />
-              <div className="flex flex-col leading-tight">
-                <span className="font-bold text-primary text-sm">
-                  Wizzen Overseas
-                </span>
-                <span className="text-[10px] text-muted-foreground">
-                  Education & Immigration
-                </span>
-              </div>
-            </div>
-            <button
-              type="button"
-              className="rounded-md p-2 text-foreground"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <X className="h-6 w-6" />
-            </button>
-          </div>
-
-          <div className="mt-6 flow-root overflow-y-auto max-h-[calc(100vh-80px)]">
-            <div className="divide-y divide-border/50">
-              {/* Nav Links */}
-              <div className="space-y-2 py-6">
-                {navigation.map((item) =>
-                  item.dropdown ? (
-                    <div key={item.name} className="space-y-2">
-                      <span className="block px-3 py-2 text-base font-medium text-foreground">
-                        {item.name}
-                      </span>
-                      <div className="ml-4 space-y-1">
-                        <p className="text-xs text-muted-foreground">
-                          Study Abroad
-                        </p>
-                        {studyAbroadCountries.map((c) => (
-                          <a
-                            key={c.name}
-                            href={c.href}
-                            className="block px-3 py-1 text-sm hover:bg-white/20 rounded transition"
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {c.name}
-                          </a>
-                        ))}
-                        <p className="text-xs text-muted-foreground mt-2">
-                          Immigration / PR
-                        </p>
-                        {immigrationCountries.map((c) => (
-                          <a
-                            key={c.name}
-                            href={c.href}
-                            className="block px-3 py-1 text-sm hover:bg-white/20 rounded transition"
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {c.name}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  ) : (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="block rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-white/20 transition"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {item.name}
-                    </a>
-                  )
-                )}
-              </div>
-
-              {/* Contact + Apply */}
-              <div className="py-6 space-y-4">
-                <div className="flex items-center space-x-2">
-                  <Phone className="h-4 w-4 text-accent" />
-                  <span className="text-sm text-muted-foreground">
-                    +91 9876543210
-                  </span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Mail className="h-4 w-4 text-accent" />
-                  <span className="text-sm text-muted-foreground">
-                    info@wizzenoverseas.com
-                  </span>
-                </div>
-                <Button
-                  variant="accent"
-                  className="w-full"
-                  onClick={() => {
-                    setPopupOpen(true);
-                    setMobileMenuOpen(false);
-                  }}
-                >
-                  Apply Now
-                </Button>
-              </div>
-            </div>
-          </div>
+    {/* Hero Section */}
+    <section
+      className="relative h-screen bg-cover bg-center flex items-center pt-24"
+      style={{ backgroundImage: `url(${Plane2BG})` }}
+    >
+      <div className="container mx-auto px-6 relative z-10 text-white">
+        <h1 className="text-5xl md:text-7xl font-extrabold uppercase">
+          Study MBBS Abroad
+        </h1>
+        <p className="mt-4 max-w-lg text-lg text-gray-200">
+          Admissions Open 2025 | Top Universities | Hassle-Free Process
+        </p>
+        <div className="mt-6 flex gap-4">
+          <button className="bg-orange-500 px-6 py-3 rounded-xl font-semibold hover:bg-orange-600 transition">
+            Apply Now
+          </button>
+          <button className="border border-orange-500 px-6 py-3 rounded-xl font-semibold hover:bg-orange-500 hover:text-white transition">
+            Free Counselling
+          </button>
         </div>
       </div>
+      <div className="absolute inset-0 bg-black/60"></div>
+    </section>
 
-      {/* Popup */}
-      <Popup isOpen={popupOpen} onClose={() => setPopupOpen(false)} />
-    </>
-  );
-}
+    {/* Quick Highlights */}
+    <section className="relative py-16">
+      <div className="absolute inset-0 bg-gradient-to-r from-sky-100 via-blue-100 to-sky-200"></div>
+      <div className="container mx-auto px-6 relative z-10">
+        <h2 className="text-3xl font-bold text-center text-gray-800">
+          Quick Highlights
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-8">
+          {[
+            "WHO & NMC Approved Universities",
+            "English-Medium Education",
+            "Affordable & Transparent Process",
+            "100% Visa & Travel Assistance",
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="backdrop-blur-lg bg-white/30 border border-white/40 rounded-xl shadow-lg p-6 text-center hover:shadow-2xl hover:scale-105 transition-all duration-500"
+            >
+              <span className="block text-3xl">✨</span>
+              <p className="mt-3 font-medium text-gray-800">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Featured Countries */}
+    <section
+      className="relative py-20 bg-cover bg-center"
+      style={{ backgroundImage: `url(${Plane3BG})` }}
+    >
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/90"></div>
+      <div className="container mx-auto px-6 relative z-10">
+        <h2 className="text-3xl font-bold text-center text-white uppercase">
+          Featured Countries
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-12">
+          {countries.map((country) => (
+            <div
+              key={country}
+              className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition duration-500 flex flex-col overflow-hidden"
+            >
+              <div className="w-full h-28 overflow-hidden">
+                <img
+                  src={flags[country.toLowerCase() as keyof typeof flags]}
+                  alt={`${country} Flag`}
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                />
+              </div>
+              <div className="p-6 flex flex-col items-center text-white">
+                <h3 className="text-lg font-bold">{country}</h3>
+                <a
+                  href={`/countries/${country.toLowerCase()}`}
+                  className="text-orange-400 mt-2 font-medium hover:underline"
+                >
+                  Explore →
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Eligibility */}
+    <section className="py-16 bg-gray-100">
+      <h2 className="text-3xl font-bold text-center">Eligibility</h2>
+      <ul className="list-disc pl-10 mt-6 max-w-2xl mx-auto space-y-3 text-lg">
+        <li>Minimum 50% in Physics, Chemistry, Biology (PCB)</li>
+        <li>NEET qualification as per Indian rules</li>
+        <li>Minimum age: 17 years</li>
+      </ul>
+    </section>
+
+    {/* Admission Process */}
+    <section className="py-16 bg-white">
+      <h2 className="text-3xl font-bold text-center">Admission Process</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8 max-w-4xl mx-auto px-6">
+        {[
+          "Free Counselling & Country Selection",
+          "Application Submission",
+          "Offer/Admission Letter from University",
+          "Visa Processing",
+          "Travel & Accommodation Support",
+          "On-Campus Assistance",
+        ].map((step, idx) => (
+          <div key={idx} className="flex items-center">
+            <span className="text-orange-500 font-bold mr-4">{idx + 1}.</span>
+            <p>{step}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* Benefits */}
+    <section className="py-16 bg-gray-100">
+      <h2 className="text-3xl font-bold text-center">Benefits of MBBS Abroad</h2>
+      <ul className="list-disc pl-10 mt-6 max-w-2xl mx-auto space-y-3 text-lg">
+        <li>Globally recognized degrees</li>
+        <li>English-medium education</li>
+        <li>High-quality infrastructure & hospitals for practice</li>
+        <li>Affordable compared to private MBBS in India</li>
+        <li>International exposure & cultural diversity</li>
+      </ul>
+    </section>
+
+    {/* FAQ */}
+    <section className="py-16 bg-white">
+      <h2 className="text-3xl font-bold text-center">FAQ</h2>
+      <div className="mt-8 space-y-6 max-w-3xl mx-auto px-6">
+        {[
+          ["Is NEET mandatory?", "Yes, NEET is mandatory for admission."],
+          ["Are degrees valid in India?", "Yes, degrees are recognized in India."],
+          ["Can I practice in India after MBBS abroad?", "Yes, after clearing the necessary screening tests in India."],
+          ["Is the medium of instruction English?", "Yes, the medium of instruction is English."],
+          ["Do you provide visa and travel support?", "Yes, we provide 100% visa and travel assistance."],
+        ].map(([q, a], idx) => (
+          <div key={idx}>
+            <h4 className="font-semibold">{q}</h4>
+            <p className="text-gray-700">{a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* Contact Us */}
+    <section className="py-20 bg-gray-100">
+      <h2 className="text-3xl font-bold text-center">Contact Us</h2>
+      <form className="mt-8 max-w-2xl mx-auto space-y-6 bg-white shadow-lg p-8 rounded-xl">
+        <div>
+          <label htmlFor="name" className="block font-medium">
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            className="w-full border border-gray-300 p-3 rounded-lg"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="phone" className="block font-medium">
+            Phone
+          </label>
+          <input
+            type="text"
+            id="phone"
+            className="w-full border border-gray-300 p-3 rounded-lg"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="block font-medium">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            className="w-full border border-gray-300 p-3 rounded-lg"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="country" className="block font-medium">
+            Country Interested
+          </label>
+          <select id="country" className="w-full border border-gray-300 p-3 rounded-lg">
+            {countries.map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
+          </select>
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition"
+        >
+          Submit
+        </button>
+      </form>
+    </section>
+  </div>
+);
+
+export default StudyMBBS;
