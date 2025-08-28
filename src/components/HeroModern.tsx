@@ -22,7 +22,7 @@ export default function HeroModern() {
       {/* Content Section */}
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
+
           {/* Left Column - Content */}
           <div className="space-y-8 animate-fade-in">
             {/* Instagram Badge */}
@@ -42,7 +42,7 @@ export default function HeroModern() {
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight">
                 <span className="text-foreground block">Education &</span>
                 <span className="text-foreground block">Immigration</span>
-                <span className="bg-gradient-primary bg-clip-text text-transparent text-6xl sm:text-7xl md:text-8xl font-semibold">
+                <span className="bg-gradient-primary bg-clip-text text-transparent text-7xl sm:text-8xl md:text-9xl font-semibold">
                   <Typewriter
                     words={["Pathways"]}
                     loop={false}
@@ -52,6 +52,7 @@ export default function HeroModern() {
                     cursorStyle="|"
                   />
                 </span>
+
               </h1>
             </div>
 
