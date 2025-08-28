@@ -86,7 +86,7 @@ const countries = [
 // Marquee effect (infinite sliding rows)
 const MarqueeRow = ({ countries, direction = "left" }) => (
   <motion.div
-    className="flex space-x-4 sm:space-x-6"
+    className="flex space-x-3 sm:space-x-6"
     animate={{ x: direction === "left" ? ["0%", "-100%"] : ["-100%", "0%"] }}
     transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
   >
@@ -94,7 +94,7 @@ const MarqueeRow = ({ countries, direction = "left" }) => (
       <Card
         key={idx}
         className="flex-shrink-0
-          w-36 sm:min-w-[220px] sm:max-w-[220px]
+          w-36 h-52 sm:min-w-[220px] sm:max-w-[220px] sm:h-[320px]
           bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200
           backdrop-blur-md border border-blue-200 
           rounded-2xl shadow-lg shadow-blue-300/40"
@@ -103,14 +103,16 @@ const MarqueeRow = ({ countries, direction = "left" }) => (
           <img
             src={country.flag}
             alt={country.name}
-            className="w-full h-28 object-cover rounded-t-2xl"
+            className="w-full h-24 sm:h-28 object-cover rounded-t-2xl"
           />
         </CardHeader>
         <CardContent className="p-3 sm:p-4 text-center">
-          <CardTitle className="text-base sm:text-lg font-semibold mb-2 text-gray-900">
+          <CardTitle className="text-sm sm:text-lg font-semibold mb-1 sm:mb-2 text-gray-900">
             {country.name}
           </CardTitle>
-          <p className="text-xs sm:text-sm text-gray-700 mb-3">{country.description}</p>
+          <p className="text-xs sm:text-sm text-gray-700 mb-2 sm:mb-3">
+            {country.description}
+          </p>
           <Button
             variant="outline"
             size="sm"
