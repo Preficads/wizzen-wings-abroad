@@ -8,8 +8,9 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Services", href: "/services" },
+  { name: "Study MBBS", href: "/mbbs" }, // ✅ Added new menu item
   { name: "Countries", href: "#", dropdown: true }, // Dropdown item
-  { name: "Reviews", href: "/reviews" },
+  { name: "Learn German", href: "/reviews" },
   { name: "Contact", href: "/contact" },
 ];
 

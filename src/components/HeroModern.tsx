@@ -1,21 +1,29 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle } from "lucide-react";
 import heroImage from "@/assets/hero-image.png";
 import { Typewriter } from "react-simple-typewriter";
+import { motion } from "framer-motion";
+
+// Variants for stagger animations
+const textVariant = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.15, type: "spring", stiffness: 60 }
+  })
+};
 
 export default function HeroModern() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
-      {/* Modern Geometric Background */}
+      {/* Background geometric shapes remain same */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Large gradient shape */}
         <div className="absolute top-20 right-0 w-96 h-96 bg-gradient-hero opacity-20 rounded-full blur-3xl"></div>
-
-        {/* Geometric shapes */}
         <div className="absolute top-32 right-32 w-24 h-24 bg-gradient-accent opacity-30 rounded-2xl transform rotate-12"></div>
         <div className="absolute top-48 right-16 w-16 h-16 bg-primary opacity-20 rounded-xl transform -rotate-12"></div>
-
-        {/* Floating element */}
         <div className="absolute top-40 right-20 w-32 h-32 bg-gradient-primary opacity-15 rounded-3xl"></div>
       </div>
 
@@ -24,9 +32,12 @@ export default function HeroModern() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* Left Column - Content */}
-          <div className="space-y-8 animate-fade-in">
+          <div className="space-y-8">
             {/* Instagram Badge */}
-            <a
+            <motion.a
+              initial={{ scale: 0, rotate: -45 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ duration: 0.6, type: "spring", bounce: 0.5 }}
               href="https://www.instagram.com/wizzen_overseas_service?igsh=MXI3eTF5dzZkNnE4dg%3D%3D&utm_source=qr"
               target="_blank"
               rel="noopener noreferrer"
@@ -35,14 +46,30 @@ export default function HeroModern() {
               <span className="text-xs font-medium text-red-600 uppercase tracking-wide">
                 Latest Updates
               </span>
-            </a>
+            </motion.a>
 
-            {/* Main Heading */}
+            {/* Main Heading with staggered words */}
             <div className="space-y-4">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight">
-                <span className="text-foreground block">Education &</span>
-                <span className="text-foreground block">Immigration</span>
-                <span className="bg-gradient-primary bg-clip-text text-transparent text-7xl sm:text-8xl md:text-9xl font-semibold">
+                {["Education &", "Immigration"].map((word, i) => (
+                  <motion.span
+                    key={i}
+                    custom={i}
+                    variants={textVariant}
+                    initial="hidden"
+                    animate="visible"
+                    className="block text-foreground"
+                  >
+                    {word}
+                  </motion.span>
+                ))}
+
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.6, duration: 0.7, ease: "easeOut" }}
+                  className="bg-gradient-primary bg-clip-text text-transparent text-7xl sm:text-8xl md:text-9xl font-semibold"
+                >
                   <Typewriter
                     words={["Pathways"]}
                     loop={false}
@@ -51,19 +78,28 @@ export default function HeroModern() {
                     cursor
                     cursorStyle="|"
                   />
-                </span>
+                </motion.span>
               </h1>
             </div>
 
             {/* Subtitle */}
-            <p className="text-xl text-muted-foreground font-light max-w-lg">
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, type: "spring", stiffness: 70 }}
+              className="text-xl text-muted-foreground font-light max-w-lg"
+            >
               Expert guidance for your European education and immigration journey
-            </p>
+            </motion.p>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons with pop-in scale */}
             <div className="pt-4 flex flex-col sm:flex-row gap-4">
-              {/* Call Button */}
-              <a href="tel:+918281463148">
+              <motion.a
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 1.5, type: "spring", bounce: 0.4 }}
+                href="tel:+918281463148"
+              >
                 <Button
                   variant="default"
                   size="lg"
@@ -71,10 +107,12 @@ export default function HeroModern() {
                 >
                   <Phone className="mr-2 h-4 w-4" /> Call Now
                 </Button>
-              </a>
+              </motion.a>
 
-              {/* WhatsApp Button */}
-              <a
+              <motion.a
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 1.8, type: "spring", bounce: 0.4 }}
                 href="https://wa.me/4915731340455"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -86,19 +124,16 @@ export default function HeroModern() {
                 >
                   <MessageCircle className="mr-2 h-4 w-4" /> WhatsApp Germany
                 </Button>
-              </a>
+              </motion.a>
             </div>
           </div>
 
-          {/* Right Column - Visual */}
-          <div className="relative animate-slide-in">
+          {/* Right Column - Image unchanged */}
+          <div className="relative">
             <div className="relative">
-              {/* Background geometric rotating box */}
               <div className="absolute inset-0 flex items-center justify-center">
-                {/* ⬇️ Smaller only on mobile */}
                 <div className="w-60 h-60 sm:w-80 sm:h-80 bg-gradient-hero opacity-80 rounded-3xl animate-rotate-extreme"></div>
 
-                {/* Floating cards */}
                 <div className="absolute top-[350px] left-[20px] sm:top-[450px] sm:left-[50px] bg-orange-600 text-white p-3 rounded-xl shadow-lg transform rotate-6 animate-float">
                   <div className="text-xs font-medium">Immigrate &</div>
                   <div className="text-l">Settle</div>
@@ -113,7 +148,7 @@ export default function HeroModern() {
                 </div>
               </div>
 
-              {/* Woman with suitcase image */}
+              {/* Main Hero Image */}
               <div className="relative z-10 flex items-center justify-center">
                 <img
                   src={heroImage}

@@ -24,6 +24,7 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -68,11 +69,20 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+
+        // 👇 NEW transparent glass colors
+        glass: {
+          light: "rgba(255, 255, 255, 0.08)", // frosted white
+          dark: "rgba(0, 0, 0, 0.25)",       // frosted gray-black
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      backdropBlur: {
+        xs: "2px",
       },
       keyframes: {
         "accordion-down": {
@@ -118,12 +128,11 @@ export default {
         float: "float 3s ease-in-out infinite",
         wave: "wave 2.5s ease-in-out infinite",
 
-        // Rotation speeds
-        "rotate-slow": "rotateSlow 30s linear infinite",    // normal slow
-        "rotate-slower": "rotateSlow 45s linear infinite",  // slower
-        "rotate-slowest": "rotateSlow 60s linear infinite", // very slow
-        "rotate-ultra": "rotateSlow 90s linear infinite",   // ultra slow
-        "rotate-extreme": "rotateSlow 120s linear infinite" // extremely slow
+        "rotate-slow": "rotateSlow 30s linear infinite",
+        "rotate-slower": "rotateSlow 45s linear infinite",
+        "rotate-slowest": "rotateSlow 60s linear infinite",
+        "rotate-ultra": "rotateSlow 90s linear infinite",
+        "rotate-extreme": "rotateSlow 120s linear infinite",
       },
       backgroundImage: {
         "gradient-primary": "var(--gradient-primary)",
