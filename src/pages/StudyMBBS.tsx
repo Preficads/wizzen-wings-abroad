@@ -1,9 +1,10 @@
 // src/pages/StudyMBBS.tsx
 import React from "react";
+import PlaneBG from "@/assets/Background/PlaneBG.jpg";
 import Plane2BG from "@/assets/Background/Plane2BG.jpg";
-import Plane3BG from "@/assets/Background/Plane3.jpg";
+import Plane3BG from "@/assets/Background/Plane3.jpg"; // ✅ New background for Featured Countries
 
-// Flag URLs from Wikipedia (replace with local files if needed)
+// Flag URLs
 const flags: Record<string, string> = {
   georgia: "https://upload.wikimedia.org/wikipedia/commons/0/0f/Flag_of_Georgia.svg",
   armenia: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Flag_of_Armenia.svg",
@@ -55,35 +56,27 @@ const StudyMBBS: React.FC = () => (
     </section>
 
     {/* Quick Highlights */}
-    <section className="relative py-16">
-      {/* Light blue gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-sky-100 via-blue-100 to-sky-200"></div>
-
-      <div className="container mx-auto px-6 relative z-10">
-        <h2 className="text-3xl font-bold text-center text-gray-800">
-          Quick Highlights
-        </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-8">
-          {[
-            "WHO & NMC Approved Universities",
-            "English-Medium Education",
-            "Affordable & Transparent Process",
-            "100% Visa & Travel Assistance",
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className="backdrop-blur-lg bg-white/30 border border-white/40 rounded-xl shadow-lg p-6 text-center 
-                         hover:shadow-2xl hover:scale-105 transition-all duration-500"
-            >
-              <span className="block text-3xl">✨</span>
-              <p className="mt-3 font-medium text-gray-800">{item}</p>
-            </div>
-          ))}
-        </div>
+    <section className="py-16 bg-gray-100">
+      <h2 className="text-3xl font-bold text-center">Quick Highlights</h2>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-8 container mx-auto px-6">
+        {[
+          "WHO & NMC Approved Universities",
+          "English-Medium Education",
+          "Affordable & Transparent Process",
+          "100% Visa & Travel Assistance",
+        ].map((item, idx) => (
+          <div
+            key={idx}
+            className="text-center bg-white shadow-md p-6 rounded-xl hover:shadow-xl transition"
+          >
+            <span className="block text-2xl">✅</span>
+            <p className="mt-2">{item}</p>
+          </div>
+        ))}
       </div>
     </section>
 
-    {/* Featured Countries */}
+    {/* Featured Countries with Glass Cards and Full-Width Flag */}
     <section
       className="relative py-20 bg-cover bg-center"
       style={{ backgroundImage: `url(${Plane3BG})` }}
@@ -101,7 +94,7 @@ const StudyMBBS: React.FC = () => (
               key={country}
               className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition duration-500 flex flex-col overflow-hidden"
             >
-              {/* Flag banner at top */}
+              {/* Full-width flag at the top */}
               <div className="w-full h-28 overflow-hidden">
                 <img
                   src={flags[country.toLowerCase() as keyof typeof flags]}
