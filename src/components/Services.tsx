@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
@@ -9,7 +11,7 @@ import {
   ArrowRight,
   CheckCircle 
 } from "lucide-react";
-import { motion } from "framer-motion"; // 👈 import motion
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -68,28 +70,34 @@ export default function Services() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Our Services
           </h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto mb-8">
             We provide comprehensive services for your European education and immigration journey
           </p>
-        </div>
+        </motion.div>
 
-        {/* Main Service Grid with continuous sliding */}
+        {/* Main Service Grid with floating animation */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
               <motion.div
                 key={index}
-                animate={{ y: [0, -15, 0] }}   // 👈 goes up and back
+                animate={{ y: [0, -15, 0] }}
                 transition={{
                   duration: 3,
                   repeat: Infinity,
                   repeatType: "loop",
-                  delay: index * 0.4, // stagger each card
+                  delay: index * 0.4,
                   ease: "easeInOut"
                 }}
               >
@@ -136,53 +144,66 @@ export default function Services() {
           })}
         </div>
 
-        {/* The big featured card stays static */}
-        <Card className="bg-gradient-accent text-accent-foreground p-8 rounded-2xl animate-fade-in">
-          <CardContent className="p-0">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-              
-              {/* Left Content */}
-              <div>
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="p-2 bg-accent-foreground/10 rounded-full">
-                    <Globe className="h-6 w-6" />
+        {/* Featured Study Abroad Card with entry animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 50, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <Card className="bg-gradient-accent text-accent-foreground p-8 rounded-2xl shadow-xl">
+            <CardContent className="p-0">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                
+                {/* Left Content */}
+                <div>
+                  <div className="flex items-center space-x-3 mb-4">
+                    <div className="p-2 bg-accent-foreground/10 rounded-full">
+                      <Globe className="h-6 w-6" />
+                    </div>
+                    <span className="text-sm font-medium opacity-90">I'm Looking for</span>
                   </div>
-                  <span className="text-sm font-medium opacity-90">I'm Looking for</span>
+                  <h3 className="text-5xl font-bold mb-2 text-white">Study Abroad</h3>
+                  <p className="text-lg opacity-90 mb-6">
+                    Embrace a world of opportunities through immigration.
+                  </p>
+                  <div className="flex flex-wrap gap-3">
+                    <span className="px-3 py-1 bg-accent-foreground/10 rounded-full text-sm text-white">
+                      ✈️ Visa Processing
+                    </span>
+                    <span className="px-3 py-1 bg-accent-foreground/10 rounded-full text-sm text-white">
+                      🎓 University Admissions
+                    </span>
+                    <span className="px-3 py-1 bg-accent-foreground/10 rounded-full text-sm text-white">
+                      📄 Documentation
+                    </span>
+                  </div>
                 </div>
-                <h3 className="text-5xl font-bold mb-2 text-white">Study Abroad</h3>
-                <p className="text-lg opacity-90 mb-6">
-                  Embrace a world of opportunities through immigration.
-                </p>
-                <div className="flex flex-wrap gap-3">
-                  <span className="px-3 py-1 bg-accent-foreground/10 rounded-full text-sm text-white">
-                    ✈️ Visa Processing
-                  </span>
-                  <span className="px-3 py-1 bg-accent-foreground/10 rounded-full text-sm text-white">
-                    🎓 University Admissions
-                  </span>
-                  <span className="px-3 py-1 bg-accent-foreground/10 rounded-full text-sm text-white">
-                    📄 Documentation
-                  </span>
-                </div>
-              </div>
 
-              {/* Right Content */}
-              <div className="text-center">
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="bg-white text-blue-900 border-white hover:bg-gray-200"
+                {/* Right Content with slight delay */}
+                <motion.div
+                  initial={{ opacity: 0, x: 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+                  viewport={{ once: true }}
+                  className="text-center"
                 >
-                  Apply Online
-                </Button>
-                <p className="text-sm opacity-75 mt-3 text-white">
-                  Start your European education journey today
-                </p>
-              </div>
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    className="bg-white text-blue-900 border-white hover:bg-gray-200"
+                  >
+                    Apply Online
+                  </Button>
+                  <p className="text-sm opacity-75 mt-3 text-white">
+                    Start your European education journey today
+                  </p>
+                </motion.div>
 
-            </div>
-          </CardContent>
-        </Card>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
 
       </div>
     </section>

@@ -52,7 +52,6 @@ export default function HeroModern() {
                     cursorStyle="|"
                   />
                 </span>
-
               </h1>
             </div>
 
@@ -96,17 +95,17 @@ export default function HeroModern() {
             <div className="relative">
               {/* Background geometric rotating box */}
               <div className="absolute inset-0 flex items-center justify-center">
-                {/* ⬇️ Slower rotation applied here */}
-                <div className="w-80 h-80 bg-gradient-hero opacity-80 rounded-3xl animate-rotate-extreme"></div>
+                {/* ⬇️ Smaller only on mobile */}
+                <div className="w-60 h-60 sm:w-80 sm:h-80 bg-gradient-hero opacity-80 rounded-3xl animate-rotate-extreme"></div>
 
                 {/* Floating cards */}
-                <div className="absolute top-[450px] left-[50px] bg-orange-600 text-white p-3 rounded-xl shadow-lg transform rotate-6 animate-float">
+                <div className="absolute top-[350px] left-[20px] sm:top-[450px] sm:left-[50px] bg-orange-600 text-white p-3 rounded-xl shadow-lg transform rotate-6 animate-float">
                   <div className="text-xs font-medium">Immigrate &</div>
                   <div className="text-l">Settle</div>
                 </div>
 
                 <div
-                  className="absolute top-80 right-4 bg-purple-800 text-white p-3 rounded-xl shadow-lg transform rotate-6 animate-float"
+                  className="absolute top-64 right-2 sm:top-80 sm:right-4 bg-purple-800 text-white p-3 rounded-xl shadow-lg transform rotate-6 animate-float"
                   style={{ animationDelay: "1s" }}
                 >
                   <div className="text-xs font-medium">Foreign Immigration</div>
