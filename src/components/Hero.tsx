@@ -51,7 +51,7 @@ export default function Hero() {
               <span className="text-foreground">Give wings to your</span>
               <br />
               <span className="bg-gradient-accent bg-clip-text text-transparent">
-                Education & Immigration
+                Education & Immigration.
               </span>
               <br />
               <span className="text-primary">
