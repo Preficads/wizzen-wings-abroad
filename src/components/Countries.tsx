@@ -86,14 +86,15 @@ const countries = [
 // Marquee effect (infinite sliding rows)
 const MarqueeRow = ({ countries, direction = "left" }) => (
   <motion.div
-    className="flex space-x-6"
+    className="flex space-x-4 sm:space-x-6"
     animate={{ x: direction === "left" ? ["0%", "-100%"] : ["-100%", "0%"] }}
     transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
   >
     {[...countries, ...countries].map((country, idx) => (
       <Card
         key={idx}
-        className="min-w-[220px] max-w-[220px] flex-shrink-0
+        className="flex-shrink-0
+          w-36 sm:min-w-[220px] sm:max-w-[220px]
           bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200
           backdrop-blur-md border border-blue-200 
           rounded-2xl shadow-lg shadow-blue-300/40"
@@ -105,11 +106,11 @@ const MarqueeRow = ({ countries, direction = "left" }) => (
             className="w-full h-28 object-cover rounded-t-2xl"
           />
         </CardHeader>
-        <CardContent className="p-4 text-center">
-          <CardTitle className="text-lg font-semibold mb-2 text-gray-900">
+        <CardContent className="p-3 sm:p-4 text-center">
+          <CardTitle className="text-base sm:text-lg font-semibold mb-2 text-gray-900">
             {country.name}
           </CardTitle>
-          <p className="text-sm text-gray-700 mb-3">{country.description}</p>
+          <p className="text-xs sm:text-sm text-gray-700 mb-3">{country.description}</p>
           <Button
             variant="outline"
             size="sm"
@@ -128,7 +129,7 @@ export default function Countries() {
   return (
     <section
       id="countries"
-      className="py-20 bg-gray-100/70 overflow-hidden"  // Light gray with low opacity
+      className="py-20 bg-gray-100/70 overflow-hidden" // Light gray with low opacity
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
