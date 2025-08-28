@@ -13,7 +13,6 @@ const navigation = [
   { name: "Contact", href: "/contact" },
 ];
 
-// Country lists (future pages)
 const studyAbroadCountries = [
   { name: "USA", href: "/countries/usa" },
   { name: "UK", href: "/countries/uk" },
@@ -35,7 +34,6 @@ export default function Navbar() {
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -55,12 +53,16 @@ export default function Navbar() {
     <>
       {/* Navbar */}
       <header className="fixed top-0 w-full bg-background/80 backdrop-blur-md z-50">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8 lg:py-4">
           {/* Logo */}
           <div className="flex lg:flex-1">
             <a href="/" className="flex items-center space-x-3">
-              <div className="h-14 flex items-center justify-center">
-                <img className="h-14" src={wizzenLogo} alt="Wizzen Logo" />
+              <div className="h-10 lg:h-14 flex items-center justify-center">
+                <img
+                  className="h-10 lg:h-14 w-auto"
+                  src={wizzenLogo}
+                  alt="Wizzen Logo"
+                />
               </div>
             </a>
           </div>
@@ -77,10 +79,8 @@ export default function Navbar() {
                     {item.name} <ChevronDown className="h-4 w-4" />
                   </button>
 
-                  {/* Dropdown Menu */}
                   {dropdownOpen && (
                     <div className="absolute left-0 top-full mt-2 w-72 rounded-xl bg-white/30 backdrop-blur-lg shadow-xl p-4 animate-fade-in">
-                      {/* Study Abroad */}
                       <div>
                         <h4 className="text-xs font-semibold text-muted-foreground uppercase mb-2">
                           Study Abroad Countries
@@ -100,7 +100,6 @@ export default function Navbar() {
                         </ul>
                       </div>
 
-                      {/* Immigration */}
                       <div className="mt-4">
                         <h4 className="text-xs font-semibold text-muted-foreground uppercase mb-2">
                           Immigration / PR Destinations
@@ -151,7 +150,7 @@ export default function Navbar() {
           <div className="flex lg:hidden">
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md p-2.5 text-foreground"
+              className="inline-flex items-center justify-center rounded-md p-2 text-foreground"
               onClick={() => setMobileMenuOpen(true)}
             >
               <Menu className="h-6 w-6" />
@@ -165,32 +164,32 @@ export default function Navbar() {
         className={`fixed inset-0 z-40 lg:hidden transition-opacity duration-300 
         ${mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
       >
-        {/* Background Overlay */}
         <div
           className="fixed inset-0 bg-black/50"
           onClick={() => setMobileMenuOpen(false)}
         />
 
-        {/* Drawer */}
         <div
-          className={`fixed inset-y-0 right-0 w-11/12 max-w-sm bg-background/90 backdrop-blur-md px-6 py-6 
+          className={`fixed inset-y-0 right-0 w-11/12 max-w-sm bg-background/95 backdrop-blur-md px-5 py-6 
           transform transition-transform duration-300 ease-in-out 
           ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
         >
           <div className="flex items-center justify-between">
             {/* Mobile Logo */}
-            <div className="flex items-center space-x-3">
-              <img src={wizzenLogo} alt="Wizzen Logo" className="h-10" />
-              <div className="flex flex-col">
-                <span className="font-bold text-primary">Wizzen Overseas</span>
-                <span className="text-xs text-muted-foreground">
+            <div className="flex items-center space-x-2">
+              <img src={wizzenLogo} alt="Wizzen Logo" className="h-8 w-auto" />
+              <div className="flex flex-col leading-tight">
+                <span className="font-bold text-primary text-sm">
+                  Wizzen Overseas
+                </span>
+                <span className="text-[10px] text-muted-foreground">
                   Education & Immigration
                 </span>
               </div>
             </div>
             <button
               type="button"
-              className="rounded-md p-2.5 text-foreground"
+              className="rounded-md p-2 text-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
               <X className="h-6 w-6" />
