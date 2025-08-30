@@ -1,5 +1,5 @@
 "use client";
-
+import GraduationImg from "@/assets/Background/ServiceBG.jpg";
 import { motion } from "framer-motion";
 import {
   GraduationCap,
@@ -26,7 +26,7 @@ import { useParams, Link } from "react-router-dom";
 import Footer from "@/components/Footer";
 
 // ✅ Local background image
-import GraduationImg from "@/assets/Background/Graduation.jpg";
+
 
 // 🔹 CountUp Hook
 const useCountUp = (end: number, duration: number = 2) => {
@@ -156,7 +156,7 @@ export default function ServicesPage() {
   return (
     <div className="m-0 p-0">
       {/* 🔹 Hero Section */}
-      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[100vh] flex items-center justify-center overflow-hidden">
         <img
           src={GraduationImg}
           alt="Graduation"
@@ -164,9 +164,17 @@ export default function ServicesPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/40"></div>
         <div className="relative z-10 max-w-3xl px-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+          <h1
+            className="inline-block text-6xl md:text-8xl font-bold drop-shadow-lg
+               bg-gradient-to-r from-[#b57e10] via-[#fff3a6] to-[#b57e10]
+               bg-clip-text text-transparent leading-[1.2] pb-6 pr-[0.12em] overflow-visible">
             {service.title}
           </h1>
+          <p className="mt-4 text-lg md:text-xl text-white max-w-3xl">
+            {service.description}
+          </p>
+
+
           <p className="text-lg text-gray-200">{service.description}</p>
         </div>
       </section>
