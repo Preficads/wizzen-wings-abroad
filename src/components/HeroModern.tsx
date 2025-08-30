@@ -7,6 +7,7 @@ import { Typewriter } from "react-simple-typewriter";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 
+
 const textVariant: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: (custom: number = 0) => ({
@@ -119,12 +120,13 @@ export default function HeroModern() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-green-500 text-green-600 hover:bg-green-50 rounded-md px-8 py-3 font-medium text-base shadow-card"
-                >
-                  <MessageCircle className="mr-2 h-4 w-4" /> WhatsApp Germany
+                <Button className="flex items-center bg-green-500 text-white px-8 py-6 font-medium hover:bg-green-600">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                    alt="WhatsApp"
+                    className="mr-2 h-4 w-4"
+                  />
+                  WhatsApp
                 </Button>
               </motion.a>
             </div>

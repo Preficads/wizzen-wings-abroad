@@ -10,8 +10,9 @@ import Navbar from "./components/Navbar"; // ✅ Navbar always visible
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import StudyMBBS from "./pages/StudyMBBS";
-import ServicesPage from "./pages/ServicesPage";
-import About from "./pages/AboutPage"; // ✅ Import About page
+import Services from "./components/Services"; // ✅ Main Services list page
+import ServicesPage from "./pages/ServicesPage"; // ✅ Detailed service page
+import About from "./pages/AboutPage"; // ✅ About page
 
 const queryClient = new QueryClient();
 
@@ -25,12 +26,21 @@ const App = () => (
         <Navbar />
         <div className="pt-20"> {/* Push content below fixed navbar */}
           <Routes>
+            {/* Home */}
             <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} /> {/* ✅ About Route */}
+
+            {/* About */}
+            <Route path="/about" element={<About />} />
+
+            {/* Study MBBS */}
             <Route path="/mbbs" element={<StudyMBBS />} />
-            <Route path="/services" element={<ServicesPage />} />
-            
-            {/* Catch-all 404 route */}
+
+            {/* Services Section */}
+            <Route path="/services" element={<Services />} /> 
+            <Route path="/services/:id" element={<ServicesPage />} /> 
+            {/* Example: /services/study-abroad, /services/immigration */}
+
+            {/* 404 Fallback */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

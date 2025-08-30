@@ -22,7 +22,7 @@ const labelColor = "text-blue-700";
 // -------- Stats Data
 const stats = [
   { number: 10, suffix: "+", label: "Expert Counselors", icon: Users },
-  { number: 5, suffix: "+", label: "Years Experience", icon: Award },
+  { number: 8, suffix: "+", label: "Years Experience", icon: Award },
   { number: 1000, suffix: "+", label: "Students Guided", icon: Users },
   { number: 95, suffix: "%", label: "Success Rate", icon: Award },
 ];

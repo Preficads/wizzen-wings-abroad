@@ -19,13 +19,15 @@ import {
   Mic,
   Mail,
   CheckCircle,
+  ArrowLeft,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Typewriter } from "react-simple-typewriter";
-import Footer from "@/components/Footer"; // ✅ Import Footer
+import { useParams, Link } from "react-router-dom";
+import Footer from "@/components/Footer";
 
-// ✅ Local image
+// ✅ Local background image
 import GraduationImg from "@/assets/Background/Graduation.jpg";
+
 // 🔹 CountUp Hook
 const useCountUp = (end: number, duration: number = 2) => {
   const [count, setCount] = useState(0);
@@ -52,9 +54,18 @@ const stats = [
   { number: 650, suffix: "+", label: "Students Abroad" },
 ];
 
-// 🔹 Services
-const services = [
+// 🔹 Services Data (IDs must match Services.tsx)
+const services: Record<
+  string,
   {
+    title: string;
+    description: string;
+    points: { Icon: any; text: string }[];
+    icon: any;
+    color: string;
+  }
+> = {
+  "study-abroad": {
     title: "Study Abroad Programs",
     description: "Comprehensive guidance for studying in Europe’s top universities",
     points: [
@@ -66,7 +77,7 @@ const services = [
     icon: GraduationCap,
     color: "text-purple-500",
   },
-  {
+  immigration: {
     title: "Immigration Services",
     description: "Complete immigration support for European countries",
     points: [
@@ -78,7 +89,7 @@ const services = [
     icon: Globe,
     color: "text-green-500",
   },
-  {
+  "work-visa": {
     title: "Work & Visa Support",
     description: "Professional assistance for work permits and visas",
     points: [
@@ -90,7 +101,7 @@ const services = [
     icon: Plane,
     color: "text-blue-500",
   },
-  {
+  documentation: {
     title: "Documentation & Admissions",
     description: "Expert help with university admissions and documentation",
     points: [
@@ -102,7 +113,7 @@ const services = [
     icon: FileText,
     color: "text-red-500",
   },
-];
+};
 
 // 🔹 Process Steps
 const processSteps = [
@@ -111,34 +122,6 @@ const processSteps = [
   { title: "Application", icon: FileText },
   { title: "Visa Processing", icon: Plane },
   { title: "Settlement", icon: Users },
-];
-
-// 🔹 Countries
-const countries = [
-  {
-    name: "Germany",
-    image: "https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg",
-  },
-  {
-    name: "Italy",
-    image: "https://upload.wikimedia.org/wikipedia/en/0/03/Flag_of_Italy.svg",
-  },
-  {
-    name: "France",
-    image: "https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg",
-  },
-  {
-    name: "Canada",
-    image: "https://upload.wikimedia.org/wikipedia/en/c/cf/Flag_of_Canada.svg",
-  },
-  {
-    name: "United Kingdom",
-    image: "https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg",
-  },
-  {
-    name: "United States",
-    image: "https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg",
-  },
 ];
 
 // 🔹 Motion Variants
@@ -152,59 +135,39 @@ const fadeUp = {
 };
 
 export default function ServicesPage() {
-  const [instantLoad, setInstantLoad] = useState(false);
-  useEffect(() => {
-    setInstantLoad(true);
-  }, []);
+  const { id } = useParams<{ id: string }>();
+  const service = id ? services[id] : null;
+
+  if (!service) {
+    return (
+      <div className="py-32 text-center">
+        <h2 className="text-3xl font-bold text-red-600 mb-6">
+          Service Not Found
+        </h2>
+        <Link to="/services">
+          <button className="px-6 py-3 bg-blue-600 text-white rounded-xl flex items-center gap-2 mx-auto">
+            <ArrowLeft className="h-5 w-5" /> Back to Services
+          </button>
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="m-0 p-0">
       {/* 🔹 Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
         <img
           src={GraduationImg}
           alt="Graduation"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/40"></div>
-        <div className="relative z-10 max-w-4xl px-6 text-center">
-          <motion.h1
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            custom={0}
-            className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg"
-          >
-            {instantLoad ? (
-              "Shape Your Future Abroad With Wizzen Overseas"
-            ) : (
-              <Typewriter
-                words={["Shape Your Future Abroad With Wizzen Overseas"]}
-                loop={false}
-                cursor
-                cursorStyle="|"
-                typeSpeed={60}
-                deleteSpeed={50}
-                delaySpeed={1500}
-              />
-            )}
-          </motion.h1>
-          <motion.p
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            custom={1}
-            className="text-lg text-gray-200 mb-8"
-          >
-            Your trusted partner for study, work, and immigration success.
-          </motion.p>
-          <motion.a
-            href="/contact"
-            whileHover={{ scale: 1.1 }}
-            className="px-8 py-4 bg-blue-600 text-white rounded-xl shadow-lg font-semibold inline-block"
-          >
-            Start Your Journey
-          </motion.a>
+        <div className="relative z-10 max-w-3xl px-6 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+            {service.title}
+          </h1>
+          <p className="text-lg text-gray-200">{service.description}</p>
         </div>
       </section>
 
@@ -235,62 +198,44 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 🔹 Services */}
+      {/* 🔹 Service Detail */}
       <section className="py-20 bg-gradient-to-b from-blue-50 via-blue-100 to-blue-200">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <motion.h2
+        <div className="max-w-4xl mx-auto px-6">
+          <motion.div
+            variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            variants={fadeUp}
-            custom={0}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold mb-14 text-gray-900"
+            className="bg-white/20 backdrop-blur-md shadow-xl border border-white/30 rounded-2xl p-10"
           >
-            Our Services
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {services.map((service, i) => {
-              const Icon = service.icon;
-              return (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  custom={i}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
-                  className="relative bg-white/20 backdrop-blur-md shadow-xl border border-white/30 rounded-2xl p-8 text-left hover:shadow-2xl transition-all"
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <Icon className={`h-10 w-10 ${service.color} drop-shadow-lg`} />
-                    <h3 className="text-xl font-semibold text-gray-900">
-                      {service.title}
-                    </h3>
-                  </div>
-                  <p className="text-gray-700 mb-4">{service.description}</p>
-                  <ul className="space-y-3 text-gray-800">
-                    {service.points.map((point, j) => {
-                      const PointIcon = point.Icon;
-                      return (
-                        <motion.li
-                          key={j}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.5, delay: j * 0.1 }}
-                          viewport={{ once: true }}
-                          className="flex items-center gap-2"
-                        >
-                          <PointIcon className="w-5 h-5 text-blue-600 drop-shadow-sm" />
-                          <span>{point.text}</span>
-                        </motion.li>
-                      );
-                    })}
-                  </ul>
-                </motion.div>
-              );
-            })}
-          </div>
+            <div className="flex items-center gap-3 mb-6">
+              <service.icon
+                className={`h-12 w-12 ${service.color} drop-shadow-lg`}
+              />
+              <h2 className="text-2xl font-semibold text-gray-900">
+                {service.title}
+              </h2>
+            </div>
+            <p className="text-gray-700 mb-6">{service.description}</p>
+            <ul className="space-y-4 text-gray-800">
+              {service.points.map((point, j) => {
+                const PointIcon = point.Icon;
+                return (
+                  <motion.li
+                    key={j}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: j * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-center gap-2"
+                  >
+                    <PointIcon className="w-5 h-5 text-blue-600" />
+                    <span>{point.text}</span>
+                  </motion.li>
+                );
+              })}
+            </ul>
+          </motion.div>
         </div>
       </section>
 
@@ -333,50 +278,6 @@ export default function ServicesPage() {
                 </motion.div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* 🔹 Countries */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <motion.h2
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeUp}
-            custom={0}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold mb-14 text-gray-900"
-          >
-            Featured Countries
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {countries.map((c, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                custom={i}
-                viewport={{ once: true }}
-                className="relative rounded-2xl overflow-hidden shadow-lg group"
-              >
-                <img
-                  src={c.image}
-                  alt={c.name}
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white">
-                  <h3 className="text-2xl font-bold mb-3">{c.name}</h3>
-                  <a
-                    href={`/countries/${c.name.toLowerCase()}`}
-                    className="px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-700 transition"
-                  >
-                    Learn More
-                  </a>
-                </div>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>

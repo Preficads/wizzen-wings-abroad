@@ -7,14 +7,16 @@ import {
   FileText, 
   Plane, 
   Building2, 
-  Globe,
   ArrowRight,
   CheckCircle 
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
+// ✅ Service Data
 const services = [
   {
+    id: "study-abroad",
     icon: GraduationCap,
     title: "Study Abroad Programs",
     description: "Comprehensive guidance for studying in Europe's top universities",
@@ -27,6 +29,7 @@ const services = [
     color: "text-blue-600"
   },
   {
+    id: "immigration",
     icon: FileText,
     title: "Immigration Services",
     description: "Complete immigration support for European countries",
@@ -39,6 +42,7 @@ const services = [
     color: "text-green-600"
   },
   {
+    id: "work-visa",
     icon: Plane,
     title: "Work & Visa Support",
     description: "Professional assistance for work permits and visas",
@@ -51,6 +55,7 @@ const services = [
     color: "text-purple-600"
   },
   {
+    id: "documentation",
     icon: Building2,
     title: "Documentation & Admissions",
     description: "Expert help with university admissions and documentation",
@@ -64,11 +69,12 @@ const services = [
   }
 ];
 
+// ✅ Main Page
 export default function Services() {
   return (
     <section id="services" className="py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -85,13 +91,13 @@ export default function Services() {
           </p>
         </motion.div>
 
-        {/* Main Service Grid with floating animation */}
+        {/* Service Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
               <motion.div
-                key={index}
+                key={service.id}
                 animate={{ y: [0, -15, 0] }}
                 transition={{
                   duration: 3,
@@ -119,6 +125,7 @@ export default function Services() {
                       {service.description}
                     </p>
                   </CardHeader>
+
                   <CardContent className="pt-0">
                     <ul className="space-y-2 mb-4">
                       {service.features.map((feature, idx) => (
@@ -128,83 +135,25 @@ export default function Services() {
                         </li>
                       ))}
                     </ul>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="w-full border-gray-400 text-gray-900 transition-all duration-500
-                                 hover:bg-accent hover:text-accent-foreground hover:border-accent"
-                    >
-                      Learn More
-                      <ArrowRight className="ml-2 h-3 w-3" />
-                    </Button>
+
+                    {/* Redirect to ServicesPage with ID */}
+                    <Link to={`/services/${service.id}`}>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="w-full border-gray-400 text-gray-900 transition-all duration-500
+                                   hover:bg-accent hover:text-accent-foreground hover:border-accent"
+                      >
+                        Learn More
+                        <ArrowRight className="ml-2 h-3 w-3" />
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               </motion.div>
             );
           })}
         </div>
-
-        {/* Featured Study Abroad Card with entry animation */}
-        <motion.div
-          initial={{ opacity: 0, y: 50, scale: 0.95 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <Card className="bg-gradient-accent text-accent-foreground p-8 rounded-2xl shadow-xl">
-            <CardContent className="p-0">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                
-                {/* Left Content */}
-                <div>
-                  <div className="flex items-center space-x-3 mb-4">
-                    <div className="p-2 bg-accent-foreground/10 rounded-full">
-                      <Globe className="h-6 w-6" />
-                    </div>
-                    <span className="text-sm font-medium opacity-90">I'm Looking for</span>
-                  </div>
-                  <h3 className="text-5xl font-bold mb-2 text-white">Study Abroad</h3>
-                  <p className="text-lg opacity-90 mb-6">
-                    Embrace a world of opportunities through immigration.
-                  </p>
-                  <div className="flex flex-wrap gap-3">
-                    <span className="px-3 py-1 bg-accent-foreground/10 rounded-full text-sm text-white">
-                      ✈️ Visa Processing
-                    </span>
-                    <span className="px-3 py-1 bg-accent-foreground/10 rounded-full text-sm text-white">
-                      🎓 University Admissions
-                    </span>
-                    <span className="px-3 py-1 bg-accent-foreground/10 rounded-full text-sm text-white">
-                      📄 Documentation
-                    </span>
-                  </div>
-                </div>
-
-                {/* Right Content with slight delay */}
-                <motion.div
-                  initial={{ opacity: 0, x: 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-                  viewport={{ once: true }}
-                  className="text-center"
-                >
-                  <Button 
-                    variant="outline" 
-                    size="lg" 
-                    className="bg-white text-blue-900 border-white hover:bg-gray-200"
-                  >
-                    Apply Online
-                  </Button>
-                  <p className="text-sm opacity-75 mt-3 text-white">
-                    Start your European education journey today
-                  </p>
-                </motion.div>
-
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-
       </div>
     </section>
   );
