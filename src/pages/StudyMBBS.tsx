@@ -4,7 +4,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import PlaneBG from "@/assets/Background/PlaneBG.jpg";
-import Plane2BG from "@/assets/Background/Plane2BG.jpg";
+import Plane2BG from "@/assets/Background/MbbsGirl.jpg";
 import Plane3BG from "@/assets/Background/Plane3.jpg";
 
 // ✅ Flags for featured countries
@@ -32,6 +32,7 @@ const countries = [
   "Bulgaria",
 ];
 
+
 // ✅ Fade-in animation (supports stagger with `custom`)
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -50,15 +51,32 @@ export default function StudyMBBS() {
         className="relative h-screen bg-cover bg-center flex items-center"
         style={{ backgroundImage: `url(${Plane2BG})` }}
       >
-        <div className="container mx-auto px-6 relative z-10 text-white">
+        <div className="container mx-auto px-0 relative z-10">
           <motion.h1
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: -50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-extrabold uppercase"
+            className="font-extrabold uppercase leading-none"
           >
-            Study MBBS Abroad
+            {/* Study */}
+            <span className="text-white text-6xl md:text-7xl font-medium block leading-none">
+              Study
+            </span>
+
+            {/* MBBS */}
+            <span className="block text-7xl md:text-9xl bg-gradient-to-r from-[#b57e10] via-[#fff3a6] to-[#b57e10] 
+                   bg-clip-text text-transparent leading-none -mt-1">
+              MBBS
+            </span>
+
+            {/* Abroad */}
+            <span className="block text-5xl md:text-9xl bg-gradient-to-l from-[#b57e10] via-[#b57e10] to-[#fff3a6] 
+                   bg-clip-text text-transparent leading-none -mt-1">
+              Abroad
+            </span>
           </motion.h1>
+
+
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -73,15 +91,29 @@ export default function StudyMBBS() {
             transition={{ delay: 1, duration: 0.6 }}
             className="mt-6 flex gap-4"
           >
-            <button className="bg-orange-500 px-6 py-3 rounded-xl font-semibold hover:bg-orange-600 transition-all duration-300 transform hover:scale-105">
+            <button className="px-6 py-3 rounded-xl font-semibold text-white 
+                   bg-gradient-to-r from-white/20 to-white/10 
+                   backdrop-blur-md border border-white/20 shadow-lg 
+                   hover:from-white/30 hover:to-white/20 
+                   transition-all duration-300 transform hover:scale-105">
               Apply Now
             </button>
-            <button className="border border-orange-500 px-6 py-3 rounded-xl font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300 transform hover:scale-105">
+
+
+            <button
+              className="px-6 py-3 rounded-xl font-semibold text-[#fff3a6] 
+             border border-white/50 bg-transparent 
+             transition-all duration-300 transform hover:scale-105 
+             hover:border-white hover:text-white"
+            >
               Free Counselling
             </button>
+
+
+
           </motion.div>
         </div>
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0" />
       </section>
 
       {/* ===================== Intro Section (mobile overlap fixed) ===================== */}
@@ -294,17 +326,15 @@ export default function StudyMBBS() {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className={`relative flex items-center ${
-                  idx % 2 === 0 ? "justify-start" : "justify-end"
-                }`}
+                className={`relative flex items-center ${idx % 2 === 0 ? "justify-start" : "justify-end"
+                  }`}
               >
                 <div className="absolute left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold shadow-lg">
                   {idx + 1}
                 </div>
                 <div
-                  className={`w-[90%] sm:w-[70%] md:w-[45%] backdrop-blur-xl bg-orange-50 border border-orange-100 shadow-md p-6 rounded-xl ${
-                    idx % 2 === 0 ? "text-left" : "text-right"
-                  }`}
+                  className={`w-[90%] sm:w-[70%] md:w-[45%] backdrop-blur-xl bg-orange-50 border border-orange-100 shadow-md p-6 rounded-xl ${idx % 2 === 0 ? "text-left" : "text-right"
+                    }`}
                 >
                   <p className="font-medium">{step}</p>
                 </div>
