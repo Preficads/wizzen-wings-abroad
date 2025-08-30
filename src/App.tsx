@@ -6,10 +6,11 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Navbar from "./components/Navbar"; // ✅ Import Navbar
+import Navbar from "./components/Navbar"; // ✅ Navbar always visible
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import StudyMBBS from "./pages/StudyMBBS"; // ✅ Import the new Study MBBS page
+import StudyMBBS from "./pages/StudyMBBS"; 
+import ServicesPage from "./pages/ServicesPage"; // ✅ Import Services page
 
 const queryClient = new QueryClient();
 
@@ -24,8 +25,10 @@ const App = () => (
         <div className="pt-20"> {/* Push content below fixed navbar */}
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/mbbs" element={<StudyMBBS />} /> {/* Study MBBS route */}
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="/mbbs" element={<StudyMBBS />} />
+            <Route path="/services" element={<ServicesPage />} /> {/* ✅ Services Route */}
+            
+            {/* Catch-all 404 route */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

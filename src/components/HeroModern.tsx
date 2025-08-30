@@ -2,19 +2,20 @@
 
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle } from "lucide-react";
-import heroImage from "@/assets/hero-image.png";
+import heroImage from "@/assets/hero-image.png"
 import { Typewriter } from "react-simple-typewriter";
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 
-// Variants for stagger animations
-const textVariant = {
+const textVariant: Variants = {
   hidden: { opacity: 0, y: 40 },
-  visible: (i: number) => ({
+  visible: (custom: number = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, type: "spring", stiffness: 60 }
-  })
+    transition: { delay: custom * 0.15, type: "spring", stiffness: 60 },
+  }),
 };
+
 
 export default function HeroModern() {
   return (
@@ -28,7 +29,7 @@ export default function HeroModern() {
       </div>
 
       {/* Content Section */}
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-0 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* Left Column - Content */}
@@ -63,6 +64,7 @@ export default function HeroModern() {
                     {word}
                   </motion.span>
                 ))}
+
 
                 <motion.span
                   initial={{ opacity: 0, scale: 0.8 }}
