@@ -83,6 +83,9 @@ export default {
       },
       backdropBlur: {
         xs: "2px",
+        sm: "4px",
+        md: "8px", // Added a stronger blur option for flexibility
+        lg: "16px", // Added larger blur for glass effect
       },
       keyframes: {
         "accordion-down": {

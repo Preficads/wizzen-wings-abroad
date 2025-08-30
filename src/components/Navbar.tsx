@@ -11,7 +11,7 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Services", href: "/services" },
-  { name: "Study MBBS", href: "/mbbs" }, // ✅ Now links correctly
+  { name: "Study MBBS", href: "/mbbs" },
   { name: "Countries", href: "#", dropdown: true },
   { name: "Learn German", href: "/reviews" },
   { name: "Contact", href: "/contact" },
@@ -84,9 +84,14 @@ export default function Navbar() {
                   </button>
 
                   {dropdownOpen && (
-                    <div className="absolute left-0 top-full mt-2 w-72 rounded-xl bg-white/30 backdrop-blur-lg shadow-xl p-4 animate-fade-in">
+                    <div
+                      className="absolute left-0 top-full mt-3 w-80 rounded-2xl 
+                                bg-white/20 backdrop-blur-xl border border-white/30 
+                                shadow-2xl p-5 animate-fade-in transform transition-all duration-300"
+                    >
+                      {/* Study Abroad */}
                       <div>
-                        <h4 className="text-xs font-semibold text-muted-foreground uppercase mb-2">
+                        <h4 className="text-xs font-semibold text-foreground/80 tracking-wide uppercase mb-2">
                           Study Abroad Countries
                         </h4>
                         <ul className="space-y-1">
@@ -94,7 +99,9 @@ export default function Navbar() {
                             <li key={country.name}>
                               <Link
                                 to={country.href}
-                                className="block px-2 py-1 text-sm rounded hover:bg-white/40 transition"
+                                className="block px-3 py-2 text-sm font-medium rounded-lg 
+                                           text-foreground hover:bg-white/30 hover:backdrop-blur-md 
+                                           transition-all duration-200"
                                 onClick={() => setDropdownOpen(false)}
                               >
                                 {country.name}
@@ -104,8 +111,9 @@ export default function Navbar() {
                         </ul>
                       </div>
 
+                      {/* Immigration */}
                       <div className="mt-4">
-                        <h4 className="text-xs font-semibold text-muted-foreground uppercase mb-2">
+                        <h4 className="text-xs font-semibold text-foreground/80 tracking-wide uppercase mb-2">
                           Immigration / PR Destinations
                         </h4>
                         <ul className="space-y-1">
@@ -113,7 +121,9 @@ export default function Navbar() {
                             <li key={country.name}>
                               <Link
                                 to={country.href}
-                                className="block px-2 py-1 text-sm rounded hover:bg-white/40 transition"
+                                className="block px-3 py-2 text-sm font-medium rounded-lg 
+                                           text-foreground hover:bg-white/30 hover:backdrop-blur-md 
+                                           transition-all duration-200"
                                 onClick={() => setDropdownOpen(false)}
                               >
                                 {country.name}

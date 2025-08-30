@@ -9,8 +9,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar"; // ✅ Navbar always visible
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import StudyMBBS from "./pages/StudyMBBS"; 
-import ServicesPage from "./pages/ServicesPage"; // ✅ Import Services page
+import StudyMBBS from "./pages/StudyMBBS";
+import ServicesPage from "./pages/ServicesPage";
+import About from "./pages/AboutPage"; // ✅ Import About page
 
 const queryClient = new QueryClient();
 
@@ -25,8 +26,9 @@ const App = () => (
         <div className="pt-20"> {/* Push content below fixed navbar */}
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} /> {/* ✅ About Route */}
             <Route path="/mbbs" element={<StudyMBBS />} />
-            <Route path="/services" element={<ServicesPage />} /> {/* ✅ Services Route */}
+            <Route path="/services" element={<ServicesPage />} />
             
             {/* Catch-all 404 route */}
             <Route path="*" element={<NotFound />} />
