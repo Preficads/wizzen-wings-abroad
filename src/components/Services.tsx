@@ -18,6 +18,8 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import ServiceBG from "@/assets/Background/ServiceBG.jpg";
+
 
 // ✅ Service Data (cards at top)
 const services = [
@@ -123,7 +125,7 @@ export default function Services() {
       id="services"
       className="relative py-20 bg-no-repeat"
       style={{
-        backgroundImage: `url(/src/assets/Background/ServiceBG.jpg)`,
+        backgroundImage: `url(${ServiceBG})`,
         backgroundSize: "100%",
         backgroundPosition: "top -65px center",
       }}
