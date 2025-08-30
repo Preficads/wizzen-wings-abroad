@@ -7,6 +7,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar"; // ✅ Navbar always visible
+import ScrollToTop from "./components/ScrollToTop"; // ✅ Scroll fix
+
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import StudyMBBS from "./pages/StudyMBBS";
@@ -22,8 +24,12 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        {/* ✅ Always scroll to top on route change */}
+        <ScrollToTop />
+
         {/* ✅ Navbar always visible */}
         <Navbar />
+
         <div className="pt-20"> {/* Push content below fixed navbar */}
           <Routes>
             {/* Home */}
@@ -36,8 +42,8 @@ const App = () => (
             <Route path="/mbbs" element={<StudyMBBS />} />
 
             {/* Services Section */}
-            <Route path="/services" element={<Services />} /> 
-            <Route path="/services/:id" element={<ServicesPage />} /> 
+            <Route path="/services" element={<Services />} />
+            <Route path="/services/:id" element={<ServicesPage />} />
             {/* Example: /services/study-abroad, /services/immigration */}
 
             {/* 404 Fallback */}
