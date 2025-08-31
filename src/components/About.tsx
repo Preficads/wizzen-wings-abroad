@@ -30,14 +30,18 @@ export default function About() {
   };
 
   return (
-    <section
-      className="relative py-16 sm:py-20 overflow-hidden h-full min-h-screen
-      bg-center bg-cover"
-      style={{
-        backgroundImage: `linear-gradient(to bottom right, rgba(0,0,0,0.85), rgba(8,16,40,0.9)), url(${backgroundGermany})`,
-        backgroundBlendMode: "multiply",
-      }}
-    >
+    <section className="relative py-16 sm:py-20 overflow-hidden">
+      {/* ✅ Background Image + Overlay */}
+      <div className="absolute inset-0 -z-10">
+        <img
+          src={backgroundGermany}
+          alt="Background Germany"
+          className="w-full h-auto object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/85 to-[#081028]/90" />
+      </div>
+
+      {/* Floating motion blobs */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -57,6 +61,7 @@ export default function About() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          {/* Left content */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -64,26 +69,30 @@ export default function About() {
             viewport={{ once: true, amount: 0.3 }}
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
-              About <span className="text-purple-400">Wizzen <br />Overseas</span>
+              About{" "}
+              <span className="text-purple-400">
+                Wizzen <br /> Overseas
+              </span>
             </h2>
             <p className="mt-4 text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl">
               At{" "}
               <span className="text-purple-300 font-semibold">
                 Wizzen Overseas Education & Immigration
               </span>
-              , we specialize in guiding students toward their global education dreams.
-              With expertise in career counseling, university admissions, visa
-              assistance, and language training, we ensure every step of your
-              study-abroad journey is smooth and successful.
+              , we specialize in guiding students toward their global education
+              dreams. With expertise in career counseling, university admissions,
+              visa assistance, and language training, we ensure every step of
+              your study-abroad journey is smooth and successful.
             </p>
             <p className="mt-3 text-gray-400 text-sm sm:text-base max-w-2xl">
               We partner with top universities and institutions, helping you pick
               the right program for your career goals. With years of experience
-              and an industry-leading success rate, we are proud to be trusted
-              by students worldwide.
+              and an industry-leading success rate, we are proud to be trusted by
+              students worldwide.
             </p>
           </motion.div>
 
+          {/* Stats cards */}
           <motion.div
             className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mt-8 lg:mt-0"
             variants={containerVariants}
@@ -103,13 +112,15 @@ export default function About() {
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 whileHover={{ scale: 1.05, rotate: 1 }}
                 whileTap={{ scale: 0.98 }}
-                className="p-4 sm:p-6 md:p-8 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 text-center min-w-0 shadow-lg shadow-black/20"
+                className="p-6 sm:p-8 md:p-10 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 text-center shadow-lg shadow-black/20"
               >
-                <div className={`text-3xl sm:text-4xl md:text-6xl font-extrabold ${stat.color} break-words`}>
+                <div
+                  className={`text-4xl sm:text-5xl md:text-7xl font-extrabold ${stat.color}`}
+                >
                   {startCount && <CountUp end={stat.value} duration={duration} />}
                   {stat.suffix}
                 </div>
-                <div className="text-xs sm:text-sm md:text-base text-gray-300 mt-2">
+                <div className="text-sm sm:text-base md:text-lg text-gray-300 mt-2">
                   {stat.label}
                 </div>
               </motion.div>
