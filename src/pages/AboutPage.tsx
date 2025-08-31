@@ -21,12 +21,11 @@ export default function About() {
     <section className="relative min-h-screen text-foreground py-20 px-6 lg:px-20 overflow-hidden">
       {/* Hero Section Background with Increased Height */}
       <motion.div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center h-[160vh] lg:h-[93vh]"
         style={{
           backgroundImage: `url(${HeroBG})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: "93vh",
         }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -41,7 +40,7 @@ export default function About() {
           transition={{ duration: 0.8 }}
           className="text-left mb-16"
         >
-          <h1 className="text-4xl lg:text-5xl font-bold leading-tight mb-6 text-white">
+          <h1 className="text-3xl lg:text-5xl font-bold leading-tight mb-6 text-white">
             About <br />
             <span className="text-8xl bg-gradient-to-r from-[#b57e10] via-[#fff3a6] to-[#b57e10] bg-clip-text text-transparent leading-none">
               Wizzen Overseas
@@ -130,7 +129,7 @@ export default function About() {
           className="mb-20"
         >
           <div className="pt-40">
-          <h2 className="text-3xl font-bold text-center mb-10">Our Impact</h2>
+            <h2 className="text-3xl font-bold text-center mb-10">Our Impact</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             <ImpactCard title={`${count.students}+`} text="Students Successfully Placed" />
@@ -217,7 +216,7 @@ export default function About() {
           className="mb-20 text-center"
         >
           <div className="pt-18">
-          <h2 className="text-3xl font-bold mb-10">Immigration & PR Destinations</h2>
+            <h2 className="text-3xl font-bold mb-10">Immigration & PR Destinations</h2>
           </div>
           <motion.p
             initial={{ opacity: 0 }}
@@ -228,7 +227,7 @@ export default function About() {
             The following countries offer strong pathways for permanent residency (PR) through work, study, or skilled migration programs:
             <br />
             Canada, Australia, New Zealand, Schengen countries (Europe), USA, and the UK. These countries not only provide educational opportunities but also offer career advancement and permanent residency options for skilled professionals.
-          
+
           </motion.p>
         </motion.div>
 

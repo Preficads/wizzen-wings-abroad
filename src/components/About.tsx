@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
-// ✅ Import image (works in Vite/Next)
 import backgroundGermany from "@/assets/Background/background_germany.jpg";
 
 export default function About() {
@@ -13,11 +12,10 @@ export default function About() {
   useEffect(() => {
     setStartCount(true);
     if (window.innerWidth < 640) {
-      setDuration(5); // slower on mobile
+      setDuration(5); 
     }
   }, []);
 
-  // Animation Variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -33,13 +31,13 @@ export default function About() {
 
   return (
     <section
-      className="relative py-16 sm:py-20 overflow-hidden bg-cover bg-center"
+      className="relative py-16 sm:py-20 overflow-hidden 
+      bg-center bg-contain sm:bg-cover"
       style={{
         backgroundImage: `linear-gradient(to bottom right, rgba(0,0,0,0.85), rgba(8,16,40,0.9)), url(${backgroundGermany})`,
         backgroundBlendMode: "multiply",
       }}
     >
-      {/* Soft background blobs */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -59,7 +57,6 @@ export default function About() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -89,7 +86,6 @@ export default function About() {
             </p>
           </motion.div>
 
-          {/* Right Stats Section */}
           <motion.div
             className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6"
             variants={containerVariants}

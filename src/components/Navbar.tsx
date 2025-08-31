@@ -86,7 +86,7 @@ export default function Navbar() {
                   {dropdownOpen && (
                     <div
                       className="absolute left-0 top-full mt-3 w-80 rounded-2xl 
-                                 bg-white/20 backdrop-blur-xl border border-white/30 
+                                 bg-white/5 backdrop-blur-3xl border border-white/30 
                                  shadow-2xl p-5 animate-fade-in transition-all duration-300"
                     >
                       {/* Study Abroad */}
@@ -100,8 +100,8 @@ export default function Navbar() {
                               <Link
                                 to={country.href}
                                 className="block px-3 py-2 text-sm font-medium rounded-lg 
-                                           text-foreground hover:bg-white/40 hover:backdrop-blur-md 
-                                           transition-all duration-200"
+                                         text-foreground hover:bg-white/20 hover:backdrop-blur-md 
+                                         transition-all duration-200"
                                 onClick={() => setDropdownOpen(false)}
                               >
                                 {country.name}
@@ -122,8 +122,8 @@ export default function Navbar() {
                               <Link
                                 to={country.href}
                                 className="block px-3 py-2 text-sm font-medium rounded-lg 
-                                           text-foreground hover:bg-white/40 hover:backdrop-blur-md 
-                                           transition-all duration-200"
+                                         text-foreground hover:bg-white/20 hover:backdrop-blur-md 
+                                         transition-all duration-200"
                                 onClick={() => setDropdownOpen(false)}
                               >
                                 {country.name}

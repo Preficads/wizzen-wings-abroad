@@ -1,6 +1,5 @@
-import type { Config } from "tailwindcss";
-
-export default {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
@@ -24,7 +23,6 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -69,11 +67,9 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-
-        // 👇 NEW transparent glass colors
         glass: {
-          light: "rgba(255, 255, 255, 0.08)", // frosted white
-          dark: "rgba(0, 0, 0, 0.25)",       // frosted gray-black
+          light: "rgba(255, 255, 255, 0.08)",
+          dark: "rgba(0, 0, 0, 0.25)",
         },
       },
       borderRadius: {
@@ -84,8 +80,9 @@ export default {
       backdropBlur: {
         xs: "2px",
         sm: "4px",
-        md: "8px", // Added a stronger blur option for flexibility
-        lg: "16px", // Added larger blur for glass effect
+        md: "8px",
+        lg: "16px",
+        "3xl": "24px",
       },
       keyframes: {
         "accordion-down": {
@@ -130,7 +127,6 @@ export default {
         "slide-in": "slide-in 0.5s ease-out",
         float: "float 3s ease-in-out infinite",
         wave: "wave 2.5s ease-in-out infinite",
-
         "rotate-slow": "rotateSlow 30s linear infinite",
         "rotate-slower": "rotateSlow 45s linear infinite",
         "rotate-slowest": "rotateSlow 60s linear infinite",
@@ -151,4 +147,4 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+};
