@@ -56,7 +56,7 @@ export default function Navbar() {
   return (
     <>
       {/* Navbar */}
-      <header className="fixed top-0 w-full bg-background/80 backdrop-blur-md z-50">
+      <header className="fixed top-0 w-full bg-background/80 backdrop-blur-full z-50">
         <nav className="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8 lg:py-4">
           {/* Logo */}
           <div className="flex lg:flex-1">
@@ -78,20 +78,20 @@ export default function Navbar() {
                 <div key={item.name} className="relative" ref={dropdownRef}>
                   <button
                     onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors duration-200"
+                    className="flex items-center gap-1 text-sm font-medium text-foreground  hover:text-primary transition-colors duration-200"
                   >
                     {item.name} <ChevronDown className="h-4 w-4" />
                   </button>
 
                   {dropdownOpen && (
                     <div
-                      className="absolute left-0 top-full mt-3 w-80 rounded-2xl 
-                                 bg-white/5 backdrop-blur-3xl border border-white/30 
+                      className="absolute left-0 top-full mt-3 w-80 rounded-2xl
+                                 bg-white/5 backdrop-blur-lg border border-white/30 
                                  shadow-2xl p-5 animate-fade-in transition-all duration-300"
                     >
                       {/* Study Abroad */}
                       <div>
-                        <h4 className="text-xs font-semibold text-foreground/80 tracking-wide uppercase mb-2">
+                        <h4 className="text-xs font-semibold text-white/80 tracking-wide uppercase mb-2">
                           Study Abroad Countries
                         </h4>
                         <ul className="space-y-1">
@@ -100,8 +100,7 @@ export default function Navbar() {
                               <Link
                                 to={country.href}
                                 className="block px-3 py-2 text-sm font-medium rounded-lg 
-                                         text-foreground hover:bg-white/20 hover:backdrop-blur-md 
-                                         transition-all duration-200"
+                                         text-white hover:bg-white/20 transition-all duration-200"
                                 onClick={() => setDropdownOpen(false)}
                               >
                                 {country.name}
@@ -113,7 +112,7 @@ export default function Navbar() {
 
                       {/* Immigration */}
                       <div className="mt-4">
-                        <h4 className="text-xs font-semibold text-foreground/80 tracking-wide uppercase mb-2">
+                        <h4 className="text-xs font-semibold text-white/80 tracking-wide uppercase mb-2">
                           Immigration / PR Destinations
                         </h4>
                         <ul className="space-y-1">
@@ -122,8 +121,7 @@ export default function Navbar() {
                               <Link
                                 to={country.href}
                                 className="block px-3 py-2 text-sm font-medium rounded-lg 
-                                         text-foreground hover:bg-white/20 hover:backdrop-blur-md 
-                                         transition-all duration-200"
+                                         text-white hover:bg-white/20 transition-all duration-200"
                                 onClick={() => setDropdownOpen(false)}
                               >
                                 {country.name}

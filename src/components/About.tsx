@@ -12,7 +12,7 @@ export default function About() {
   useEffect(() => {
     setStartCount(true);
     if (window.innerWidth < 640) {
-      setDuration(5); 
+      setDuration(5);
     }
   }, []);
 
@@ -31,8 +31,8 @@ export default function About() {
 
   return (
     <section
-      className="relative py-16 sm:py-20 overflow-hidden 
-      bg-center bg-contain sm:bg-cover"
+      className="relative py-16 sm:py-20 overflow-hidden h-full min-h-screen
+      bg-center bg-cover"
       style={{
         backgroundImage: `linear-gradient(to bottom right, rgba(0,0,0,0.85), rgba(8,16,40,0.9)), url(${backgroundGermany})`,
         backgroundBlendMode: "multiply",
@@ -66,7 +66,6 @@ export default function About() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
               About <span className="text-purple-400">Wizzen <br />Overseas</span>
             </h2>
-
             <p className="mt-4 text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl">
               At{" "}
               <span className="text-purple-300 font-semibold">
@@ -77,7 +76,6 @@ export default function About() {
               assistance, and language training, we ensure every step of your
               study-abroad journey is smooth and successful.
             </p>
-
             <p className="mt-3 text-gray-400 text-sm sm:text-base max-w-2xl">
               We partner with top universities and institutions, helping you pick
               the right program for your career goals. With years of experience
@@ -87,7 +85,7 @@ export default function About() {
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mt-8 lg:mt-0"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -107,9 +105,7 @@ export default function About() {
                 whileTap={{ scale: 0.98 }}
                 className="p-4 sm:p-6 md:p-8 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 text-center min-w-0 shadow-lg shadow-black/20"
               >
-                <div
-                  className={`text-3xl sm:text-4xl md:text-6xl font-extrabold ${stat.color} break-words`}
-                >
+                <div className={`text-3xl sm:text-4xl md:text-6xl font-extrabold ${stat.color} break-words`}>
                   {startCount && <CountUp end={stat.value} duration={duration} />}
                   {stat.suffix}
                 </div>
