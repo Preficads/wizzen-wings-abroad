@@ -19,11 +19,12 @@ const navigation = [
 ];
 
 const studyAbroadCountries = [
-  { name: "USA", href: "/country/usa" },
+  { name: "USA", href: "/country/usa" },   // ✅ fixed
   { name: "UK", href: "/country/uk" },
   { name: "Canada", href: "/country/canada" },
   { name: "Australia", href: "/country/australia" },
   { name: "Germany", href: "/country/germany" }, // ✅ this matches your file
+  
 ];
 
 const immigrationCountries = [

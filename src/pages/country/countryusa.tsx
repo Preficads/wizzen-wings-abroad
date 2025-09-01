@@ -11,16 +11,6 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-// 🔹 Motion Variants
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, delay: i * 0.2 },
-  }),
-};
-
 export default function CountryUSA() {
   return (
     <div className="bg-white text-gray-900">
@@ -35,29 +25,26 @@ export default function CountryUSA() {
           {/* Hero Content */}
           <div className="max-w-4xl mx-auto">
             <motion.h1
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={0}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
               className="text-4xl md:text-6xl font-bold text-white"
             >
               Unlock Your Future in the USA with Wizzen Overseas
             </motion.h1>
             <motion.p
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={1}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9 }}
               className="mt-6 text-lg md:text-xl text-gray-200"
             >
               World-class universities. Global career opportunities. A clear
               pathway to success.
             </motion.p>
             <motion.p
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={2}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.1 }}
               className="mt-4 text-md md:text-lg text-gray-300"
             >
               As Kerala’s most trusted overseas education consultants, we guide
@@ -65,10 +52,9 @@ export default function CountryUSA() {
               settling in America with confidence.
             </motion.p>
             <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={3}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.3 }}
             >
               <Button className="mt-8 px-8 py-4 text-lg bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-xl shadow-lg">
                 Get Started Today →
@@ -79,11 +65,9 @@ export default function CountryUSA() {
           {/* Why USA inside same section */}
           <div className="mt-20">
             <motion.h2
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              custom={0}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
               className="text-3xl font-bold text-center text-white"
             >
               Why Study in the USA?
@@ -108,12 +92,9 @@ export default function CountryUSA() {
               ].map((item, index) => (
                 <motion.div
                   key={index}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  custom={index + 1}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
                   className="backdrop-blur-lg bg-white/10 rounded-2xl p-8 shadow-lg border border-white/20 hover:bg-white/20 transition"
                 >
                   {item.icon}
@@ -132,11 +113,9 @@ export default function CountryUSA() {
       <section className="relative py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            custom={0}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             className="text-3xl font-bold text-center"
           >
             Programs We Offer
@@ -161,12 +140,9 @@ export default function CountryUSA() {
             ].map((item, index) => (
               <motion.div
                 key={index}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                custom={index + 1}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition"
               >
                 {item.icon}
@@ -182,11 +158,9 @@ export default function CountryUSA() {
       <section className="relative py-20 bg-gradient-to-r from-blue-900 to-indigo-900 text-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            custom={0}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             className="text-3xl font-bold text-center"
           >
             Work & Career Pathways
@@ -211,12 +185,9 @@ export default function CountryUSA() {
             ].map((item, index) => (
               <motion.div
                 key={index}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                custom={index + 1}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="backdrop-blur-lg bg-white/10 rounded-2xl p-8 shadow-lg border border-white/20 hover:bg-white/20 transition"
               >
                 {item.icon}
@@ -232,11 +203,9 @@ export default function CountryUSA() {
       <section className="relative py-20 bg-gray-100">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            custom={0}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             className="text-3xl font-bold text-center"
           >
             Our Services
@@ -261,12 +230,9 @@ export default function CountryUSA() {
             ].map((item, index) => (
               <motion.div
                 key={index}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                custom={index + 1}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition"
               >
                 {item.icon}
