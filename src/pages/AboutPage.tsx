@@ -10,65 +10,69 @@ export default function About() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (count.students < 1000) setCount((prev) => ({ ...prev, students: prev.students + 10 }));
-      if (count.visaRate < 95) setCount((prev) => ({ ...prev, visaRate: prev.visaRate + 1 }));
-      if (count.reviews < 900) setCount((prev) => ({ ...prev, reviews: prev.reviews + 10 }));
+      setCount((prev) => ({
+        students: prev.students < 1000 ? prev.students + 10 : prev.students,
+        visaRate: prev.visaRate < 95 ? prev.visaRate + 1 : prev.visaRate,
+        reviews: prev.reviews < 900 ? prev.reviews + 10 : prev.reviews,
+      }));
     }, 50);
+
     return () => clearInterval(interval);
-  }, [count]);
+  }, []);
 
   return (
-    <section className="relative min-h-screen text-foreground py-20 px-6 lg:px-20 overflow-hidden">
-      {/* Hero Section Background */}
-      <motion.div
-        className="absolute inset-0 bg-cover bg-center h-[190vh] lg:h-[93vh]"
-        style={{
-          backgroundImage: `url(${HeroBG})`,
-          backgroundSize: "cover",
-          backgroundPosition: "left",
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      />
-
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Hero Section */}
+    <>
+      {/* HERO SECTION */}
+      <section className="relative min-h-screen text-foreground py-20 px-6 lg:px-20 overflow-hidden">
+        {/* Background */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-left mb-16"
-        >
-          <h1 className="text-5xl lg:text-5xl font-bold leading-tight mb-6 text-white">
-            About <br />
-            <span className="text-8xl bg-gradient-to-r from-[#b57e10] via-[#fff3a6] to-[#b57e10] bg-clip-text text-transparent leading-none">
-              Wizzen
-            </span>{" "}
-            <span className="text-7xl bg-gradient-to-r from-[#b57e10] via-[#fff3a6] to-[#b57e10] bg-clip-text text-transparent leading-none">
-              Overseas
-            </span>
-            <p className="text-x2 text-white font-semibold mt-2">
-              Education & Immigration
-            </p>
-          </h1>
-          <p className="text-lg text-gray-200">
-            At <span className="font-semibold">Wizzen Overseas Education & Immigration</span>, we specialize in guiding
-            students toward their global education dreams. With expertise in career counseling, university admissions,
-            visa assistance, and language training, we ensure every step of your study-abroad journey is smooth and
-            successful. We partner with top universities and institutions, helping you pick the right program for your
-            career goals.
-          </p>
-        </motion.div>
-
-        {/* Glass Cards Section */}
-        <motion.section
+          className="absolute inset-0 bg-cover bg-center h-full"
+          style={{
+            backgroundImage: `url(${HeroBG})`,
+          }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="relative py-20 px-6 lg:px-20"
-        >
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-20">
+        />
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Hero Content */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-left"
+          >
+            <h1 className="text-4xl lg:text-5xl font-bold leading-tight mb-6 text-white">
+              About <br />
+              <span className="text-7xl lg:text-8xl bg-gradient-to-r from-[#b57e10] via-[#fff3a6] to-[#b57e10] bg-clip-text text-transparent leading-none">
+                Wizzen
+              </span>{" "}
+              <span className="text-5xl lg:text-7xl bg-gradient-to-r from-[#b57e10] via-[#fff3a6] to-[#b57e10] bg-clip-text text-transparent leading-none">
+                Overseas
+              </span>
+              <p className="text-xl text-white font-semibold mt-2">
+                Education & Immigration
+              </p>
+            </h1>
+            <p className="text-base lg:text-lg text-gray-200 max-w-3xl">
+              At{" "}
+              <span className="font-semibold">
+                Wizzen Overseas Education & Immigration
+              </span>
+              , we are dedicated to guiding students toward their global education dreams. With expert career counseling, tailored university admission support, 
+              and step-by-step visa assistance, we make the study-abroad process smooth and stress-free. We also provide language training to enhance confidence 
+              and meet academic or visa requirements. More than just guidance, we ensure every student’s journey abroad is a successful pathway to a brighter future.
+            </p>
+          </motion.div>
+
+          {/* 3 Cards moved here inside Hero */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mt-20"
+          >
             <GlassCard
               icon={<Globe className="h-8 w-8 text-[#b57e10] mb-4" />}
               title="Study Abroad Countries"
@@ -84,101 +88,72 @@ export default function About() {
               title="Study Abroad Programs"
               text="We offer Bachelor's, Master's, MBBS, Nursing, and other programs, ensuring a perfect match with your career goals."
             />
-          </div>
-        </motion.section>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* Our Impact Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <div className="pt-4">
-            <h2 className="text-3xl font-bold text-center mb-10">Our Impact</h2>
-          </div>
+      {/* OUR IMPACT */}
+      <section className="py-20 px-6 lg:px-20 bg-white">
+        <div className="max-w-7xl mx-auto text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-3xl font-bold mb-10"
+          >
+            Our Impact
+          </motion.h2>
 
           <div className="grid gap-6 md:grid-cols-3">
             <ImpactCard title={`${count.students}+`} text="Students Successfully Placed" />
             <ImpactCard title={`${count.visaRate}%`} text="Visa Success Rate" />
             <ImpactCard title={`${count.reviews}+`} text="Positive Client Reviews" />
           </div>
-        </motion.div>
+        </div>
+      </section>
 
-        {/* Study Abroad Countries */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-40"
-        >
-          <div className="pt-25">
-            <h2 className="text-3xl font-bold text-center mb-12">
-              Study Abroad Countries
-            </h2>
-          </div>
-          <div className="space-y-8 text-center">
-            <CountrySection
-              title="Europe (Schengen countries)"
-              text="Germany, France, Italy, Spain, Poland, Hungary, Netherlands, Austria, Czech Republic, Lithuania, Latvia, and more. These countries offer strong educational programs, particularly in engineering, arts, business, and technology."
-            />
-            <CountrySection
-              title="UK & Ireland"
-              text="The UK is home to prestigious institutions, especially in law, business, and medicine. Ireland is recognized for its literature, business, and technology programs, with a rich cultural environment for students."
-            />
-            <CountrySection
-              title="USA & Canada"
-              text="The USA and Canada offer world-class education, with opportunities for international students in fields such as business, medicine, engineering, and more. Both countries have a strong job market for skilled professionals."
-            />
-            <CountrySection
-              title="Australia & New Zealand"
-              text="Australia is known for its diverse academic offerings in business, healthcare, and hospitality, while New Zealand offers excellent programs in agriculture, tourism, and research, all with a high standard of living."
-            />
-            <CountrySection
-              title="Asia"
-              text="Japan, South Korea, Singapore, Malaysia, and the UAE provide strong educational opportunities, particularly in technology, finance, and manufacturing. These countries are home to some of the most advanced industries in the world."
-            />
-          </div>
-        </motion.div>
+      {/* STUDY ABROAD COUNTRIES */}
+      <section className="py-20 px-6 lg:px-20 bg-gray-50">
+        <div className="max-w-5xl mx-auto text-center space-y-8">
+          <h2 className="text-3xl font-bold mb-12">Study Abroad Countries</h2>
+          <CountrySection
+            title="Europe (Schengen countries)"
+            text="Germany, France, Italy, Spain, Poland, Hungary, Netherlands, Austria, Czech Republic, Lithuania, Latvia, and more."
+          />
+          <CountrySection
+            title="UK & Ireland"
+            text="Prestigious institutions in law, business, medicine, and technology programs, with rich cultural environments."
+          />
+          <CountrySection
+            title="USA & Canada"
+            text="Opportunities in business, medicine, engineering, and more. Both countries have a strong job market for skilled professionals."
+          />
+          <CountrySection
+            title="Australia & New Zealand"
+            text="Known for business, healthcare, hospitality, agriculture, tourism, and research programs with a high standard of living."
+          />
+          <CountrySection
+            title="Asia"
+            text="Japan, South Korea, Singapore, Malaysia, and the UAE provide strong opportunities, particularly in technology and finance."
+          />
+        </div>
+      </section>
 
-        {/* Immigration & PR Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-20 text-center"
-        >
-          <div className="pt-18">
-            <h2 className="text-3xl font-bold mb-10">
-              Immigration & PR Destinations
-            </h2>
-          </div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="text-gray-700 text-lg mx-auto max-w-3xl"
-          >
-            The following countries offer strong pathways for permanent
-            residency (PR) through work, study, or skilled migration programs:
-            <br />
-            Canada, Australia, New Zealand, Schengen countries (Europe), USA,
-            and the UK.
-          </motion.p>
-        </motion.div>
+      {/* IMMIGRATION & PR */}
+      <section className="py-20 px-6 lg:px-20 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-10">Immigration & PR Destinations</h2>
+          <p className="text-lg text-gray-700">
+            Strong pathways for permanent residency (PR) through work, study, or skilled migration
+            programs: Canada, Australia, New Zealand, Schengen countries, USA, and the UK.
+          </p>
+        </div>
+      </section>
 
-        {/* Services Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <h2 className="text-3xl font-bold text-center mb-10">Our Services</h2>
+      {/* SERVICES */}
+      <section className="py-20 px-6 lg:px-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-10">Our Services</h2>
           <div className="grid gap-6 md:grid-cols-3">
             <Step
               number="01"
@@ -196,9 +171,9 @@ export default function About() {
               text="Complete support for visa applications, travel arrangements, and pre-departure guidance."
             />
           </div>
-        </motion.div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 }
 
@@ -211,13 +186,13 @@ function GlassCard({ icon, title, text }: { icon: React.ReactNode; title: string
       transition={{ duration: 0.2 }}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.97 }}
-      className="bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg p-6 rounded-2xl"
+      className="bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg p-6 rounded-2xl text-left"
     >
       {icon}
       <h3 className="text-xl font-semibold bg-gradient-to-r from-[#b57e10] via-[#fff3a6] to-[#b57e10] bg-clip-text text-transparent mb-2">
         {title}
       </h3>
-      <p className="text-white/90 text-sm">{text}</p>
+      <p className="text-gray-200">{text}</p>
     </motion.div>
   );
 }
@@ -229,7 +204,7 @@ function ImpactCard({ title, text }: { title: string; text: string }) {
       whileHover={{ scale: 1.07 }}
       className="bg-blue-100 rounded-2xl shadow-lg p-6 text-center"
     >
-      <h3 className="text-5xl font-bold text-blue-700">{title}</h3>
+      <h3 className="text-4xl lg:text-5xl font-bold text-blue-700">{title}</h3>
       <p className="text-sm text-gray-600 mt-2">{text}</p>
     </motion.div>
   );
@@ -242,9 +217,10 @@ function CountrySection({ title, text }: { title: string; text: string }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
+      className="px-4"
     >
-      <h3 className="text-xl font-semibold text-blue-600 mb-2">{title}</h3>
-      <p className="text-gray-700 text-lg">{text}</p>
+      <h3 className="text-lg lg:text-xl font-semibold text-blue-600 mb-2">{title}</h3>
+      <p className="text-gray-700">{text}</p>
     </motion.div>
   );
 }
@@ -253,7 +229,7 @@ function CountrySection({ title, text }: { title: string; text: string }) {
 function Step({ number, title, text }: { number: string; title: string; text: string }) {
   return (
     <div className="rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 backdrop-blur-xl border border-white/20 shadow-lg p-6 text-center">
-      <span className="text-4xl font-bold text-primary">{number}</span>
+      <span className="text-3xl lg:text-4xl font-bold text-primary">{number}</span>
       <h4 className="text-lg font-semibold mt-3">{title}</h4>
       <p className="text-sm text-muted-foreground mt-2">{text}</p>
     </div>

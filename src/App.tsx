@@ -15,6 +15,10 @@ import StudyMBBS from "./pages/StudyMBBS";
 import Services from "./components/Services"; // ✅ Main Services list page
 import ServicesPage from "./pages/ServicesPage"; // ✅ Detailed service page
 import About from "./pages/AboutPage"; // ✅ About page
+import Germany from "./pages/country/germany";
+
+
+import CountriesDropdown from "./components/CountriesDropdown";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +49,9 @@ const App = () => (
             <Route path="/services" element={<Services />} />
             <Route path="/services/:id" element={<ServicesPage />} />
             {/* Example: /services/study-abroad, /services/immigration */}
+
+            {/* ✅ Country pages */}
+            <Route path="/country/germany" element={<Germany />} />
 
             {/* 404 Fallback */}
             <Route path="*" element={<NotFound />} />

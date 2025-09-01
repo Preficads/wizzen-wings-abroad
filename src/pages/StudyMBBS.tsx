@@ -32,7 +32,6 @@ const countries = [
   "Bulgaria",
 ];
 
-
 // ✅ Fade-in animation (supports stagger with `custom`)
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -48,10 +47,13 @@ export default function StudyMBBS() {
     <div className="font-sans bg-gray-50 text-gray-900">
       {/* ===================== Hero Section ===================== */}
       <section
-        className="relative h-screen bg-cover bg-center flex items-center"
+        className="relative min-h-[80vh] sm:min-h-[90vh] md:h-screen bg-cover bg-center flex items-center"
         style={{ backgroundImage: `url(${Plane2BG})` }}
       >
-        <div className="container mx-auto px-0 relative z-10">
+        {/* overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/30" />
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-10 relative z-10 text-center sm:text-left">
           <motion.h1
             initial={{ opacity: 0, y: -50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -59,37 +61,37 @@ export default function StudyMBBS() {
             className="font-extrabold uppercase leading-none"
           >
             {/* Study */}
-            <span className="text-white text-6xl md:text-7xl font-medium block leading-none">
+            <span className="text-white text-4xl sm:text-6xl md:text-7xl block leading-tight">
               Study
             </span>
 
             {/* MBBS */}
-            <span className="block text-7xl md:text-9xl bg-gradient-to-r from-[#b57e10] via-[#fff3a6] to-[#b57e10] 
-                   bg-clip-text text-transparent leading-none -mt-1">
+            <span className="block text-5xl sm:text-7xl md:text-9xl bg-gradient-to-r from-[#b57e10] via-[#fff3a6] to-[#b57e10] 
+                   bg-clip-text text-transparent leading-tight -mt-1">
               MBBS
             </span>
 
             {/* Abroad */}
-            <span className="block text-5xl md:text-9xl bg-gradient-to-l from-[#b57e10] via-[#b57e10] to-[#fff3a6] 
-                   bg-clip-text text-transparent leading-none -mt-1">
+            <span className="block text-3xl sm:text-6xl md:text-9xl bg-gradient-to-l from-[#b57e10] via-[#b57e10] to-[#fff3a6] 
+                   bg-clip-text text-transparent leading-tight -mt-1">
               Abroad
             </span>
           </motion.h1>
-
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="mt-4 max-w-lg text-lg text-gray-200"
+            className="mt-4 max-w-xl mx-auto sm:mx-0 text-base sm:text-lg text-gray-200"
           >
             Admissions Open 2025 | Top Universities | Hassle-Free Process
           </motion.p>
+
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1, duration: 0.6 }}
-            className="mt-6 flex gap-4"
+            className="mt-6 flex flex-col sm:flex-row gap-4 justify-center sm:justify-start"
           >
             <button className="px-6 py-3 rounded-xl font-semibold text-white 
                    bg-gradient-to-r from-white/20 to-white/10 
@@ -99,7 +101,6 @@ export default function StudyMBBS() {
               Apply Now
             </button>
 
-
             <button
               className="px-6 py-3 rounded-xl font-semibold text-[#fff3a6] 
              border border-white/50 bg-transparent 
@@ -108,17 +109,13 @@ export default function StudyMBBS() {
             >
               Free Counselling
             </button>
-
-
-
           </motion.div>
         </div>
-        <div className="absolute inset-0" />
       </section>
 
       {/* ===================== Intro Section (mobile overlap fixed) ===================== */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="container mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Text Block */}
           <motion.div
             initial="hidden"
@@ -127,17 +124,17 @@ export default function StudyMBBS() {
             viewport={{ once: true }}
             className="order-2 md:order-1"
           >
-            <h2 className="text-4xl font-bold text-gray-900 leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
               Why Study MBBS Abroad?
             </h2>
-            <p className="mt-6 text-lg text-gray-700 leading-relaxed">
+            <p className="mt-6 text-base sm:text-lg text-gray-700 leading-relaxed">
               Every year, thousands of Indian students choose to pursue MBBS abroad
               because of affordable tuition, globally recognized universities, and
               world-class infrastructure. With English as the medium of instruction
               and WHO/NMC approved universities, students gain international exposure
               and access to advanced medical training.
             </p>
-            <ul className="mt-6 space-y-3 text-gray-800">
+            <ul className="mt-6 space-y-3 text-gray-800 text-sm sm:text-base">
               <li>✅ Affordable tuition fees compared to Indian private colleges</li>
               <li>✅ Globally recognized degrees accepted in India & worldwide</li>
               <li>✅ English-medium curriculum with no language barrier</li>
@@ -157,7 +154,7 @@ export default function StudyMBBS() {
             <img
               src={PlaneBG}
               alt="MBBS Abroad"
-              className="rounded-2xl shadow-2xl max-w-md mt-6 md:mt-0"
+              className="rounded-2xl shadow-2xl w-full max-w-sm sm:max-w-md h-auto"
             />
           </motion.div>
         </div>
@@ -170,11 +167,11 @@ export default function StudyMBBS() {
           whileInView="show"
           variants={fadeInUp}
           viewport={{ once: true }}
-          className="text-3xl font-bold text-center"
+          className="text-2xl sm:text-3xl font-bold text-center"
         >
           Quick Highlights
         </motion.h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-8 container mx-auto px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-8 container mx-auto px-4 sm:px-6">
           {[
             "WHO & NMC Approved Universities",
             "English-Medium Education",
@@ -191,7 +188,7 @@ export default function StudyMBBS() {
               className="text-center bg-white shadow-md p-6 rounded-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
             >
               <span className="block text-2xl">✅</span>
-              <p className="mt-2">{item}</p>
+              <p className="mt-2 text-sm sm:text-base">{item}</p>
             </motion.div>
           ))}
         </div>
@@ -204,17 +201,17 @@ export default function StudyMBBS() {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/90" />
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <motion.h2
             initial="hidden"
             whileInView="show"
             variants={fadeInUp}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-center text-white uppercase"
+            className="text-2xl sm:text-3xl font-bold text-center text-white uppercase"
           >
             Featured Countries
           </motion.h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-12">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 mt-12">
             {countries.map((country, idx) => (
               <motion.div
                 key={country}
@@ -228,18 +225,18 @@ export default function StudyMBBS() {
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 className="backdrop-blur-xl bg-blue-200/20 border border-white/30 rounded-2xl shadow-xl hover:shadow-2xl flex flex-col overflow-hidden"
               >
-                <div className="w-full h-28 overflow-hidden">
+                <div className="w-full h-24 sm:h-28 overflow-hidden">
                   <img
-                    src={flags[country.toLowerCase() as keyof typeof flags]}
+                    src={flags[country.toLowerCase()]}
                     alt={`${country} Flag`}
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                   />
                 </div>
-                <div className="p-6 flex flex-col items-center text-white">
-                  <h3 className="text-lg font-bold">{country}</h3>
+                <div className="p-4 sm:p-6 flex flex-col items-center text-white">
+                  <h3 className="text-base sm:text-lg font-bold">{country}</h3>
                   <a
                     href={`/countries/${country.toLowerCase()}`}
-                    className="text-orange-300 mt-2 font-medium hover:underline"
+                    className="text-orange-300 mt-2 font-medium hover:underline text-sm sm:text-base"
                   >
                     Explore →
                   </a>
@@ -257,12 +254,12 @@ export default function StudyMBBS() {
           whileInView="show"
           variants={fadeInUp}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center"
+          className="text-3xl sm:text-4xl font-bold text-center"
         >
           Eligibility
         </motion.h2>
 
-        <div className="grid md:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto px-4 sm:px-6">
           {[
             {
               icon: "📘",
@@ -287,11 +284,11 @@ export default function StudyMBBS() {
               whileInView="show"
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
-              className="backdrop-blur-lg bg-white/40 shadow-xl border border-white/30 rounded-2xl p-8 text-center"
+              className="backdrop-blur-lg bg-white/60 shadow-xl border border-white/30 rounded-2xl p-8 text-center"
             >
               <div className="text-4xl">{item.icon}</div>
-              <h3 className="mt-4 text-xl font-semibold">{item.title}</h3>
-              <p className="mt-2 text-gray-700">{item.desc}</p>
+              <h3 className="mt-4 text-lg sm:text-xl font-semibold">{item.title}</h3>
+              <p className="mt-2 text-sm sm:text-base text-gray-700">{item.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -304,14 +301,17 @@ export default function StudyMBBS() {
           whileInView="show"
           variants={fadeInUp}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center"
+          className="text-3xl sm:text-4xl font-bold text-center"
         >
           Admission Process
         </motion.h2>
 
-        <div className="relative mt-16 max-w-3xl mx-auto px-6">
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-orange-300"></div>
-          <div className="space-y-12">
+        {/* Mobile: stacked list | Desktop: alternating timeline */}
+        <div className="relative mt-16 max-w-4xl mx-auto px-4 sm:px-6">
+          {/* center line only on md+ */}
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 h-full border-l-2 border-orange-300" />
+
+          <div className="space-y-8 md:space-y-12">
             {[
               "Free Counselling & Country Selection",
               "Application Submission",
@@ -326,17 +326,26 @@ export default function StudyMBBS() {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className={`relative flex items-center ${idx % 2 === 0 ? "justify-start" : "justify-end"
-                  }`}
+                className={`relative md:flex md:items-center ${idx % 2 === 0 ? "md:justify-start" : "md:justify-end"}`}
               >
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold shadow-lg">
+                {/* step index dot */}
+                <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-orange-500 text-white items-center justify-center font-bold shadow-lg">
                   {idx + 1}
                 </div>
+
+                {/* card */}
                 <div
-                  className={`w-[90%] sm:w-[70%] md:w-[45%] backdrop-blur-xl bg-orange-50 border border-orange-100 shadow-md p-6 rounded-xl ${idx % 2 === 0 ? "text-left" : "text-right"
-                    }`}
+                  className={`w-full md:w-[46%] backdrop-blur-xl bg-orange-50 border border-orange-100 shadow-md p-5 sm:p-6 rounded-xl ${
+                    idx % 2 === 0 ? "md:text-left" : "md:text-right"
+                  }`}
                 >
-                  <p className="font-medium">{step}</p>
+                  <div className="flex md:hidden items-center gap-3 mb-2">
+                    <span className="inline-flex w-8 h-8 rounded-full bg-orange-500 text-white items-center justify-center font-semibold">
+                      {idx + 1}
+                    </span>
+                    <span className="font-medium">Step {idx + 1}</span>
+                  </div>
+                  <p className="font-medium text-sm sm:text-base">{step}</p>
                 </div>
               </motion.div>
             ))}
@@ -351,12 +360,12 @@ export default function StudyMBBS() {
           whileInView="show"
           variants={fadeInUp}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center"
+          className="text-3xl sm:text-4xl font-bold text-center"
         >
           Benefits of MBBS Abroad
         </motion.h2>
 
-        <div className="grid md:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mt-12 max-w-6xl mx-auto px-4 sm:px-6">
           {[
             "Globally recognized degrees",
             "English-medium education",
@@ -370,11 +379,11 @@ export default function StudyMBBS() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-4 backdrop-blur-lg bg-white/40 border border-white/30 shadow-lg rounded-xl p-6"
+              whileHover={{ scale: 1.03 }}
+              className="flex items-start gap-3 sm:gap-4 backdrop-blur-lg bg-white/60 border border-white/30 shadow-lg rounded-xl p-5 sm:p-6"
             >
-              <span className="text-2xl text-orange-500">✅</span>
-              <p>{benefit}</p>
+              <span className="text-xl sm:text-2xl text-orange-500">✅</span>
+              <p className="text-sm sm:text-base">{benefit}</p>
             </motion.div>
           ))}
         </div>
@@ -387,12 +396,12 @@ export default function StudyMBBS() {
           whileInView="show"
           variants={fadeInUp}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center"
+          className="text-3xl sm:text-4xl font-bold text-center"
         >
           FAQ
         </motion.h2>
 
-        <div className="mt-12 max-w-3xl mx-auto px-6">
+        <div className="mt-12 max-w-3xl mx-auto px-4 sm:px-6">
           {[
             ["Is NEET mandatory?", "Yes, NEET is mandatory for admission."],
             ["Are degrees valid in India?", "Yes, degrees are recognized in India."],
@@ -413,11 +422,11 @@ export default function StudyMBBS() {
               whileInView="show"
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
-              className="mb-6 border border-gray-200 rounded-xl shadow-sm"
+              className="mb-4 sm:mb-6 border border-gray-200 rounded-xl shadow-sm"
             >
-              <details className="p-6 rounded-xl cursor-pointer backdrop-blur-sm bg-gray-50 hover:bg-gray-100 transition">
-                <summary className="font-semibold">{q}</summary>
-                <p className="mt-2 text-gray-700">{a}</p>
+              <details className="p-5 sm:p-6 rounded-xl cursor-pointer backdrop-blur-sm bg-gray-50 hover:bg-gray-100 transition">
+                <summary className="font-semibold text-sm sm:text-base">{q}</summary>
+                <p className="mt-2 text-gray-700 text-sm sm:text-base">{a}</p>
               </details>
             </motion.div>
           ))}
@@ -431,7 +440,7 @@ export default function StudyMBBS() {
           whileInView="show"
           variants={fadeInUp}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center"
+          className="text-3xl sm:text-4xl font-bold text-center"
         >
           Contact Us
         </motion.h2>
@@ -441,11 +450,11 @@ export default function StudyMBBS() {
           whileInView="show"
           variants={fadeInUp}
           viewport={{ once: true }}
-          className="mt-12 max-w-3xl mx-auto space-y-6 backdrop-blur-xl bg-white/50 border border-white/30 shadow-xl p-10 rounded-2xl"
+          className="mt-12 max-w-3xl mx-auto space-y-6 backdrop-blur-xl bg-white/60 border border-white/30 shadow-xl p-6 sm:p-10 rounded-2xl"
           onSubmit={(e) => e.preventDefault()}
         >
           <div>
-            <label htmlFor="name" className="block font-medium">
+            <label htmlFor="name" className="block font-medium text-sm sm:text-base">
               Name
             </label>
             <input
@@ -456,7 +465,7 @@ export default function StudyMBBS() {
             />
           </div>
           <div>
-            <label htmlFor="phone" className="block font-medium">
+            <label htmlFor="phone" className="block font-medium text-sm sm:text-base">
               Phone
             </label>
             <input
@@ -467,7 +476,7 @@ export default function StudyMBBS() {
             />
           </div>
           <div>
-            <label htmlFor="email" className="block font-medium">
+            <label htmlFor="email" className="block font-medium text-sm sm:text-base">
               Email
             </label>
             <input
@@ -478,7 +487,7 @@ export default function StudyMBBS() {
             />
           </div>
           <div>
-            <label htmlFor="country" className="block font-medium">
+            <label htmlFor="country" className="block font-medium text-sm sm:text-base">
               Country Interested
             </label>
             <select

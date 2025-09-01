@@ -7,10 +7,9 @@ import { motion } from "framer-motion";
 const countries = [
   {
     name: "Germany",
-    description:
-      "Known for its world-class universities, research opportunities, and strong economy.",
-    flag: "https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg",
-    link: "#", // placeholder for future country page
+    flag: "/flags/germany.png", // or wherever your flag image is
+    description: "Known for its world-class universities, research opportunities, and strong economy.",
+    href: "/country/germany",
   },
   {
     name: "France",
@@ -113,7 +112,7 @@ const MarqueeRow = ({ countries, direction = "left" }) => (
       >
         <Card
           className="bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200
-                     backdrop-blur-md border border-blue-200
+                     backdrop-blur-2xl border border-blue-200
                      rounded-2xl shadow-lg shadow-blue-300/40
                      flex flex-col justify-between h-full cursor-pointer hover:scale-105 transition-transform duration-200"
         >

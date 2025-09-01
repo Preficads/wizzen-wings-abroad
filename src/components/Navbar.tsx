@@ -7,6 +7,7 @@ import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
 import wizzenLogo from "@/assets/wizzen_logo.png";
 import Popup from "./Popup";
 
+
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
@@ -18,11 +19,11 @@ const navigation = [
 ];
 
 const studyAbroadCountries = [
-  { name: "USA", href: "/countries/usa" },
-  { name: "UK", href: "/countries/uk" },
-  { name: "Canada", href: "/countries/canada" },
-  { name: "Australia", href: "/countries/australia" },
-  { name: "Germany", href: "/countries/germany" },
+  { name: "USA", href: "/country/usa" },
+  { name: "UK", href: "/country/uk" },
+  { name: "Canada", href: "/country/canada" },
+  { name: "Australia", href: "/country/australia" },
+  { name: "Germany", href: "/country/germany" }, // ✅ this matches your file
 ];
 
 const immigrationCountries = [
@@ -56,7 +57,7 @@ export default function Navbar() {
   return (
     <>
       {/* Navbar */}
-      <header className="fixed top-0 w-full bg-background/80 backdrop-blur-full z-50">
+      <header className="fixed top-0 w-full bg-background/80 backdrop-blur-2xl z-50">
         <nav className="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8 lg:py-4">
           {/* Logo */}
           <div className="flex lg:flex-1">
@@ -86,8 +87,9 @@ export default function Navbar() {
                   {dropdownOpen && (
                     <div
                       className="absolute left-0 top-full mt-3 w-80 rounded-2xl
-                                 bg-white/5 backdrop-blur-lg border border-white/30 
-                                 shadow-2xl p-5 animate-fade-in transition-all duration-300"
+      bg-gradient-to-br from-black/70 to-black/50 
+      backdrop-blur-xl border border-white/10
+      shadow-2xl p-5 animate-fade-in transition-all duration-300"
                     >
                       {/* Study Abroad */}
                       <div>
@@ -100,7 +102,7 @@ export default function Navbar() {
                               <Link
                                 to={country.href}
                                 className="block px-3 py-2 text-sm font-medium rounded-lg 
-                                         text-white hover:bg-white/20 transition-all duration-200"
+                       text-white hover:bg-white/10 transition-all duration-200"
                                 onClick={() => setDropdownOpen(false)}
                               >
                                 {country.name}
@@ -121,7 +123,7 @@ export default function Navbar() {
                               <Link
                                 to={country.href}
                                 className="block px-3 py-2 text-sm font-medium rounded-lg 
-                                         text-white hover:bg-white/20 transition-all duration-200"
+                       text-white hover:bg-white/10 transition-all duration-200"
                                 onClick={() => setDropdownOpen(false)}
                               >
                                 {country.name}
@@ -182,7 +184,7 @@ export default function Navbar() {
         />
 
         <div
-          className={`fixed inset-y-0 right-0 w-11/12 max-w-sm bg-background/95 backdrop-blur-md px-5 py-6 
+          className={`fixed inset-y-0 right-0 w-11/12 max-w-sm bg-background/95 backdrop-blur-2xl px-5 py-6 
           transform transition-transform duration-300 ease-in-out 
           ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
         >
@@ -251,11 +253,14 @@ export default function Navbar() {
                     <Link
                       key={item.name}
                       to={item.href}
-                      className="block rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-white/20 transition"
+                      className="block rounded-lg px-3 py-2 text-base font-medium text-foreground 
+             bg-white/10 backdrop-blur-2xl border border-white/10 
+             hover:bg-white/20 transition-all duration-200"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.name}
                     </Link>
+
                   )
                 )}
               </div>
