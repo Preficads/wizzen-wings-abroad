@@ -7,7 +7,6 @@ import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
 import wizzenLogo from "@/assets/wizzen_logo.png";
 import Popup from "./Popup";
 
-
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
@@ -15,16 +14,15 @@ const navigation = [
   { name: "Study MBBS", href: "/mbbs" },
   { name: "Countries", href: "#", dropdown: true },
   { name: "Learn German", href: "/reviews" },
-  { name: "Contact", href: "/contact" },
+  { name: "Contact", href: "/contact" }, // ✅ Contact added
 ];
 
 const studyAbroadCountries = [
-  { name: "USA", href: "/country/usa" },   // ✅ fixed
+  { name: "USA", href: "/country/usa" },
   { name: "UK", href: "/country/uk" },
   { name: "Canada", href: "/country/canada" },
   { name: "Australia", href: "/country/australia" },
-  { name: "Germany", href: "/country/germany" }, // ✅ this matches your file
-  
+  { name: "Germany", href: "/country/germany" },
 ];
 
 const immigrationCountries = [
@@ -80,7 +78,7 @@ export default function Navbar() {
                 <div key={item.name} className="relative" ref={dropdownRef}>
                   <button
                     onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className="flex items-center gap-1 text-sm font-medium text-foreground  hover:text-primary transition-colors duration-200"
+                    className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors duration-200"
                   >
                     {item.name} <ChevronDown className="h-4 w-4" />
                   </button>
@@ -88,9 +86,9 @@ export default function Navbar() {
                   {dropdownOpen && (
                     <div
                       className="absolute left-0 top-full mt-3 w-80 rounded-2xl
-      bg-gradient-to-br from-black/70 to-black/50 
-      backdrop-blur-xl border border-white/10
-      shadow-2xl p-5 animate-fade-in transition-all duration-300"
+                        bg-gradient-to-br from-black/70 to-black/50 
+                        backdrop-blur-xl border border-white/10
+                        shadow-2xl p-5 animate-fade-in transition-all duration-300"
                     >
                       {/* Study Abroad */}
                       <div>
@@ -103,7 +101,7 @@ export default function Navbar() {
                               <Link
                                 to={country.href}
                                 className="block px-3 py-2 text-sm font-medium rounded-lg 
-                       text-white hover:bg-white/10 transition-all duration-200"
+                                  text-white hover:bg-white/10 transition-all duration-200"
                                 onClick={() => setDropdownOpen(false)}
                               >
                                 {country.name}
@@ -124,7 +122,7 @@ export default function Navbar() {
                               <Link
                                 to={country.href}
                                 className="block px-3 py-2 text-sm font-medium rounded-lg 
-                       text-white hover:bg-white/10 transition-all duration-200"
+                                  text-white hover:bg-white/10 transition-all duration-200"
                                 onClick={() => setDropdownOpen(false)}
                               >
                                 {country.name}
@@ -177,7 +175,7 @@ export default function Navbar() {
       {/* Mobile Navigation Drawer */}
       <div
         className={`fixed inset-0 z-40 lg:hidden transition-opacity duration-300 
-        ${mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+          ${mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
       >
         <div
           className="fixed inset-0 bg-black/50"
@@ -186,8 +184,8 @@ export default function Navbar() {
 
         <div
           className={`fixed inset-y-0 right-0 w-11/12 max-w-sm bg-background/95 backdrop-blur-2xl px-5 py-6 
-          transform transition-transform duration-300 ease-in-out 
-          ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
+            transform transition-transform duration-300 ease-in-out 
+            ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
         >
           <div className="flex items-center justify-between">
             {/* Mobile Logo */}
@@ -255,13 +253,12 @@ export default function Navbar() {
                       key={item.name}
                       to={item.href}
                       className="block rounded-lg px-3 py-2 text-base font-medium text-foreground 
-             bg-white/10 backdrop-blur-2xl border border-white/10 
-             hover:bg-white/20 transition-all duration-200"
+                        bg-white/10 backdrop-blur-2xl border border-white/10 
+                        hover:bg-white/20 transition-all duration-200"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.name}
                     </Link>
-
                   )
                 )}
               </div>

@@ -16,9 +16,7 @@ import Services from "./components/Services"; // ✅ Main Services list page
 import ServicesPage from "./pages/ServicesPage"; // ✅ Detailed service page
 import About from "./pages/AboutPage"; // ✅ About page
 import Germany from "./pages/country/germany";
-import CountryUSA from "./pages/country/CountryUSA";
-
-
+import Contact from "./pages/contactus"; // ✅ Contact page
 
 import CountriesDropdown from "./components/CountriesDropdown";
 
@@ -52,11 +50,11 @@ const App = () => (
             <Route path="/services/:id" element={<ServicesPage />} />
             {/* Example: /services/study-abroad, /services/immigration */}
 
-            {/* Countries */}
-            <Route path="/country/usa" element={<CountryUSA />} />
-
             {/* ✅ Country pages */}
             <Route path="/country/germany" element={<Germany />} />
+
+            {/* ✅ Contact page */}
+            <Route path="/contact" element={<Contact />} />
 
             {/* 404 Fallback */}
             <Route path="*" element={<NotFound />} />
