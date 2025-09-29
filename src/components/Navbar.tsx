@@ -13,8 +13,8 @@ const navigation = [
   { name: "Services", href: "/services" },
   { name: "Study MBBS", href: "/mbbs" },
   { name: "Countries", href: "#", dropdown: true },
-  { name: "Learn German", href: "/reviews" },
-  { name: "Contact", href: "/contact" }, // ✅ Contact added
+  { name: "Learn German", href: "/learn-german" }, // ✅ fixed
+  { name: "Contact", href: "/contact" },
 ];
 
 const studyAbroadCountries = [

@@ -21,8 +21,8 @@ const branches = [
   {
     city: "Germany",
     address: "Wizzen Europe Office, Berlin, Germany",
-    phone: "+49 123 456789",
-    email: "germany@wizzenoverseas.com",
+    phone: "+49 15731340455",
+    email: "info@wizzenabroadstudies.com",
   },
 ];
 

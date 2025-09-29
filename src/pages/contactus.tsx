@@ -55,10 +55,10 @@ const branches: Branch[] = [
     map: "https://www.google.com/maps/embed?pb=!...KOCHI_LINK_HERE...",
   },
   {
-    name: "Care Bridge Berlin International (GmbH)",
+    name: "Wizzen Europe Office",
     address: "Kochhannstraße 3, Prenzlauer Berg, 10249 Berlin, Germany",
-    phone: ["+4915211630015", "+4915218565120"],
-    whatsapp: ["+4915218565120"],
+    phone: ["+4915731340455"],
+    whatsapp: ["+4915731340455"],
     email: "info@carebridgebi.de",
     website: "https://www.carebridgebi.de",
     description:

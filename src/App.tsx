@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar"; // ✅ Navbar always visible
 import ScrollToTop from "./components/ScrollToTop"; // ✅ Scroll fix
 
+// ✅ Pages
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import StudyMBBS from "./pages/StudyMBBS";
@@ -17,8 +18,7 @@ import ServicesPage from "./pages/ServicesPage"; // ✅ Detailed service page
 import About from "./pages/AboutPage"; // ✅ About page
 import Germany from "./pages/country/germany";
 import Contact from "./pages/contactus"; // ✅ Contact page
-
-import CountriesDropdown from "./components/CountriesDropdown";
+import LearnGerman from "./pages/LearnGerman"; // ✅ New Learn German page
 
 const queryClient = new QueryClient();
 
@@ -34,7 +34,8 @@ const App = () => (
         {/* ✅ Navbar always visible */}
         <Navbar />
 
-        <div className="pt-20"> {/* Push content below fixed navbar */}
+        {/* ✅ Push content below fixed navbar */}
+        <div className="pt-20">
           <Routes>
             {/* Home */}
             <Route path="/" element={<Index />} />
@@ -52,6 +53,9 @@ const App = () => (
 
             {/* ✅ Country pages */}
             <Route path="/country/germany" element={<Germany />} />
+
+            {/* ✅ Learn German page */}
+            <Route path="/learn-german" element={<LearnGerman />} />
 
             {/* ✅ Contact page */}
             <Route path="/contact" element={<Contact />} />
